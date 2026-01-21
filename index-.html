@@ -456,8 +456,14 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-badge {
@@ -528,7 +534,9 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .stat-item { text-align: left; }
+        .stat-item {
+            text-align: left;
+        }
 
         .stat-number {
             font-family: var(--font-display);
@@ -585,8 +593,16 @@
             animation: floatCard 5s ease-in-out infinite;
         }
 
-        .floating-card.card-1 { top: 30px; left: -30px; }
-        .floating-card.card-2 { bottom: 50px; right: -20px; animation-delay: -2.5s; }
+        .floating-card.card-1 {
+            top: 30px;
+            left: -30px;
+        }
+
+        .floating-card.card-2 {
+            bottom: 50px;
+            right: -20px;
+            animation-delay: -2.5s;
+        }
 
         @keyframes floatCard {
             0%, 100% { transform: translateY(0); }
@@ -678,7 +694,9 @@
             border-color: transparent;
         }
 
-        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
 
         .service-icon {
             width: 64px;
@@ -736,13 +754,20 @@
             transition: transform 0.3s ease;
         }
 
-        .service-link:hover { color: var(--secondary); }
-        .service-link:hover svg { transform: translateX(5px); }
+        .service-link:hover {
+            color: var(--secondary);
+        }
+
+        .service-link:hover svg {
+            transform: translateX(5px);
+        }
 
         /* ============================================
            PORTFOLIO SECTION
            ============================================ */
-        .portfolio { background: var(--white); }
+        .portfolio {
+            background: var(--white);
+        }
 
         .portfolio-grid {
             display: grid;
@@ -765,7 +790,9 @@
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
 
         .portfolio-overlay {
             position: absolute;
@@ -779,7 +806,9 @@
             transition: opacity 0.4s ease;
         }
 
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
 
         .portfolio-overlay .tag {
             position: absolute;
@@ -811,7 +840,9 @@
         }
 
         .portfolio-item:hover .portfolio-overlay h4,
-        .portfolio-item:hover .portfolio-overlay p { transform: translateY(0); }
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
 
         /* ============================================
            TESTIMONIALS SECTION
@@ -841,8 +872,13 @@
             color: var(--secondary);
         }
 
-        .testimonials .section-title { color: var(--white); }
-        .testimonials .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
 
         .testimonials-grid {
             display: grid;
@@ -953,7 +989,10 @@
             filter: blur(50px);
         }
 
-        .cta-content { position: relative; z-index: 1; }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
 
         .cta h2 {
             color: var(--white);
@@ -992,8 +1031,13 @@
             margin-bottom: 60px;
         }
 
-        .footer-brand .logo { margin-bottom: 20px; }
-        .footer-brand .logo-text .brand { color: var(--white); }
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .logo-text .brand {
+            color: var(--white);
+        }
 
         .footer-brand > p {
             color: rgba(255, 255, 255, 0.6);
@@ -1002,7 +1046,10 @@
             font-size: 0.95rem;
         }
 
-        .footer-social { display: flex; gap: 12px; }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
 
         .footer-social a {
             width: 44px;
@@ -1033,7 +1080,9 @@
             font-weight: 700;
         }
 
-        .footer-links li { margin-bottom: 14px; }
+        .footer-links li {
+            margin-bottom: 14px;
+        }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.6);
@@ -1090,7 +1139,9 @@
             font-size: 0.9rem;
         }
 
-        .footer-bottom-links a:hover { color: var(--secondary); }
+        .footer-bottom-links a:hover {
+            color: var(--secondary);
+        }
 
         /* ============================================
            SCROLL ANIMATIONS
@@ -1123,7 +1174,9 @@
                 gap: 50px;
             }
 
-            .hero-content { order: 1; }
+            .hero-content {
+                order: 1;
+            }
 
             .hero-visual {
                 order: 2;
@@ -1131,24 +1184,44 @@
                 margin: 0 auto;
             }
 
-            .hero-text { margin: 0 auto 36px; }
-            .hero-buttons { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .floating-card { display: none; }
+            .hero-text {
+                margin: 0 auto 36px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .floating-card {
+                display: none;
+            }
 
             .services-grid,
             .portfolio-grid,
-            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
+            .menu-toggle {
+                display: flex;
+            }
 
             .nav-menu {
                 position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
                 background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
                 flex-direction: column;
                 justify-content: center;
@@ -1174,11 +1247,15 @@
                 margin-top: 20px;
             }
 
-            .section { padding: 70px 0; }
+            .section {
+                padding: 70px 0;
+            }
 
             .services-grid,
             .portfolio-grid,
-            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
 
             .hero-stats {
                 flex-direction: column;
@@ -1186,9 +1263,13 @@
                 align-items: center;
             }
 
-            .stat-item { text-align: center; }
+            .stat-item {
+                text-align: center;
+            }
 
-            .cta-box { padding: 50px 24px; }
+            .cta-box {
+                padding: 50px 24px;
+            }
 
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -1202,280 +1283,26 @@
         }
 
         @media (max-width: 480px) {
-            .container { padding: 0 16px; }
+            .container {
+                padding: 0 16px;
+            }
 
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
             }
 
-            .hero-buttons .btn { width: 100%; }
+            .hero-buttons .btn {
+                width: 100%;
+            }
 
-            .cta-buttons { flex-direction: column; }
-            .cta-buttons .btn { width: 100%; }
-        }
+            .cta-buttons {
+                flex-direction: column;
+            }
 
-        /* ============================================
-           COOKIES BANNER (RM DIGITAL) - ADDED
-           ============================================ */
-        .cookie-banner {
-            position: fixed;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            z-index: 2000;
-            display: none;
-        }
-
-        .cookie-card {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(30, 58, 95, 0.12);
-            border-radius: 18px;
-            box-shadow: var(--shadow-2xl);
-            padding: 18px 18px;
-            display: grid;
-            grid-template-columns: 1.4fr 0.6fr;
-            gap: 14px;
-            align-items: center;
-        }
-
-        .cookie-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--primary);
-            font-family: var(--font-display);
-            font-weight: 800;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .cookie-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(245, 166, 35, 0.25);
-        }
-
-        .cookie-badge svg { width: 18px; height: 18px; fill: var(--white); }
-
-        .cookie-text {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.55;
-        }
-
-        .cookie-text a {
-            color: var(--primary);
-            font-weight: 700;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .cookie-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-        }
-
-        .cookie-btn {
-            padding: 12px 14px;
-            border-radius: 12px;
-            border: 0;
-            cursor: pointer;
-            font-weight: 800;
-            font-family: var(--font-body);
-            transition: all 0.25s ease;
-            font-size: 0.92rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .cookie-btn-primary {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
-            color: var(--white);
-            box-shadow: 0 10px 24px rgba(245, 166, 35, 0.25);
-        }
-
-        .cookie-btn-primary:hover { transform: translateY(-2px); }
-
-        .cookie-btn-outline {
-            background: transparent;
-            border: 2px solid rgba(30, 58, 95, 0.28);
-            color: var(--primary);
-        }
-
-        .cookie-btn-outline:hover {
-            border-color: rgba(30, 58, 95, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .cookie-btn-ghost {
-            background: rgba(30, 58, 95, 0.06);
-            color: var(--primary);
-        }
-
-        .cookie-btn-ghost:hover {
-            background: rgba(30, 58, 95, 0.10);
-            transform: translateY(-2px);
-        }
-
-        /* Cookie Modal */
-        .cookie-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 2100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
-        }
-
-        .cookie-modal::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(13, 17, 23, 0.65);
-            backdrop-filter: blur(8px);
-        }
-
-        .cookie-modal-card {
-            position: relative;
-            width: 100%;
-            max-width: 780px;
-            border-radius: 22px;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.90));
-            border: 1px solid rgba(245, 166, 35, 0.22);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .cookie-modal-head {
-            padding: 18px 18px 12px;
-            background: linear-gradient(135deg, rgba(30,58,95,0.10), rgba(245,166,35,0.08));
-            border-bottom: 1px solid rgba(30, 58, 95, 0.10);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cookie-modal-head h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: var(--primary);
-        }
-
-        .cookie-close {
-            border: 0;
-            background: rgba(30,58,95,0.10);
-            color: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 900;
-            transition: all .2s ease;
-        }
-
-        .cookie-close:hover { transform: translateY(-1px); background: rgba(30,58,95,0.14); }
-
-        .cookie-modal-body {
-            padding: 16px 18px 18px;
-            color: var(--gray-700);
-        }
-
-        .cookie-modal-body p {
-            margin-bottom: 12px;
-            color: var(--gray-600);
-        }
-
-        .cookie-pref {
-            border: 1px solid rgba(30,58,95,0.12);
-            border-radius: 16px;
-            padding: 14px;
-            background: rgba(255,255,255,0.65);
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .cookie-pref strong { color: var(--primary); }
-        .cookie-pref small { color: var(--gray-500); display: block; margin-top: 2px; line-height: 1.4; }
-
-        .cookie-switch {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            user-select: none;
-        }
-
-        .cookie-switch input {
-            width: 46px;
-            height: 26px;
-            appearance: none;
-            background: rgba(148, 163, 184, 0.5);
-            border-radius: 999px;
-            position: relative;
-            outline: none;
-            cursor: pointer;
-            transition: background .2s ease;
-            border: 1px solid rgba(30,58,95,0.12);
-        }
-
-        .cookie-switch input:checked {
-            background: rgba(245, 166, 35, 0.8);
-        }
-
-        .cookie-switch input::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 4px;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--white);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-            transition: left .2s ease;
-        }
-
-        .cookie-switch input:checked::after { left: 24px; }
-
-        .cookie-modal-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-            padding-top: 10px;
-            border-top: 1px solid rgba(30,58,95,0.10);
-            margin-top: 12px;
-        }
-
-        @media (max-width: 840px) {
-            .cookie-card { grid-template-columns: 1fr; }
-            .cookie-actions { justify-content: flex-start; }
-        }
-
-        @media (max-width: 480px) {
-            .cookie-banner { left: 14px; right: 14px; bottom: 14px; }
-            .cookie-btn { width: 100%; }
-            .cookie-actions { width: 100%; }
+            .cta-buttons .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -1627,7 +1454,7 @@
                     </div>
                     <h3>Diseño Web</h3>
                     <p>Sitios web modernos, responsivos y optimizados para conversión. Landing pages que generan resultados.</p>
-                    <a href="#contacto" class="service-link">
+                    <a href="servicio-diseno-web.html" class="service-link">
                         Saber más
                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1643,7 +1470,7 @@
                     </div>
                     <h3>Marketing Digital</h3>
                     <p>Estrategias personalizadas: SEO, SEM, email marketing y campañas de publicidad que convierten.</p>
-                    <a href="#contacto" class="service-link">
+                    <a href="servicio-marketing-digital.html" class="service-link">
                         Saber más
                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1661,7 +1488,7 @@
                     </div>
                     <h3>Diseño Gráfico</h3>
                     <p>Identidad visual, branding, logotipos y contenido gráfico que destaca tu marca.</p>
-                    <a href="#contacto" class="service-link">
+                    <a href="servicio-diseno-grafico.html" class="service-link">
                         Saber más
                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1676,7 +1503,7 @@
                     </div>
                     <h3>Embudos de Venta</h3>
                     <p>Embudos automatizados que transforman visitantes en clientes de manera consistente.</p>
-                    <a href="#contacto" class="service-link">
+                    <a href="servicio-embudos-venta.html" class="service-link">
                         Saber más
                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1693,7 +1520,7 @@
                     </div>
                     <h3>E-Commerce</h3>
                     <p>Tiendas online profesionales con pasarelas de pago y todas las funcionalidades para vender.</p>
-                    <a href="#contacto" class="service-link">
+                    <a href="servicio-ecommerce.html" class="service-link">
                         Saber más
                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1709,7 +1536,7 @@
                     </div>
                     <h3>Redes Sociales</h3>
                     <p>Gestión profesional, contenido estratégico y campañas de ads que generan engagement.</p>
-                    <a href="#contacto" class="service-link">
+                    <a href="servicio-redes-sociales.html" class="service-link">
                         Saber más
                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1845,7 +1672,7 @@
                     <h2>¿Listo para transformar tu presencia digital?</h2>
                     <p>Agenda una consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos de negocio.</p>
                     <div class="cta-buttons">
-                        <a href="https://wa.me/50245610507?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios" class="btn btn-primary" target="_blank" rel="noopener">
+                        <a href="https://wa.me/50212345678?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios" class="btn btn-primary" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1885,13 +1712,13 @@
                     </a>
                     <p>Transformamos negocios con estrategias digitales inteligentes. Tu éxito es nuestra misión.</p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/RMDigitalLatam" aria-label="Facebook">
+                        <a href="#" aria-label="Facebook">
                             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         </a>
                         <a href="#" aria-label="Instagram">
                             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="currentColor"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/rmdigitalgt/" aria-label="LinkedIn">
+                        <a href="#" aria-label="LinkedIn">
                             <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                         </a>
                         <a href="#" aria-label="YouTube">
@@ -1930,11 +1757,11 @@
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <span>+502 4561 0507</span>
+                            <span>+502 1234-5678</span>
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>rmoya0284@gmail.com</span>
+                            <span>hola@rmdigital.com</span>
                         </li>
                     </ul>
                 </div>
@@ -1943,89 +1770,12 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 RM Digital. Todos los derechos reservados.</p>
                 <div class="footer-bottom-links">
-                    <a href="privacidad.html">Política de Privacidad</a>
-                    <a href="terminos.html">Términos de Servicio</a>
-                    <a href="#" id="cookiePrefsLink">Preferencias de Cookies</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Servicio</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- ============================================
-         COOKIE BANNER (ADDED)
-         ============================================ -->
-    <div class="cookie-banner" id="cookieBanner" aria-live="polite" aria-label="Banner de cookies">
-        <div class="cookie-card" role="dialog" aria-modal="false">
-            <div>
-                <div class="cookie-title">
-                    <span class="cookie-badge" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10c0-.66-.06-1.3-.18-1.93a6 6 0 0 1-7.89-7.89C13.3 2.06 12.66 2 12 2z"/></svg>
-                    </span>
-                    Cookies en RM Digital
-                </div>
-                <div class="cookie-text">
-                    Usamos cookies para mejorar tu experiencia y medir rendimiento. Podés aceptar todas, rechazar las no esenciales o configurar preferencias.
-                    <a href="privacidad.html">Ver política</a>.
-                </div>
-            </div>
-            <div class="cookie-actions">
-                <button class="cookie-btn cookie-btn-ghost" id="cookieConfigBtn" type="button">Configurar</button>
-                <button class="cookie-btn cookie-btn-outline" id="cookieRejectBtn" type="button">Rechazar</button>
-                <button class="cookie-btn cookie-btn-primary" id="cookieAcceptBtn" type="button">Aceptar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cookie Preferences Modal -->
-    <div class="cookie-modal" id="cookieModal" aria-hidden="true">
-        <div class="cookie-modal-card" role="dialog" aria-modal="true" aria-labelledby="cookieModalTitle">
-            <div class="cookie-modal-head">
-                <h3 id="cookieModalTitle">Preferencias de cookies</h3>
-                <button class="cookie-close" id="cookieCloseBtn" type="button" aria-label="Cerrar">×</button>
-            </div>
-            <div class="cookie-modal-body">
-                <p>
-                    Podés elegir qué cookies permitir. Las <strong>necesarias</strong> siempre están activas para que el sitio funcione correctamente.
-                    Para más detalles, revisá la <a href="privacidad.html">Política de Privacidad</a>.
-                </p>
-
-                <div class="cookie-pref">
-                    <div>
-                        <strong>Necesarias</strong>
-                        <small>Permiten funciones básicas como navegación y seguridad.</small>
-                    </div>
-                    <div class="cookie-switch">
-                        <input type="checkbox" checked disabled aria-label="Cookies necesarias (siempre activas)">
-                    </div>
-                </div>
-
-                <div class="cookie-pref">
-                    <div>
-                        <strong>Analíticas</strong>
-                        <small>Nos ayudan a entender el uso del sitio para mejorar contenido y rendimiento.</small>
-                    </div>
-                    <label class="cookie-switch">
-                        <input type="checkbox" id="cookieAnalytics" aria-label="Permitir cookies analíticas">
-                    </label>
-                </div>
-
-                <div class="cookie-pref">
-                    <div>
-                        <strong>Marketing</strong>
-                        <small>Permiten medir campañas y mostrar contenido más relevante.</small>
-                    </div>
-                    <label class="cookie-switch">
-                        <input type="checkbox" id="cookieMarketing" aria-label="Permitir cookies de marketing">
-                    </label>
-                </div>
-
-                <div class="cookie-modal-actions">
-                    <button class="cookie-btn cookie-btn-outline" id="cookieSaveBtn" type="button">Guardar</button>
-                    <button class="cookie-btn cookie-btn-primary" id="cookieAcceptAllBtn" type="button">Aceptar todo</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ============================================
          JAVASCRIPT
@@ -2104,124 +1854,7 @@
                     shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
                 });
             });
-
-            /* ============================================
-               COOKIE CONSENT (ADDED)
-               - Guarda en localStorage: rm_cookie_consent
-               - Estructura:
-                 { necessary:true, analytics:boolean, marketing:boolean, ts:number }
-               ============================================ */
-            const STORAGE_KEY = 'rm_cookie_consent';
-
-            const cookieBanner = document.getElementById('cookieBanner');
-            const cookieModal  = document.getElementById('cookieModal');
-
-            const acceptBtn = document.getElementById('cookieAcceptBtn');
-            const rejectBtn = document.getElementById('cookieRejectBtn');
-            const configBtn = document.getElementById('cookieConfigBtn');
-
-            const cookiePrefsLink = document.getElementById('cookiePrefsLink');
-
-            const closeBtn = document.getElementById('cookieCloseBtn');
-            const saveBtn  = document.getElementById('cookieSaveBtn');
-            const acceptAllBtn = document.getElementById('cookieAcceptAllBtn');
-
-            const analyticsToggle = document.getElementById('cookieAnalytics');
-            const marketingToggle = document.getElementById('cookieMarketing');
-
-            function getConsent() {
-                try {
-                    const raw = localStorage.getItem(STORAGE_KEY);
-                    return raw ? JSON.parse(raw) : null;
-                } catch (e) {
-                    return null;
-                }
-            }
-
-            function setConsent(consent) {
-                const payload = {
-                    necessary: true,
-                    analytics: !!consent.analytics,
-                    marketing: !!consent.marketing,
-                    ts: Date.now()
-                };
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-                return payload;
-            }
-
-            function showBanner() {
-                cookieBanner.style.display = 'block';
-            }
-
-            function hideBanner() {
-                cookieBanner.style.display = 'none';
-            }
-
-            function openModal() {
-                // cargar estado actual
-                const c = getConsent();
-                analyticsToggle.checked = !!(c && c.analytics);
-                marketingToggle.checked = !!(c && c.marketing);
-
-                cookieModal.style.display = 'flex';
-                cookieModal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeModal() {
-                cookieModal.style.display = 'none';
-                cookieModal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            }
-
-            function initCookies() {
-                const c = getConsent();
-                if (!c) showBanner();
-            }
-
-            // Eventos
-            acceptBtn.addEventListener('click', () => {
-                setConsent({ analytics: true, marketing: true });
-                hideBanner();
-            });
-
-            rejectBtn.addEventListener('click', () => {
-                setConsent({ analytics: false, marketing: false });
-                hideBanner();
-            });
-
-            configBtn.addEventListener('click', () => {
-                openModal();
-            });
-
-            cookiePrefsLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal();
-            });
-
-            closeBtn.addEventListener('click', closeModal);
-
-            cookieModal.addEventListener('click', (e) => {
-                // click fuera del card cierra
-                if (e.target === cookieModal) closeModal();
-            });
-
-            saveBtn.addEventListener('click', () => {
-                setConsent({ analytics: analyticsToggle.checked, marketing: marketingToggle.checked });
-                hideBanner();
-                closeModal();
-            });
-
-            acceptAllBtn.addEventListener('click', () => {
-                analyticsToggle.checked = true;
-                marketingToggle.checked = true;
-                setConsent({ analytics: true, marketing: true });
-                hideBanner();
-                closeModal();
-            });
-
-            initCookies();
-
+            
             console.log('🚀 RM Digital - Presencia Digital Inteligente');
         });
     </script>
