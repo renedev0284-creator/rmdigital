@@ -1,45 +1,46 @@
+
 <!doctype html>
 <html lang="es-GT">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1220" />
-  <title>RM Studio Tech — Web + Ads + Automatización</title>
-  <meta name="description" content="Diseño web, campañas Meta/Google Ads y automatización para vender más. Planes claros, entrega rápida y enfoque 100% resultados. Pedí tu cotización por WhatsApp." />
+  <meta name="theme-color" content="#2563eb" />
+  <title>RM Digital — Marketing Digital, Contenido, Ads y Web</title>
+  <meta name="description" content="RM Digital: servicios de marketing digital, diseño de contenido básico, gestión de redes sociales, Google Ads, Meta Ads, estrategias, landing pages y web pages (diseño e implementación). Cotizá por WhatsApp." />
 
   <!-- Favicon en la raíz -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="RM Studio Tech — Web + Ads + Automatización" />
-  <meta property="og:description" content="Diseño web, campañas Meta/Google Ads y automatización para vender más. Planes claros y enfoque 100% resultados." />
+  <meta property="og:title" content="RM Digital — Marketing Digital, Contenido, Ads y Web" />
+  <meta property="og:description" content="Marketing digital, contenido, gestión de redes, Google Ads, Meta Ads, estrategias, landing pages y web pages. Diseño e implementación." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_GT" />
   <meta property="og:image" content="favicon.svg" />
 
-  <!-- Fonts (opcionales: si no querés requests externos, podés borrar estas 2 líneas) -->
+  <!-- Fonts (podés borrar si querés 0 requests externos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.08);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
-      --line:rgba(255,255,255,.12);
-      --primary:#4f8cff;
-      --secondary:#f5a623;
-      --danger:#ff4d4d;
-      --shadow:0 22px 70px rgba(0,0,0,.55);
+      --bg:#f6f8ff;
+      --card:#ffffff;
+      --muted:#5b6475;
+      --text:#0f172a;
+      --line:rgba(15,23,42,.10);
+      --primary:#2563eb;
+      --primary-2:#1d4ed8;
+      --accent:#0ea5e9;
+      --shadow:0 18px 55px rgba(15,23,42,.08);
       --radius:18px;
-      --font-display:"Outfit", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --font-body:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --container:1120px;
+      --font-title:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --font-body:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -47,326 +48,263 @@
       font-family:var(--font-body);
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(79,140,255,.22), transparent 70%),
-        radial-gradient(900px 500px at 85% 20%, rgba(245,166,35,.16), transparent 70%),
-        radial-gradient(900px 600px at 60% 85%, rgba(255,77,77,.10), transparent 70%),
+        radial-gradient(900px 520px at 15% 0%, rgba(37,99,235,.10), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(14,165,233,.10), transparent 60%),
         var(--bg);
       overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
     .container{max-width:var(--container);margin:0 auto;padding:0 18px}
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(10px);
-      background:rgba(11,18,32,.58);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 0; gap:14px;
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;min-width:220px;
-    }
-    .brand .logo{
-      width:40px;height:40px;border-radius:14px;
-      background:linear-gradient(135deg, rgba(79,140,255,.22), rgba(245,166,35,.14));
-      border:1px solid rgba(255,255,255,.12);
-      display:grid;place-items:center;
-      box-shadow:0 18px 50px rgba(0,0,0,.35);
-    }
-    .brand .logo svg{width:22px;height:22px}
-    .brand-title{display:flex;flex-direction:column;line-height:1.05}
-    .brand-title strong{font-family:var(--font-display);letter-spacing:.2px}
-    .brand-title span{font-size:12px;color:var(--muted)}
-    .nav-links{
-      display:flex;gap:16px;align-items:center;
-      color:rgba(255,255,255,.82);
-      font-weight:600;
-    }
-    .nav-links a{padding:8px 10px;border-radius:12px}
-    .nav-links a:hover{background:rgba(255,255,255,.06)}
-    .nav-cta{display:flex;gap:10px;align-items:center}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 14px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:800;
-      letter-spacing:.2px;
-      transition:transform .12s ease, background .12s ease, border-color .12s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
-    .btn-primary{
-      background:linear-gradient(135deg, rgba(79,140,255,.95), rgba(79,140,255,.55));
-      border-color:rgba(79,140,255,.55);
-      box-shadow:0 18px 60px rgba(79,140,255,.22);
-    }
-    .btn-primary:hover{background:linear-gradient(135deg, rgba(79,140,255,1), rgba(79,140,255,.62))}
-    .btn-ghost{
-      background:transparent;
-      border-color:rgba(255,255,255,.16);
-    }
-    .btn-whatsapp{
-      background:linear-gradient(135deg, rgba(37,211,102,.95), rgba(37,211,102,.55));
-      border-color:rgba(37,211,102,.55);
-      box-shadow:0 18px 60px rgba(37,211,102,.18);
-    }
-    .btn small{font-weight:700;opacity:.85}
+    .muted{color:var(--muted)}
     .chip{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.85);
-      font-weight:700;font-size:12px;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
+      color:rgba(29,78,216,.95);
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.2px;
     }
-    .hero{
-      padding:38px 0 18px;
+
+    /* NAV */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(246,248,255,.85);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
     }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;gap:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      min-width:220px;
+    }
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(37,99,235,.12), rgba(14,165,233,.10));
+      border:1px solid rgba(37,99,235,.18);
+      box-shadow:0 10px 30px rgba(37,99,235,.12);
+    }
+    .brand strong{
+      font-family:var(--font-title);
+      letter-spacing:.2px;
+    }
+    .brand small{display:block;color:var(--muted);font-weight:600;margin-top:2px}
+    nav.links{
+      display:flex;gap:10px;align-items:center;
+      font-weight:800;color:rgba(15,23,42,.82);
+    }
+    nav.links a{
+      padding:10px 12px;border-radius:12px;
+    }
+    nav.links a:hover{background:rgba(15,23,42,.05)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:900;
+      letter-spacing:.2px;
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(15,23,42,.08)}
+    .btn-primary{
+      border-color:rgba(37,99,235,.28);
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:#fff;
+      box-shadow:0 18px 45px rgba(37,99,235,.18);
+    }
+    .btn-primary:hover{box-shadow:0 22px 60px rgba(37,99,235,.22)}
+    .btn-ghost{
+      background:rgba(255,255,255,.70);
+    }
+    .btn-wa{
+      border-color:rgba(34,197,94,.30);
+      background:linear-gradient(135deg, rgba(34,197,94,1), rgba(34,197,94,.86));
+      color:#fff;
+      box-shadow:0 18px 45px rgba(34,197,94,.18);
+    }
+    .btn-wa:hover{box-shadow:0 22px 60px rgba(34,197,94,.22)}
+
+    /* HERO */
+    .hero{padding:36px 0 18px}
     .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:stretch;
+      display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:stretch;
     }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:22px;
-      position:relative;
-      overflow:hidden;
     }
-    .hero-card:before{
-      content:"";
-      position:absolute;inset:-1px;
-      background:
-        radial-gradient(500px 280px at 25% 15%, rgba(79,140,255,.25), transparent 65%),
-        radial-gradient(500px 280px at 75% 30%, rgba(245,166,35,.18), transparent 70%);
-      pointer-events:none;
-      opacity:.95;
-    }
-    .hero-card > *{position:relative}
+    .hero-main{padding:22px}
     h1{
-      margin:10px 0 10px;
-      font-family:var(--font-display);
+      margin:12px 0 10px;
+      font-family:var(--font-title);
       font-size:44px;
       line-height:1.05;
       letter-spacing:.2px;
     }
     .lead{
-      color:rgba(255,255,255,.80);
+      margin:0 0 14px;
+      color:rgba(15,23,42,.78);
       font-size:16px;
-      line-height:1.55;
-      margin:0 0 16px;
-      max-width:58ch;
+      line-height:1.6;
+      max-width:62ch;
     }
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    .hero-bullets{display:grid;gap:10px;margin-top:18px}
-    .bullet{
+    .hero-points{display:grid;gap:10px;margin-top:16px}
+    .point{
       display:flex;gap:10px;align-items:flex-start;
-      padding:12px 12px;border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
+      padding:12px;border-radius:14px;
+      background:rgba(15,23,42,.03);
+      border:1px solid rgba(15,23,42,.08);
     }
-    .bullet svg{width:18px;height:18px;margin-top:2px;color:var(--secondary)}
-    .bullet b{display:block;font-weight:900}
-    .bullet span{display:block;color:rgba(255,255,255,.74);font-size:13px;margin-top:2px}
-    .hero-side{
-      display:grid;gap:14px;
+    .point .dot{
+      width:10px;height:10px;border-radius:99px;
+      margin-top:6px;
+      background:linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow:0 6px 18px rgba(37,99,235,.18);
+      flex:0 0 auto;
     }
-    .mini{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:var(--radius);
-      padding:16px;
-    }
-    .mini h3{
+    .point b{display:block;font-weight:900}
+    .point span{display:block;color:rgba(15,23,42,.72);font-size:13px;margin-top:2px;line-height:1.45}
+
+    .hero-side{padding:18px}
+    .mini-title{
+      font-family:var(--font-title);
+      font-weight:900;
       margin:0 0 8px;
-      font-family:var(--font-display);
       letter-spacing:.2px;
       font-size:18px;
     }
-    .mini p{margin:0;color:rgba(255,255,255,.74);line-height:1.5}
-    .kpis{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px
-    }
+    .kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
     .kpi{
       padding:12px;border-radius:16px;
-      background:rgba(0,0,0,.20);
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid rgba(15,23,42,.08);
+      background:rgba(37,99,235,.04);
     }
-    .kpi strong{display:block;font-family:var(--font-display);font-size:18px}
-    .kpi span{display:block;color:rgba(255,255,255,.72);font-size:12px;margin-top:4px}
-    .section{
-      padding:22px 0;
-    }
+    .kpi strong{display:block;font-family:var(--font-title);font-size:18px}
+    .kpi span{display:block;color:rgba(15,23,42,.70);font-size:12px;margin-top:4px;font-weight:700}
+
+    /* SECTIONS */
+    .section{padding:22px 0}
     .section-head{
       display:flex;align-items:flex-end;justify-content:space-between;
-      gap:12px;margin-bottom:12px
+      gap:12px;margin-bottom:12px;
     }
-    .section-head h2{
+    h2{
       margin:0;
-      font-family:var(--font-display);
+      font-family:var(--font-title);
       font-size:26px;
       letter-spacing:.2px;
     }
-    .section-head p{
-      margin:0;color:rgba(255,255,255,.72);
-      max-width:62ch;line-height:1.5;
-    }
+    .section-head p{margin:0;color:rgba(15,23,42,.72);line-height:1.55;max-width:70ch}
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .card{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:var(--radius);
-      padding:16px;
-    }
-    .card h3{
-      margin:10px 0 6px;
-      font-family:var(--font-display);
-      font-size:18px;
-    }
-    .card p{margin:0;color:rgba(255,255,255,.74);line-height:1.5}
-    .card .icon{
+    .service{padding:16px}
+    .icon{
       width:44px;height:44px;border-radius:16px;
       display:grid;place-items:center;
-      background:rgba(79,140,255,.14);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.92);
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
     }
-    .split{
-      display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch;
+    .service h3{
+      margin:10px 0 6px;
+      font-family:var(--font-title);
+      font-size:18px;
     }
-    .steps{display:grid;gap:10px}
-    .step{
-      display:flex;gap:12px;align-items:flex-start;
-      padding:14px;border-radius:16px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
+    .service p{margin:0;color:rgba(15,23,42,.70);line-height:1.55}
+
+    .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .plan{padding:16px;position:relative}
+    .plan .tag{
+      position:absolute;top:12px;right:12px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(14,165,233,.10);
+      border:1px solid rgba(14,165,233,.22);
+      color:rgba(2,132,199,.95);
+      font-size:12px;font-weight:900;
     }
-    .step .num{
-      width:34px;height:34px;border-radius:14px;
-      display:grid;place-items:center;
-      background:rgba(245,166,35,.14);
-      border:1px solid rgba(245,166,35,.30);
-      color:var(--secondary);
-      font-weight:900;
-      flex:0 0 auto;
-    }
+    .plan .name{font-family:var(--font-title);font-weight:900;font-size:18px}
+    .plan .price{margin-top:8px;font-family:var(--font-title);font-weight:900;font-size:24px}
+    .plan .desc{margin:6px 0 0;color:rgba(15,23,42,.70);line-height:1.55}
+    .plan ul{margin:12px 0 14px;padding-left:18px;color:rgba(15,23,42,.78);line-height:1.7}
+    .plan li{margin:6px 0}
+    .plan .btn{width:100%}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .steps{padding:16px}
+    .step{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:16px;border:1px solid rgba(15,23,42,.08);background:rgba(15,23,42,.03);margin-top:10px}
+    .num{width:34px;height:34px;border-radius:14px;display:grid;place-items:center;font-weight:900;color:#fff;background:linear-gradient(135deg, var(--primary), var(--accent));flex:0 0 auto}
     .step b{display:block;font-weight:900}
-    .step span{display:block;color:rgba(255,255,255,.74);font-size:13px;margin-top:3px;line-height:1.45}
-    .faq{display:grid;gap:10px}
+    .step span{display:block;color:rgba(15,23,42,.70);font-size:13px;margin-top:3px;line-height:1.45}
+
     details{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:16px;
-      padding:12px 14px;
+      background:#fff;border:1px solid rgba(15,23,42,.10);
+      border-radius:16px;padding:12px 14px;
+      box-shadow:0 10px 30px rgba(15,23,42,.05);
     }
     summary{
-      cursor:pointer;
-      list-style:none;
+      cursor:pointer;list-style:none;
+      font-family:var(--font-title);
       font-weight:900;
-      font-family:var(--font-display);
-      letter-spacing:.2px;
     }
     summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0;color:rgba(255,255,255,.74);line-height:1.55}
+    details p{margin:10px 0 0;color:rgba(15,23,42,.70);line-height:1.55}
+
     .cta{
-      background:linear-gradient(180deg, rgba(79,140,255,.16), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:calc(var(--radius) + 4px);
       padding:18px;
-      box-shadow:0 22px 70px rgba(0,0,0,.45);
-      overflow:hidden;
-      position:relative;
+      border-radius:calc(var(--radius) + 4px);
+      border:1px solid rgba(37,99,235,.18);
+      background:linear-gradient(135deg, rgba(37,99,235,.08), rgba(14,165,233,.06));
+      box-shadow:0 18px 55px rgba(37,99,235,.10);
     }
-    .cta:before{
-      content:"";
-      position:absolute;inset:-1px;
-      background:
-        radial-gradient(520px 320px at 20% 30%, rgba(79,140,255,.25), transparent 70%),
-        radial-gradient(520px 320px at 80% 10%, rgba(245,166,35,.20), transparent 70%);
-      opacity:.85;
-      pointer-events:none;
-    }
-    .cta > *{position:relative}
-    .cta-grid{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-items:center;
-    }
-    .cta h2{margin:0;font-family:var(--font-display);font-size:26px}
-    .cta p{margin:8px 0 0;color:rgba(255,255,255,.78);line-height:1.5}
+    .cta-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-items:center}
+    .cta h2{margin:0}
+    .cta p{margin:8px 0 0;color:rgba(15,23,42,.72);line-height:1.55}
     .cta-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    .footer{
+
+    footer{
       padding:26px 0 36px;
-      border-top:1px solid rgba(255,255,255,.08);
-      margin-top:22px;
-      color:rgba(255,255,255,.72);
+      border-top:1px solid var(--line);
+      color:rgba(15,23,42,.70);
+      margin-top:16px;
     }
-    .footer-grid{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:start
+    .footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:start}
+    .footer-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .footer-links a{
+      padding:8px 10px;border-radius:12px;
+      background:#fff;border:1px solid rgba(15,23,42,.10);
     }
-    .footer small{color:rgba(255,255,255,.62)}
-    .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    .links a{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10)}
-    .links a:hover{background:rgba(255,255,255,.06)}
-    .alert{
-      padding:14px;border-radius:16px;
-      background:rgba(255,77,77,.10);
-      border:1px solid rgba(255,77,77,.25);
-      color:rgba(255,255,255,.85);
-    }
-
-    /* Bloque de precios (renderizado por pricing.js desde data/servicios.json) */
-    .pricing-wrap{display:grid;gap:16px}
-    .service-block{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:18px}
-    .service-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
-    .service-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:rgba(245,166,35,.12);color:var(--secondary);border:1px solid rgba(255,255,255,.10)}
-    .service-icon svg{width:22px;height:22px}
-    .service-meta h3{margin:0;font-family:var(--font-display)}
-    .service-meta p{margin:.35rem 0 0;color:rgba(255,255,255,.74)}
-    .service-tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .badge{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.85);font-size:12px;font-weight:700}
-
-    .plans-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .plan-card{position:relative;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:16px}
-    .plan-card.is-highlight{border-color:rgba(245,166,35,.55);box-shadow:0 18px 60px rgba(0,0,0,.35)}
-    .plan-badge{position:absolute;top:12px;right:12px;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(245,166,35,.14);border:1px solid rgba(245,166,35,.45);color:var(--secondary);font-weight:800}
-    .plan-name{font-weight:800;font-family:var(--font-display);letter-spacing:.2px}
-    .plan-price{margin-top:6px;font-size:22px;font-weight:800}
-    .plan-period{font-size:12px;color:rgba(255,255,255,.70);font-weight:700}
-    .plan-features{margin:12px 0 14px;padding:0;list-style:none;color:rgba(255,255,255,.84)}
-    .plan-features li{margin:8px 0}
-    .plan-cta{width:100%}
+    .footer-links a:hover{box-shadow:0 10px 30px rgba(15,23,42,.06)}
 
     /* Responsive */
     @media (max-width: 980px){
       h1{font-size:36px}
       .hero-grid{grid-template-columns:1fr}
+      nav.links{display:none}
+      .grid-3{grid-template-columns:1fr}
+      .plans{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
       .cta-grid{grid-template-columns:1fr}
       .cta-actions{justify-content:flex-start}
-      .grid-3{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      .plans-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
       .brand{min-width:auto}
     }
   </style>
 
-  <!-- Datos estructurados -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "RM Studio Tech",
-    "areaServed": ["Guatemala", "El Salvador", "Honduras"],
-    "description": "Diseño web, campañas Meta/Google Ads y automatización para vender más.",
-    "url": "",
+    "name": "RM Digital",
+    "description": "Servicios de marketing digital, diseño de contenido básico, gestión de redes sociales, Google Ads, Meta Ads, estrategias, landing pages y web pages (diseño e implementación).",
+    "areaServed": ["Guatemala"],
     "telephone": "+50245610507"
   }
   </script>
@@ -374,38 +312,37 @@
 
 <body>
   <!-- NAV -->
-  <header class="nav">
+  <header>
     <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="#top">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="RM Digital">
           <div class="logo" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 9l-3 3 3 3"></path>
-              <path d="M16 9l3 3-3 3"></path>
-              <path d="M14 7l-4 10"></path>
+            <!-- ícono simple -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h16"></path>
             </svg>
           </div>
-          <div class="brand-title">
-            <strong>RM Studio Tech</strong>
-            <span>Web • Ads • Automatización</span>
+          <div>
+            <strong>RM Digital</strong>
+            <small>Marketing • Contenido • Ads • Web</small>
           </div>
         </a>
 
-        <nav class="nav-links" aria-label="Navegación">
+        <nav class="links" aria-label="Secciones">
           <a href="#servicios">Servicios</a>
           <a href="#planes">Planes</a>
           <a href="#proceso">Proceso</a>
           <a href="#faq">FAQ</a>
         </nav>
 
-        <div class="nav-cta">
-          <a class="btn btn-ghost" href="#planes" title="Ver planes">
-            Ver planes
-          </a>
-          <a class="btn btn-whatsapp" target="_blank" rel="noopener"
-             href="https://wa.me/50245610507?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n.%20Vi%20sus%20planes%20en%20la%20web."
-             title="Pedir por WhatsApp">
-            WhatsApp <small>4561 0507</small>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a class="btn btn-ghost" href="#planes">Ver planes</a>
+          <a class="btn btn-wa" target="_blank" rel="noopener"
+             href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20quiero%20cotizar%20servicios%20de%20marketing%20digital."
+             title="Escribir a WhatsApp">
+            WhatsApp <span style="opacity:.9;font-weight:900">4561 0507</span>
           </a>
         </div>
       </div>
@@ -416,99 +353,85 @@
   <main id="top" class="hero">
     <div class="container">
       <div class="hero-grid">
-        <section class="hero-card" aria-label="Presentación">
-          <span class="chip">⚡ Respuesta rápida • Enfoque a resultados</span>
-          <h1>Tu presencia digital <span style="color:var(--secondary)">PRO</span>, lista para vender.</h1>
+        <section class="card hero-main" aria-label="Presentación">
+          <span class="chip">📈 Enfoque a resultados • Implementación real</span>
+          <h1>Marketing Digital que se nota: <span style="color:var(--primary)">contenido</span>, <span style="color:var(--accent)">ads</span> y <span style="color:var(--primary)">web</span>.</h1>
           <p class="lead">
-            Diseño web que convierte, campañas en Meta/Google Ads y automatización para que tu negocio
-            deje de depender de “suerte” y empiece a depender de un sistema.
+            En <b>RM Digital</b> te ayudamos con <b>servicios completos de marketing digital</b>:
+            <b>diseño de contenido básico</b>, <b>gestión de redes sociales</b>, <b>Google Ads</b>, <b>Meta Ads</b>,
+            <b>estrategias</b>, y <b>landing/web pages</b> (diseño e implementación).
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#planes">Ver planes y precios</a>
-            <a class="btn btn-whatsapp" target="_blank" rel="noopener"
-               href="https://wa.me/50245610507?text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n.%20Mi%20negocio%20es%20%5B...%5D%20y%20quiero%20%5Bweb%2Fads%2Fautomatizaci%C3%B3n%5D."
-            >
+            <a class="btn btn-primary" href="#planes">Ver planes</a>
+            <a class="btn btn-wa" target="_blank" rel="noopener"
+               href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20mi%20negocio%20es%20%5B...%5D%20y%20quiero%20%5Bcontenido%2Fads%2Fweb%5D.%20%C2%BFMe%20recomend%C3%A1s%20un%20plan%3F">
               Cotizar por WhatsApp
             </a>
           </div>
 
-          <div class="hero-bullets">
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
+          <div class="hero-points">
+            <div class="point">
+              <div class="dot" aria-hidden="true"></div>
               <div>
-                <b>Enfoque a conversiones</b>
-                <span>No es “una web bonita”: es una web que empuja a WhatsApp/lead/venta.</span>
+                <b>Estrategia primero</b>
+                <span>Definimos oferta, mensaje, público y objetivo (sin eso, todo es “postear por postear”).</span>
               </div>
             </div>
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2v6"></path><path d="M12 16v6"></path><path d="M4.93 4.93l4.24 4.24"></path><path d="M14.83 14.83l4.24 4.24"></path><path d="M2 12h6"></path><path d="M16 12h6"></path><path d="M4.93 19.07l4.24-4.24"></path><path d="M14.83 9.17l4.24-4.24"></path>
-              </svg>
+            <div class="point">
+              <div class="dot" aria-hidden="true"></div>
               <div>
-                <b>Implementación rápida</b>
-                <span>Plan claro, checklist, y entregas sin “vueltas infinitas”.</span>
+                <b>Contenido básico que vende</b>
+                <span>Diseños limpios y coherentes con tu marca, listos para publicar.</span>
               </div>
             </div>
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
-              </svg>
+            <div class="point">
+              <div class="dot" aria-hidden="true"></div>
               <div>
-                <b>Mensajes que venden</b>
-                <span>Copy, CTA, estructura y confianza para convertir sin sonar “desesperado”.</span>
+                <b>Ads con control</b>
+                <span>Meta Ads y Google Ads con estructura, medición y optimización.</span>
               </div>
             </div>
           </div>
         </section>
 
-        <aside class="hero-side" aria-label="Resumen rápido">
-          <div class="mini">
-            <h3>¿Qué te entrego?</h3>
-            <p>
-              Un sistema digital listo: <b>estructura</b>, <b>copy</b>, <b>CTA</b>, y <b>medición</b> (cuando aplique).
-              En otras palabras: claridad, orden y resultados.
-            </p>
-            <div class="kpis" aria-label="Indicadores">
-              <div class="kpi">
-                <strong>Web</strong>
-                <span>Landing / Sitio PRO</span>
-              </div>
-              <div class="kpi">
-                <strong>Ads</strong>
-                <span>Meta + Google</span>
-              </div>
-              <div class="kpi">
-                <strong>UX</strong>
-                <span>Mobile-first</span>
-              </div>
-              <div class="kpi">
-                <strong>WA</strong>
-                <span>Enlace directo</span>
-              </div>
+        <aside class="card hero-side" aria-label="Resumen">
+          <h3 class="mini-title">Servicios clave</h3>
+          <p class="muted" style="margin:0;line-height:1.6">
+            Lo esencial para que tu negocio tenga presencia, confianza y captación constante.
+          </p>
+
+          <div class="kpis">
+            <div class="kpi">
+              <strong>Contenido</strong>
+              <span>Diseño básico</span>
+            </div>
+            <div class="kpi">
+              <strong>Redes</strong>
+              <span>Gestión y orden</span>
+            </div>
+            <div class="kpi">
+              <strong>Meta Ads</strong>
+              <span>Campañas y leads</span>
+            </div>
+            <div class="kpi">
+              <strong>Google Ads</strong>
+              <span>Búsquedas y ventas</span>
             </div>
           </div>
 
-          <div class="mini">
-            <h3>Contacto directo</h3>
-            <p>Hablemos por WhatsApp y te digo cuál plan te conviene según tu caso.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-              <a class="btn btn-whatsapp" target="_blank" rel="noopener"
-                 href="https://wa.me/50245610507?text=Hola%2C%20quiero%20que%20me%20recomiendes%20un%20plan.%20Mi%20negocio%20es%20%5B...%5D%20y%20mi%20objetivo%20es%20%5B...%5D."
-              >
+          <div style="margin-top:14px;padding:14px;border-radius:16px;border:1px solid rgba(15,23,42,.10);background:#fff">
+            <b style="display:block;font-family:var(--font-title)">Contacto directo</b>
+            <span class="muted" style="display:block;margin-top:4px;line-height:1.5">
+              Escribime al WhatsApp <b>4561 0507</b> y te digo qué plan te conviene.
+            </span>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20quiero%20informaci%C3%B3n%20de%20sus%20servicios.">
                 Escribir ahora
               </a>
-              <a class="btn btn-ghost" href="#faq">Ver preguntas</a>
+              <a class="btn" href="#faq">Ver FAQ</a>
             </div>
-          </div>
-
-          <div class="mini">
-            <h3>Dato importante</h3>
-            <p style="margin-top:0">
-              Si ya tenés logo, fotos y referencias, avanzamos más rápido. Si no, te doy una guía simple para resolverlo.
-            </p>
           </div>
         </aside>
       </div>
@@ -520,13 +443,46 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>Servicios principales</h2>
-          <p>Paquetes enfocados a resultados reales: conversión, confianza y seguimiento.</p>
+          <h2>Servicios de RM Digital</h2>
+          <p>Lo que ofrecés (sin desviarnos): marketing digital, contenido básico, gestión de redes, Google Ads, Meta Ads, estrategias, landing y web pages (diseño e implementación).</p>
         </div>
       </div>
 
       <div class="grid-3" role="list">
-        <article class="card" role="listitem">
+        <article class="card service" role="listitem">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19V5"></path><path d="M20 19V5"></path><path d="M8 7h8"></path><path d="M8 12h8"></path><path d="M8 17h8"></path>
+            </svg>
+          </div>
+          <h3>Marketing Digital</h3>
+          <p>Estrategia, enfoque y ejecución para captar clientes y crecer sin improvisación.</p>
+        </article>
+
+        <article class="card service" role="listitem">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16v16H4z"></path>
+              <path d="M8 8h8"></path>
+              <path d="M8 12h5"></path>
+              <path d="M8 16h8"></path>
+            </svg>
+          </div>
+          <h3>Diseño de contenido (básico)</h3>
+          <p>Diseños limpios para redes: posts, historias y piezas coherentes con tu marca.</p>
+        </article>
+
+        <article class="card service" role="listitem">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+            </svg>
+          </div>
+          <h3>Gestión de redes sociales</h3>
+          <p>Orden de publicación, respuesta, seguimiento y consistencia para que tu marca “se vea viva”.</p>
+        </article>
+
+        <article class="card service" role="listitem">
           <div class="icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
@@ -534,58 +490,100 @@
               <path d="M12 2a15 15 0 0 1 0 20"></path>
             </svg>
           </div>
-          <h3>Diseño Web</h3>
-          <p>Landing o sitio completo con estructura + CTA + velocidad. Enfocado a que te escriban y te compren.</p>
+          <h3>Google Ads</h3>
+          <p>Campañas enfocadas a búsqueda y demanda real (cuando la gente ya te está buscando).</p>
         </article>
 
-        <article class="card" role="listitem">
-          <div class="icon" aria-hidden="true" style="background:rgba(245,166,35,.14)">
+        <article class="card service" role="listitem">
+          <div class="icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 11l18-5v12L3 13v-2z"></path>
               <path d="M11 16v5"></path>
-              <path d="M7 15.5v4.5"></path>
             </svg>
           </div>
-          <h3>Meta / Google Ads</h3>
-          <p>Campañas que apuntan a WhatsApp o leads. Optimización y reporte para mejorar mes a mes.</p>
+          <h3>Meta Ads</h3>
+          <p>Campañas para WhatsApp o leads con estructura, creativos y optimización constante.</p>
         </article>
 
-        <article class="card" role="listitem">
-          <div class="icon" aria-hidden="true" style="background:rgba(255,77,77,.12)">
+        <article class="card service" role="listitem">
+          <div class="icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 3v18"></path>
-              <path d="M3 12h18"></path>
-              <path d="M7 7l10 10"></path>
-              <path d="M17 7L7 17"></path>
+              <path d="M3 4h18v14H3z"></path>
+              <path d="M7 18h10"></path>
             </svg>
           </div>
-          <h3>Automatización ligera</h3>
-          <p>Ordenamos captación y seguimiento: mensajes, formularios, y una ruta clara para no perder clientes.</p>
+          <h3>Landing & Web Pages</h3>
+          <p>Diseño e implementación de páginas para vender, captar y convertir (mobile-first).</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- PLANES (JSON) -->
+  <!-- PLANES -->
   <section id="planes" class="section">
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>Planes y precios</h2>
-          <p>Estos planes se cargan desde <b>data/servicios.json</b>. Editás el JSON y listo: la web se actualiza.</p>
+          <h2>Planes sugeridos</h2>
+          <p>Si querés ajustar nombres o precios, me decís y lo dejamos exacto a tu oferta.</p>
         </div>
-        <a class="btn btn-whatsapp" target="_blank" rel="noopener"
-           href="https://wa.me/50245610507?text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n.%20Vi%20los%20planes%20en%20la%20web%20y%20quiero%20%5B...%5D."
-        >
+        <a class="btn btn-wa" target="_blank" rel="noopener"
+           href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20quiero%20cotizar%20un%20plan.%20Mi%20negocio%20es%20%5B...%5D.">
           Cotizar por WhatsApp
         </a>
       </div>
 
-      <!-- Aquí renderiza pricing.js -->
-      <div id="servicesPricing" aria-live="polite"></div>
+      <div class="plans" role="list">
+        <article class="card plan" role="listitem">
+          <div class="name">Plan Base</div>
+          <div class="price">Ideal para empezar</div>
+          <p class="desc">Presencia y orden mínimo para publicar y verse profesional.</p>
+          <ul>
+            <li>Diseño de contenido básico</li>
+            <li>Gestión de redes sociales (básica)</li>
+            <li>Calendario y lineamientos</li>
+            <li>Recomendaciones de estrategia</li>
+          </ul>
+          <a class="btn btn-primary" target="_blank" rel="noopener"
+             href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20me%20interesa%20el%20Plan%20Base.%20Mi%20negocio%20es%20%5B...%5D.">
+            Pedir Plan Base
+          </a>
+        </article>
 
-      <div style="margin-top:12px" class="alert">
-        Tip: si querés ocultar precios, poné <b>"price": "Consultar"</b> en el JSON y se mostrará tal cual.
+        <article class="card plan" role="listitem" style="border-color:rgba(37,99,235,.22)">
+          <span class="tag">Más pedido</span>
+          <div class="name">Plan Growth</div>
+          <div class="price">Contenido + Ads</div>
+          <p class="desc">Para vender y captar leads con campañas en Meta/Google.</p>
+          <ul>
+            <li>Diseño de contenido básico</li>
+            <li>Gestión de redes sociales</li>
+            <li>Meta Ads (campañas)</li>
+            <li>Google Ads (si aplica)</li>
+            <li>Optimización y reporte</li>
+          </ul>
+          <a class="btn btn-primary" target="_blank" rel="noopener"
+             href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20me%20interesa%20el%20Plan%20Growth.%20Mi%20negocio%20es%20%5B...%5D%20y%20quiero%20%5B...%5D.">
+            Pedir Plan Growth
+          </a>
+        </article>
+
+        <article class="card plan" role="listitem">
+          <div class="name">Plan Full</div>
+          <div class="price">Estrategia + Web</div>
+          <p class="desc">Para negocios que necesitan landing/web page y campañas listas para escalar.</p>
+          <ul>
+            <li>Estrategia completa</li>
+            <li>Landing page o web page (diseño e implementación)</li>
+            <li>Meta Ads</li>
+            <li>Google Ads</li>
+            <li>Mejoras y ajustes por objetivos</li>
+          </ul>
+          <a class="btn btn-primary" target="_blank" rel="noopener"
+             href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20me%20interesa%20el%20Plan%20Full%20(con%20web).%20Mi%20negocio%20es%20%5B...%5D.">
+            Pedir Plan Full
+          </a>
+        </article>
       </div>
     </div>
   </section>
@@ -595,65 +593,73 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>Proceso simple (sin enredos)</h2>
-          <p>Así trabajamos para que avances rápido y con claridad.</p>
+          <h2>Proceso de trabajo</h2>
+          <p>Ordenado, claro y directo: estrategia → ejecución → optimización.</p>
         </div>
       </div>
 
       <div class="split">
-        <div class="card">
-          <h3 style="margin-top:0">Checklist inicial</h3>
-          <p>En 10–15 minutos definimos: objetivo, oferta, público, y CTA. Eso guía todo lo demás.</p>
-          <div class="steps" style="margin-top:12px">
-            <div class="step">
-              <div class="num">1</div>
-              <div>
-                <b>Diagnóstico rápido</b>
-                <span>Te hago 5 preguntas clave y detecto qué te conviene.</span>
-              </div>
+        <div class="card steps">
+          <h3 style="margin:0;font-family:var(--font-title)">Paso a paso</h3>
+
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <b>Brief rápido</b>
+              <span>Objetivo, público, oferta, y qué canales vamos a usar.</span>
             </div>
-            <div class="step">
-              <div class="num">2</div>
-              <div>
-                <b>Estructura + Copy</b>
-                <span>Ordenamos la página/anuncio para que convierta de verdad.</span>
-              </div>
+          </div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <b>Contenido y estructura</b>
+              <span>Diseño básico + lineamientos para que todo se vea consistente.</span>
             </div>
-            <div class="step">
-              <div class="num">3</div>
-              <div>
-                <b>Implementación</b>
-                <span>Montaje, revisión y ajuste final (sin complicarte).</span>
-              </div>
+          </div>
+
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <b>Ads (Meta/Google)</b>
+              <span>Campañas, segmentación, creativos y medición.</span>
             </div>
-            <div class="step">
-              <div class="num">4</div>
-              <div>
-                <b>Entrega + Guía</b>
-                <span>Te dejo recomendaciones claras para escalar o mejorar.</span>
-              </div>
+          </div>
+
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <b>Landing / Web</b>
+              <span>Diseño e implementación (si el plan lo incluye).</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">5</div>
+            <div>
+              <b>Optimización</b>
+              <span>Ajustes según resultados y objetivos (ventas/leads/WhatsApp).</span>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <h3 style="margin-top:0">¿Qué necesito de vos?</h3>
-          <p>Para avanzar más rápido, lo ideal:</p>
-          <ul style="margin:12px 0 0;padding-left:18px;color:rgba(255,255,255,.78);line-height:1.7">
-            <li>Nombre del negocio y qué vendés.</li>
-            <li>Tu oferta principal (y precio si lo tenés).</li>
-            <li>Ciudad/país donde vendés.</li>
-            <li>Fotos o referencias (si existen).</li>
-            <li>Tu objetivo: más WhatsApp / más leads / más ventas.</li>
+        <div class="card steps">
+          <h3 style="margin:0;font-family:var(--font-title)">Qué necesito de vos</h3>
+          <p class="muted" style="margin:10px 0 0;line-height:1.6">
+            Para avanzar sin fricción, con esto basta:
+          </p>
+          <ul style="margin:12px 0 14px;padding-left:18px;color:rgba(15,23,42,.78);line-height:1.8">
+            <li>Qué vendés y a quién.</li>
+            <li>Tu oferta principal (y precio si aplica).</li>
+            <li>Zona/país donde vendés.</li>
+            <li>Redes actuales (si existen).</li>
+            <li>Objetivo: WhatsApp / leads / ventas.</li>
           </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-            <a class="btn btn-primary" href="#planes">Ver planes</a>
-            <a class="btn btn-whatsapp" target="_blank" rel="noopener"
-               href="https://wa.me/50245610507?text=Hola%2C%20te%20paso%20mi%20info%3A%0A1)%20Negocio%3A%20%5B...%5D%0A2)%20Oferta%3A%20%5B...%5D%0A3)%20Pa%C3%ADs%3A%20%5B...%5D%0A4)%20Objetivo%3A%20%5B...%5D"
-            >
-              Enviarte info por WhatsApp
-            </a>
-          </div>
+
+          <a class="btn btn-wa" target="_blank" rel="noopener"
+             href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20te%20paso%20mi%20info%3A%0A1)%20Negocio%3A%20%5B...%5D%0A2)%20Oferta%3A%20%5B...%5D%0A3)%20Pa%C3%ADs%3A%20%5B...%5D%0A4)%20Objetivo%3A%20%5B...%5D%0A5)%20Redes%3A%20%5B...%5D">
+            Enviar info por WhatsApp
+          </a>
         </div>
       </div>
     </div>
@@ -664,45 +670,47 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>Preguntas frecuentes</h2>
-          <p>Respuestas rápidas para que tomés decisión sin perder tiempo.</p>
+          <h2>FAQ</h2>
+          <p>Respuestas rápidas para decidir sin complicarte.</p>
         </div>
       </div>
 
-      <div class="faq">
+      <div style="display:grid;gap:10px">
         <details>
-          <summary>¿Qué incluye el botón de WhatsApp?</summary>
-          <p>Incluye un enlace directo con mensaje prellenado y CTA visible (ideal para móvil). Si querés, personalizamos el mensaje por plan.</p>
+          <summary>¿Hacen marketing + contenido + ads en un mismo plan?</summary>
+          <p>Sí. Podemos combinar <b>contenido básico</b>, <b>gestión de redes</b>, <b>Meta Ads</b> y <b>Google Ads</b> según tu objetivo.</p>
         </details>
+
         <details>
-          <summary>¿Puedo cambiar planes/precios sin tocar el HTML?</summary>
-          <p>Sí. Editás <b>data/servicios.json</b> y listo. El bloque de “Planes y precios” se actualiza automáticamente.</p>
+          <summary>¿Incluyen landing pages y web pages?</summary>
+          <p>Sí. Hacemos <b>diseño e implementación</b> de landing/web pages enfocadas en conversión (WhatsApp/leads/ventas).</p>
         </details>
+
         <details>
-          <summary>¿Trabajás para Guatemala, Honduras y El Salvador?</summary>
-          <p>Sí. La estrategia se ajusta por país (audiencia, costos, enfoque). El contacto es por WhatsApp al <b>4561 0507</b>.</p>
+          <summary>¿Con qué objetivo trabajan las campañas?</summary>
+          <p>Según tu caso: mensajes a WhatsApp, leads, tráfico a landing o conversiones. La estrategia manda.</p>
         </details>
+
         <details>
-          <summary>¿Qué pasa si no tengo logo o fotos?</summary>
-          <p>No pasa nada. Te doy una guía simple para resolverlo (rápido y funcional). Lo importante es la oferta y el CTA.</p>
+          <summary>¿Cómo los contacto?</summary>
+          <p>WhatsApp directo al <b>4561 0507</b>. Te recomiendo el plan ideal según tu negocio.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- CTA -->
   <section class="section">
     <div class="container">
       <div class="cta">
         <div class="cta-grid">
           <div>
-            <h2>Listo. ¿Lo armamos hoy?</h2>
-            <p>Escribime y decime: qué vendés, a quién y qué querés lograr. Te recomiendo plan y siguiente paso.</p>
+            <h2>¿Listo para activar RM Digital?</h2>
+            <p>Escribime y decime qué vendés y qué querés lograr. Te respondo con la recomendación exacta.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-whatsapp" target="_blank" rel="noopener"
-               href="https://wa.me/50245610507?text=Hola%2C%20quiero%20armar%20mi%20web%2Fads.%20Mi%20negocio%20es%20%5B...%5D%20y%20quiero%20%5B...%5D."
-            >
+            <a class="btn btn-wa" target="_blank" rel="noopener"
+               href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20quiero%20activar%20marketing%20digital.%20Mi%20negocio%20es%20%5B...%5D%20y%20quiero%20%5B...%5D.">
               WhatsApp 4561 0507
             </a>
             <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
@@ -713,55 +721,49 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer>
     <div class="container">
       <div class="footer-grid">
         <div>
           <div style="display:flex;align-items:center;gap:10px">
             <div class="logo" aria-hidden="true" style="width:38px;height:38px;border-radius:14px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M8 9l-3 3 3 3"></path>
-                <path d="M16 9l3 3-3 3"></path>
-                <path d="M14 7l-4 10"></path>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 17h16"></path>
               </svg>
             </div>
             <div>
-              <strong style="font-family:var(--font-display)">RM Studio Tech</strong><br/>
-              <small>Web • Ads • Automatización</small>
+              <strong style="font-family:var(--font-title)">RM Digital</strong><br/>
+              <small>Marketing • Contenido • Ads • Web</small>
             </div>
           </div>
-          <p style="margin:12px 0 0;max-width:64ch;line-height:1.55">
-            Construimos presencia digital enfocada a conversiones: menos “bonito por bonito” y más estructura para vender.
+          <p class="muted" style="margin:12px 0 0;max-width:72ch;line-height:1.6">
+            Servicios de marketing digital, diseño de contenido básico, gestión de redes sociales, Google Ads, Meta Ads, estrategias, landing pages y web pages (diseño e implementación).
           </p>
-          <small style="display:block;margin-top:12px">© <span id="year"></span> RM Studio Tech. Todos los derechos reservados.</small>
+          <small class="muted" style="display:block;margin-top:12px">© <span id="year"></span> RM Digital. Todos los derechos reservados.</small>
         </div>
 
         <div>
-          <div class="links" aria-label="Enlaces rápidos">
+          <div class="footer-links" aria-label="Enlaces">
             <a href="#planes">Planes</a>
             <a href="#proceso">Proceso</a>
             <a href="#faq">FAQ</a>
             <a target="_blank" rel="noopener"
-               href="https://wa.me/50245610507?text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n.%20Mi%20negocio%20es%20%5B...%5D.">
+               href="https://wa.me/50245610507?text=Hola%20RM%20Digital%2C%20quiero%20cotizar.">
               WhatsApp
             </a>
           </div>
           <div style="margin-top:12px;text-align:right">
-            <small>Contacto WhatsApp: <b>4561 0507</b> (GT)</small>
+            <small class="muted">Contacto: <b>4561 0507</b></small>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Pequeño helper para el año (sin depender de main.js)
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-  <!-- Si ya tenés estos archivos, dejalos. Si no, podés crearlos vacíos para evitar 404 -->
-  <script src="main.js" defer></script>
-  <script src="pricing.js" defer></script>
 </body>
 </html>
