@@ -1,6 +1,3 @@
-Quiz · HTML
-Copiar
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1035,10 +1032,12 @@ Copiar
         const EMAILJS_SERVICE_ID = "service_bg13rhq"; // Reemplaza con tu Service ID
         const EMAILJS_TEMPLATE_ID = "template_l5dw63t"; // Reemplaza con tu Template ID
         const DESTINATARIO_EMAIL = "rmoya0284@gmail.com";
-        
-        // Inicializar EmailJS (solo si tienes las credenciales configuradas)
-        if (EMAILJS_PUBLIC_KEY !== "user_oNIHIQ8g8ctyoHGEA") {
-            emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        // ✅ MEJORA: inicializar EmailJS siempre (con API recomendada)
+        try {
+            emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+        } catch (e) {
+            console.error("EmailJS init error:", e);
         }
         
         // Quiz Logic
@@ -1326,16 +1325,18 @@ Me interesa saber más sobre: ${rec.name}
                 recomendacion: rec.name,
                 fecha: fecha
             };
-            
-            // Si EmailJS está configurado, enviar email
-            if (EMAILJS_PUBLIC_KEY !== "TU_PUBLIC_KEY") {
+
+            // ✅ MEJORA: validar configuración antes de enviar
+            const EMAILJS_OK = EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID;
+
+            if (EMAILJS_OK) {
                 emailStatus.style.display = 'block';
                 emailStatus.className = 'email-status sending';
                 emailStatus.innerHTML = '📧 Enviando tus datos...';
                 
                 emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                     .then(function(response) {
-                        console.log('Email enviado!', response.status);
+                        console.log('Email enviado!', response.status, response.text);
                         emailStatus.className = 'email-status success';
                         emailStatus.innerHTML = '✅ ¡Tus datos fueron enviados! Te contactaremos pronto.';
                     }, function(error) {
