@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculadoras Pro de Marketing - RM Digital" />
+  <title>Calculadoras Pro | RM Digital</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1E3A5F;
+      --primary-dark: #0f2439;
+      --secondary: #F5A623;
+      --secondary-dark: #d4890a;
+      --white: #FFFFFF;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --dark: #0D1117;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+
+      --shadow: 0 25px 50px rgba(0,0,0,0.25);
+      --radius: 24px;
+      --radius-sm: 14px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 55%, #071320 100%);
+      min-height: 100vh;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      text-decoration: none;
+    }
+    .logo-icon { width: 44px; height: 44px; }
+    .logo-text .brand {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .logo-text .tagline {
+      font-size: 0.65rem;
+      color: var(--secondary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .header h1 span {
+      background: linear-gradient(135deg, var(--secondary), #ffc966);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.05rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Card */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* NEW: Action bar (no major style change) */
+    .actionbar {
+      border: 2px solid var(--gray-100);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, var(--gray-50));
+      padding: 14px;
+      margin-bottom: 16px;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      align-items: center;
+    }
+    .actionbar .group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .actionbar .group.left { justify-content: flex-start; }
+    .actionbar .group.right { justify-content: flex-end; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 2px solid var(--gray-200);
+      background: #fff;
+      font-weight: 800;
+      color: var(--gray-700);
+    }
+    .pill label {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 900;
+    }
+    .pill select, .pill input {
+      border: 0;
+      padding: 0;
+      outline: none;
+      background: transparent;
+      font-weight: 800;
+      width: auto;
+      min-width: 110px;
+    }
+    .pill input { min-width: 90px; }
+
+    .btn {
+      appearance: none;
+      border: 2px solid var(--gray-200);
+      background: linear-gradient(180deg, #fff, var(--gray-50));
+      color: var(--gray-700);
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 900;
+      font-family: var(--font-display);
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .btn:hover { border-color: var(--secondary); transform: translateY(-1px); }
+    .btn.primary {
+      border-color: var(--secondary);
+      background: linear-gradient(135deg, rgba(245,166,35,.18), rgba(245,166,35,.08));
+      color: var(--primary);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      appearance: none;
+      border: 2px solid var(--gray-200);
+      background: linear-gradient(180deg, #fff, var(--gray-50));
+      color: var(--gray-700);
+      padding: 12px 14px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: var(--font-display);
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    .tab-btn:hover {
+      border-color: var(--secondary);
+      transform: translateY(-1px);
+    }
+    .tab-btn.active {
+      border-color: var(--secondary);
+      background: linear-gradient(135deg, rgba(245,166,35,.15), rgba(245,166,35,.06));
+      color: var(--primary);
+    }
+    .tab-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--gray-300);
+    }
+    .tab-btn.active .tab-dot {
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn .35s ease;
+    }
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Layout */
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      margin-top: 12px;
+    }
+    .panel {
+      border: 2px solid var(--gray-100);
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fff, var(--gray-50));
+    }
+    .panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .panel p.hint {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    /* Form */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .field { margin-bottom: 12px; }
+    label {
+      display: block;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--gray-100);
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-family: var(--font-body);
+      outline: none;
+      background: #fff;
+      transition: all .2s ease;
+    }
+    input:focus, select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.12);
+    }
+    .mini {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      margin-top: 6px;
+    }
+
+    .segmented {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+    }
+    .seg-btn {
+      border: 2px solid var(--gray-200);
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--gray-600);
+      transition: .2s ease;
+      user-select: none;
+    }
+    .seg-btn.active {
+      border-color: var(--secondary);
+      color: var(--primary);
+      background: linear-gradient(135deg, rgba(245,166,35,.18), rgba(245,166,35,.08));
+    }
+
+    /* Results */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .kpi {
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi::after {
+      content: "";
+      position: absolute;
+      inset: -40px -60px auto auto;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at 30% 30%, rgba(245,166,35,.45), transparent 65%);
+      transform: rotate(18deg);
+      opacity: .7;
+    }
+    .kpi h4 {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .kpi .val {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.22rem;
+      position: relative;
+      z-index: 1;
+    }
+    .kpi .sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.78);
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+    .badge.ok { background: rgba(16,185,129,.15); color: #065f46; border: 2px solid rgba(16,185,129,.25); }
+    .badge.warn { background: rgba(245,158,11,.15); color: #92400e; border: 2px solid rgba(245,158,11,.25); }
+    .badge.bad { background: rgba(239,68,68,.14); color: #991b1b; border: 2px solid rgba(239,68,68,.23); }
+
+    .note {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--gray-50);
+      border: 2px dashed var(--gray-200);
+      color: var(--gray-600);
+      font-size: 0.92rem;
+    }
+
+    /* Simple chart */
+    .chart {
+      margin-top: 14px;
+      border: 2px solid var(--gray-100);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px;
+    }
+    .chart h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    canvas { width: 100%; height: 160px; display: block; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 99;
+      background: rgba(255,255,255,0.95);
+      border: 2px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 12px 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+      color: var(--gray-700);
+      display: none;
+      max-width: 340px;
+    }
+    .toast strong {
+      font-family: var(--font-display);
+      color: var(--primary);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 18px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+    }
+    .footer a { color: var(--secondary); text-decoration: none; font-weight: 800; }
+
+    @media (max-width: 960px) {
+      .actionbar { grid-template-columns: 1fr; }
+      .actionbar .group.left, .actionbar .group.right { justify-content: center; }
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-pattern"></div>
+
+  <div class="container">
+    <header class="header">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 45 45">
+          <rect x="2" y="2" width="18" height="18" fill="#FFF"/>
+          <rect x="25" y="2" width="18" height="18" fill="#F5A623"/>
+          <rect x="2" y="25" width="18" height="18" fill="#F5A623" opacity="0.6"/>
+          <rect x="25" y="25" width="18" height="18" fill="#FFF"/>
+        </svg>
+        <div class="logo-text">
+          <span class="brand">RM Digital</span>
+          <span class="tagline">Presencia Inteligente</span>
+        </div>
+      </a>
+      <h1>Calculadoras <span>Pro</span> de Marketing</h1>
+      <p>Herramientas rápidas para estimar inversión, resultados y utilidad esperada. Ahora incluyen: <strong>PDF</strong>, <strong>WhatsApp</strong>, <strong>presets</strong> y <strong>moneda</strong>.</p>
+    </header>
+
+    <div class="card">
+      <!-- NEW: action bar -->
+      <div class="actionbar">
+        <div class="group left">
+          <span class="pill">
+            <label>Modelo</label>
+            <select id="biz_mode">
+              <option value="services" selected>Servicios</option>
+              <option value="ecom">E-commerce</option>
+            </select>
+          </span>
+
+          <span class="pill">
+            <label>Moneda</label>
+            <select id="currency">
+              <option value="GTQ" selected>GTQ (Q)</option>
+              <option value="USD">USD ($)</option>
+            </select>
+          </span>
+
+          <span class="pill" title="Tipo de cambio editable">
+            <label>TC</label>
+            <input id="fx_rate" type="number" step="0.01" min="0.01" value="7.80" />
+          </span>
+        </div>
+
+        <div class="group">
+          <span class="pill" title="Número destino para enviar resúmenes">
+            <label>WhatsApp</label>
+            <input id="wa_number" type="text" value="+50245610507" />
+          </span>
+        </div>
+
+        <div class="group right">
+          <button class="btn" id="btn_pdf" type="button">📄 Exportar PDF</button>
+          <button class="btn primary" id="btn_wa" type="button">🟢 Enviar a WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="ads" type="button">
+          <span class="tab-dot"></span> Ads + Utilidad (ROI)
+        </button>
+        <button class="tab-btn" data-tab="followers" type="button">
+          <span class="tab-dot"></span> Seguidores (Meta/IG/TikTok)
+        </button>
+        <button class="tab-btn" data-tab="plan" type="button">
+          <span class="tab-dot"></span> Plan de Ventas (Meta mensual)
+        </button>
+      </div>
+
+      <!-- TAB 1: ADS ROI -->
+      <section class="tab-panel active" id="tab-ads">
+        <div class="grid">
+          <div class="panel">
+            <h3>1) Inputs de Campaña</h3>
+            <p class="hint">Elige modo <strong>CPM</strong> (impresiones) o <strong>CPC</strong> (costo por clic). La calculadora estima: impresiones → clics → leads → ventas → utilidad.</p>
+
+            <div class="segmented" aria-label="Modo">
+              <button class="seg-btn active" data-mode="cpm" type="button">Modo CPM</button>
+              <button class="seg-btn" data-mode="cpc" type="button">Modo CPC</button>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="ads_budget">Presupuesto total</label>
+                <input id="ads_budget" type="number" min="0" step="10" value="3000" />
+                <div class="mini">Input en tu moneda actual</div>
+              </div>
+              <div class="field">
+                <label for="ads_days">Duración (días)</label>
+                <input id="ads_days" type="number" min="1" step="1" value="30" />
+                <div class="mini">Ej: 30</div>
+              </div>
+            </div>
+
+            <div class="row" id="cpm_block">
+              <div class="field">
+                <label for="ads_cpm">CPM (por 1000 impresiones)</label>
+                <input id="ads_cpm" type="number" min="0" step="0.1" value="35" />
+                <div class="mini">Rango típico: 20–80 (según mercado/creativo)</div>
+              </div>
+              <div class="field">
+                <label for="ads_ctr">CTR (%)</label>
+                <input id="ads_ctr" type="number" min="0" step="0.01" value="1.2" />
+                <div class="mini">Rango típico: 0.6% – 2.5%</div>
+              </div>
+            </div>
+
+            <div class="row" id="cpc_block" style="display:none;">
+              <div class="field">
+                <label for="ads_cpc">CPC (por clic)</label>
+                <input id="ads_cpc" type="number" min="0" step="0.01" value="2.5" />
+                <div class="mini">Rango típico: 1.5–6 (según industria)</div>
+              </div>
+              <div class="field">
+                <label for="ads_clicks_override">Clics (opcional)</label>
+                <input id="ads_clicks_override" type="number" min="0" step="1" value="" placeholder="Si ya sabes cuántos clics tendrás" />
+                <div class="mini">Si lo llenas, reemplaza el cálculo de clics.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="ads_lead_rate">Conversión a lead (%)</label>
+                <input id="ads_lead_rate" type="number" min="0" step="0.01" value="12" />
+                <div class="mini">De clic a lead (WhatsApp/form). Ej: 8%–25%</div>
+              </div>
+              <div class="field">
+                <label for="ads_close_rate">Cierre a venta (%)</label>
+                <input id="ads_close_rate" type="number" min="0" step="0.01" value="15" />
+                <div class="mini">De lead a compra. Ej: 5%–25%</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="ads_ticket">Ticket promedio</label>
+                <input id="ads_ticket" type="number" min="0" step="1" value="250" />
+                <div class="mini">Ej: 250</div>
+              </div>
+              <div class="field">
+                <label for="ads_margin">Margen bruto (%)</label>
+                <input id="ads_margin" type="number" min="0" step="0.1" value="45" />
+                <div class="mini">Ej: 30%–70%</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="ads_cost_per_sale">Costo por venta (opcional)</label>
+                <input id="ads_cost_per_sale" type="number" min="0" step="1" value="0" />
+                <div class="mini">Envío/operación/packaging por venta. Si no aplica, deja 0.</div>
+              </div>
+              <div class="field">
+                <label for="ads_other_fixed">Otros costos fijos (opcional)</label>
+                <input id="ads_other_fixed" type="number" min="0" step="1" value="0" />
+                <div class="mini">Ej: diseñador, herramientas, comisiones, etc.</div>
+              </div>
+            </div>
+
+            <div class="note">
+              Consejo RM: lo importante no es “adivinar”, es tener un mapa para optimizar. Esta herramienta es el mapa.
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>2) Resultados Estimados</h3>
+            <p class="hint">Esto es una proyección. La realidad depende de creativo, oferta, mercado, seguimiento y tracking.</p>
+
+            <div class="kpis">
+              <div class="kpi">
+                <h4>Impresiones</h4>
+                <div class="val" id="kpi_impressions">—</div>
+                <div class="sub" id="kpi_cpmcpc">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Clics</h4>
+                <div class="val" id="kpi_clicks">—</div>
+                <div class="sub" id="kpi_ctr_cpc">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Leads</h4>
+                <div class="val" id="kpi_leads">—</div>
+                <div class="sub" id="kpi_cpl">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Ventas</h4>
+                <div class="val" id="kpi_sales">—</div>
+                <div class="sub" id="kpi_cpa">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Ingresos</h4>
+                <div class="val" id="kpi_revenue">—</div>
+                <div class="sub" id="kpi_roas">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Utilidad estimada</h4>
+                <div class="val" id="kpi_profit">—</div>
+                <div class="sub" id="kpi_profit_note">—</div>
+              </div>
+            </div>
+
+            <div id="ads_badge" class="badge warn" style="display:none;">—</div>
+
+            <div class="chart">
+              <h4>Resumen visual (ingresos vs costos)</h4>
+              <canvas id="adsChart" width="800" height="220"></canvas>
+            </div>
+
+            <div class="note" id="ads_insight">
+              Ajusta CTR, conversión y cierre. El “número mágico” suele estar en el seguimiento y la oferta.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: FOLLOWERS -->
+      <section class="tab-panel" id="tab-followers">
+        <div class="grid">
+          <div class="panel">
+            <h3>1) Objetivo de Seguidores</h3>
+            <p class="hint">Calcula inversión y tiempo según tu costo por seguidor (CPF). Puedes usarlo para IG/FB/TikTok (estimación).</p>
+
+            <div class="segmented" aria-label="Modo seguidores">
+              <button class="seg-btn active" data-fmode="budget_to_time" type="button">Tengo presupuesto → quiero tiempo</button>
+              <button class="seg-btn" data-fmode="time_to_budget" type="button">Tengo tiempo → quiero presupuesto</button>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="fol_current">Seguidores actuales</label>
+                <input id="fol_current" type="number" min="0" step="1" value="0" />
+              </div>
+              <div class="field">
+                <label for="fol_target">Meta de seguidores</label>
+                <input id="fol_target" type="number" min="1" step="1" value="1000" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="fol_cpf">Costo por seguidor (CPF)</label>
+                <input id="fol_cpf" type="number" min="0" step="0.01" value="1.8" />
+                <div class="mini">Rango típico: 0.8–4.5 según nicho/creativo</div>
+              </div>
+              <div class="field">
+                <label for="fol_quality">Calidad esperada</label>
+                <select id="fol_quality">
+                  <option value="1">Normal (mixto)</option>
+                  <option value="0.85">Más calificado (sube costo)</option>
+                  <option value="1.15">Más barato (baja calidad)</option>
+                </select>
+                <div class="mini">Ajuste suave al CPF (estimación)</div>
+              </div>
+            </div>
+
+            <div id="fol_budget_block">
+              <div class="row">
+                <div class="field">
+                  <label for="fol_daily_budget">Presupuesto diario</label>
+                  <input id="fol_daily_budget" type="number" min="1" step="1" value="50" />
+                </div>
+                <div class="field">
+                  <label for="fol_platform">Plataforma</label>
+                  <select id="fol_platform">
+                    <option value="Meta">Meta (IG/FB)</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Mixto">Mixto</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div id="fol_time_block" style="display:none;">
+              <div class="row">
+                <div class="field">
+                  <label for="fol_days">Tiempo disponible (días)</label>
+                  <input id="fol_days" type="number" min="1" step="1" value="30" />
+                </div>
+                <div class="field">
+                  <label for="fol_platform2">Plataforma</label>
+                  <select id="fol_platform2">
+                    <option value="Meta">Meta (IG/FB)</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Mixto">Mixto</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="note">
+              Tip: seguidores “baratos” no siempre compran. Si quieres negocio: contenido + anuncios ligeros + CTA claro.
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>2) Resultado</h3>
+            <p class="hint">Te damos estimación de inversión total, tiempo y velocidad diaria.</p>
+
+            <div class="kpis">
+              <div class="kpi">
+                <h4>Seguidores a conseguir</h4>
+                <div class="val" id="kpi_f_need">—</div>
+                <div class="sub" id="kpi_f_platform">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Inversión total</h4>
+                <div class="val" id="kpi_f_total">—</div>
+                <div class="sub" id="kpi_f_cpf">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Tiempo estimado</h4>
+                <div class="val" id="kpi_f_time">—</div>
+                <div class="sub" id="kpi_f_speed">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Presupuesto diario</h4>
+                <div class="val" id="kpi_f_daily">—</div>
+                <div class="sub" id="kpi_f_daily2">—</div>
+              </div>
+            </div>
+
+            <div id="fol_badge" class="badge warn" style="display:none;">—</div>
+
+            <div class="chart">
+              <h4>Progreso proyectado (acumulado)</h4>
+              <canvas id="folChart" width="800" height="220"></canvas>
+            </div>
+
+            <div class="note" id="fol_insight">
+              Si tu costo por seguidor sale alto, revisa: creativo, segmentación, CTA y consistencia de contenido.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: PLAN MENSUAL -->
+      <section class="tab-panel" id="tab-plan">
+        <div class="grid">
+          <div class="panel">
+            <h3>1) Meta Mensual</h3>
+            <p class="hint">Define tu meta y deja que la calculadora estime presupuesto. Esto se usa mucho para vender “sprints” y planes mensuales.</p>
+
+            <div class="row">
+              <div class="field">
+                <label for="plan_goal_type">Quiero lograr</label>
+                <select id="plan_goal_type">
+                  <option value="profit">Utilidad</option>
+                  <option value="revenue">Ingresos</option>
+                  <option value="sales">Ventas (cantidad)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="plan_goal_value">Valor meta</label>
+                <input id="plan_goal_value" type="number" min="1" step="1" value="8000" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="plan_ticket">Ticket promedio</label>
+                <input id="plan_ticket" type="number" min="0" step="1" value="250" />
+              </div>
+              <div class="field">
+                <label for="plan_margin">Margen bruto (%)</label>
+                <input id="plan_margin" type="number" min="0" step="0.1" value="45" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="plan_cpl">CPL estimado (por lead)</label>
+                <input id="plan_cpl" type="number" min="0" step="0.01" value="10" />
+                <div class="mini">Si no sabes, usa un rango conservador y luego optimiza.</div>
+              </div>
+              <div class="field">
+                <label for="plan_close">Cierre a venta (%)</label>
+                <input id="plan_close" type="number" min="0" step="0.01" value="15" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="plan_ops">Costos operativos fijos (opcional)</label>
+                <input id="plan_ops" type="number" min="0" step="1" value="0" />
+              </div>
+              <div class="field">
+                <label for="plan_days">Días del mes</label>
+                <input id="plan_days" type="number" min="1" step="1" value="30" />
+              </div>
+            </div>
+
+            <div class="note">
+              Esto te da una guía de presupuesto. Lo ideal: medir 7–14 días y luego optimizar.
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>2) Presupuesto recomendado</h3>
+            <p class="hint">Estimación basada en CPL y tasa de cierre. Útil para planes mensuales (y para mostrar “matemática de negocio”).</p>
+
+            <div class="kpis">
+              <div class="kpi">
+                <h4>Ventas necesarias</h4>
+                <div class="val" id="kpi_p_sales">—</div>
+                <div class="sub" id="kpi_p_type">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Leads necesarios</h4>
+                <div class="val" id="kpi_p_leads">—</div>
+                <div class="sub" id="kpi_p_cpl">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Presupuesto Ads</h4>
+                <div class="val" id="kpi_p_budget">—</div>
+                <div class="sub" id="kpi_p_daily">—</div>
+              </div>
+              <div class="kpi">
+                <h4>Utilidad estimada</h4>
+                <div class="val" id="kpi_p_profit">—</div>
+                <div class="sub" id="kpi_p_profit2">—</div>
+              </div>
+            </div>
+
+            <div id="plan_badge" class="badge warn" style="display:none;">—</div>
+
+            <div class="chart">
+              <h4>Desglose (ingreso, margen, ads, utilidad)</h4>
+              <canvas id="planChart" width="800" height="220"></canvas>
+            </div>
+
+            <div class="note" id="plan_insight">
+              Si el presupuesto sale alto, hay 3 palancas: bajar CPL, subir cierre, subir ticket/margen.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <p>¿Quieres que esto se convierta en una herramienta “lead magnet” en tu landing? <a href="https://wa.me/50245610507" target="_blank">WhatsApp +502 4561 0507</a></p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- jsPDF (PDF export) -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <script>
+    // ---------- Helpers ----------
+    const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+    const toNum = (v) => {
+      const n = parseFloat(String(v).replace(',', '.'));
+      return Number.isFinite(n) ? n : 0;
+    };
+    const intFmt = (n) => (Number.isFinite(n) ? Math.round(n).toLocaleString("es-GT") : "0");
+
+    // Currency handling
+    let currency = "GTQ"; // GTQ or USD
+    const fxInput = document.getElementById("fx_rate");
+    const currencySel = document.getElementById("currency");
+
+    function fxRate() {
+      const r = Math.max(0.01, toNum(fxInput.value));
+      return r;
+    }
+    function curSymbol() {
+      return currency === "USD" ? "$" : "Q";
+    }
+    function money2(n) {
+      const v = Number.isFinite(n) ? n : 0;
+      const symbol = curSymbol();
+      return symbol + v.toLocaleString(currency === "USD" ? "en-US" : "es-GT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function money0(n) {
+      const v = Number.isFinite(n) ? n : 0;
+      const symbol = curSymbol();
+      return symbol + v.toLocaleString(currency === "USD" ? "en-US" : "es-GT", { maximumFractionDigits: 0 });
+    }
+
+    // Convert displayed inputs when switching currency to preserve real value
+    const moneyFields = [
+      "ads_budget","ads_cpm","ads_cpc","ads_ticket","ads_cost_per_sale","ads_other_fixed",
+      "fol_cpf","fol_daily_budget",
+      "plan_goal_value","plan_ticket","plan_cpl","plan_ops"
+    ];
+
+    function convertValue(val, fromCur, toCur) {
+      const r = fxRate();
+      if (fromCur === toCur) return val;
+      if (fromCur === "GTQ" && toCur === "USD") return val / r;
+      if (fromCur === "USD" && toCur === "GTQ") return val * r;
+      return val;
+    }
+
+    function toast(msg) {
+      const el = document.getElementById("toast");
+      el.innerHTML = msg;
+      el.style.display = "block";
+      clearTimeout(window.__toastT);
+      window.__toastT = setTimeout(() => el.style.display = "none", 3200);
+    }
+
+    // Simple bar chart (no libs)
+    function drawBars(canvas, labels, values) {
+      const ctx = canvas.getContext("2d");
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const pad = 26;
+      const maxVal = Math.max(...values.map(v => Math.abs(v)), 1);
+      const barW = (w - pad * 2) / values.length * 0.68;
+      const gap = (w - pad * 2) / values.length * 0.32;
+
+      // bg grid
+      ctx.globalAlpha = 0.12;
+      ctx.strokeStyle = "#000";
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = pad + (h - pad * 2) * (i / 4);
+        ctx.beginPath();
+        ctx.moveTo(pad, y);
+        ctx.lineTo(w - pad, y);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      // bars
+      values.forEach((v, i) => {
+        const x = pad + i * (barW + gap) + gap/2;
+        const barH = (h - pad * 2) * (Math.abs(v) / maxVal);
+        const y = h - pad - barH;
+
+        const grad = ctx.createLinearGradient(0, y, 0, y + barH);
+        grad.addColorStop(0, "#F5A623");
+        grad.addColorStop(1, "#1E3A5F");
+
+        ctx.fillStyle = grad;
+        roundRect(ctx, x, y, barW, barH, 10);
+        ctx.fill();
+
+        // sign indicator for negatives
+        if (v < 0) {
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle = "rgba(239,68,68,0.22)";
+          roundRect(ctx, x, y, barW, barH, 10);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+
+        // label
+        ctx.fillStyle = "rgba(13,17,23,.85)";
+        ctx.font = "bold 14px Plus Jakarta Sans, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(labels[i], x + barW/2, h - 8);
+
+        ctx.fillStyle = "rgba(13,17,23,.7)";
+        ctx.font = "12px Outfit, sans-serif";
+        ctx.fillText(shortMoney(v), x + barW/2, y - 8);
+      });
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      const rr = Math.min(r, w/2, h/2);
+      ctx.beginPath();
+      ctx.moveTo(x + rr, y);
+      ctx.arcTo(x + w, y, x + w, y + h, rr);
+      ctx.arcTo(x + w, y + h, x, y + h, rr);
+      ctx.arcTo(x, y + h, x, y, rr);
+      ctx.arcTo(x, y, x + w, y, rr);
+      ctx.closePath();
+    }
+    function shortMoney(n){
+      const v = Number.isFinite(n) ? n : 0;
+      const sym = curSymbol();
+      const av = Math.abs(v);
+      if (av >= 1000000) return (v<0?"-":"") + sym + (av/1000000).toFixed(1) + "M";
+      if (av >= 1000) return (v<0?"-":"") + sym + (av/1000).toFixed(1) + "K";
+      return (v<0?"-":"") + sym + Math.round(av);
+    }
+
+    // ---------- Tabs ----------
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const panels = {
+      ads: document.getElementById("tab-ads"),
+      followers: document.getElementById("tab-followers"),
+      plan: document.getElementById("tab-plan")
+    };
+    let activeTab = "ads";
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const key = btn.dataset.tab;
+        activeTab = key;
+        Object.values(panels).forEach(p => p.classList.remove("active"));
+        panels[key].classList.add("active");
+
+        setTimeout(() => { calcAds(); calcFollowers(); calcPlan(); }, 30);
+      });
+    });
+
+    // ---------- Business presets ----------
+    const bizModeSel = document.getElementById("biz_mode");
+
+    const presets = {
+      services: {
+        ads: { budget: 3000, days: 30, cpm: 40, ctr: 1.0, cpc: 3.2, lead: 14, close: 18, ticket: 1200, margin: 70, cps: 0, fixed: 0 },
+        followers: { cpf: 2.2, daily: 45 },
+        plan: { goalType: "profit", goalValue: 8000, ticket: 1200, margin: 70, cpl: 22, close: 18, ops: 0, days: 30 }
+      },
+      ecom: {
+        ads: { budget: 3000, days: 30, cpm: 35, ctr: 1.2, cpc: 2.4, lead: 10, close: 12, ticket: 250, margin: 45, cps: 12, fixed: 0 },
+        followers: { cpf: 1.6, daily: 50 },
+        plan: { goalType: "revenue", goalValue: 20000, ticket: 250, margin: 45, cpl: 10, close: 12, ops: 0, days: 30 }
+      }
+    };
+
+    function applyPreset(mode) {
+      const p = presets[mode];
+
+      // TAB ADS
+      setInput("ads_budget", p.ads.budget);
+      setInput("ads_days", p.ads.days);
+      setInput("ads_cpm", p.ads.cpm);
+      setInput("ads_ctr", p.ads.ctr);
+      setInput("ads_cpc", p.ads.cpc);
+      setInput("ads_lead_rate", p.ads.lead);
+      setInput("ads_close_rate", p.ads.close);
+      setInput("ads_ticket", p.ads.ticket);
+      setInput("ads_margin", p.ads.margin);
+      setInput("ads_cost_per_sale", p.ads.cps);
+      setInput("ads_other_fixed", p.ads.fixed);
+
+      // TAB FOLLOWERS
+      setInput("fol_cpf", p.followers.cpf);
+      setInput("fol_daily_budget", p.followers.daily);
+
+      // TAB PLAN
+      document.getElementById("plan_goal_type").value = p.plan.goalType;
+      setInput("plan_goal_value", p.plan.goalValue);
+      setInput("plan_ticket", p.plan.ticket);
+      setInput("plan_margin", p.plan.margin);
+      setInput("plan_cpl", p.plan.cpl);
+      setInput("plan_close", p.plan.close);
+      setInput("plan_ops", p.plan.ops);
+      setInput("plan_days", p.plan.days);
+
+      toast(`✅ Preset aplicado: <strong>${mode === "services" ? "Servicios" : "E-commerce"}</strong>`);
+      recalcAll();
+    }
+
+    // Keep preset consistent with currency in use: if USD, preset numbers should be in USD.
+    function presetToCurrentCurrency(mode) {
+      const p = JSON.parse(JSON.stringify(presets[mode]));
+      // Presets are defined in GTQ base; convert to current currency for display
+      if (currency === "USD") {
+        const convert = (x) => convertValue(x, "GTQ", "USD");
+        for (const k of Object.keys(p.ads)) p.ads[k] = convert(p.ads[k]);
+        for (const k of Object.keys(p.followers)) p.followers[k] = convert(p.followers[k]);
+        p.plan.goalValue = convert(p.plan.goalValue);
+        p.plan.ticket = convert(p.plan.ticket);
+        p.plan.cpl = convert(p.plan.cpl);
+        p.plan.ops = convert(p.plan.ops);
+      }
+      return p;
+    }
+
+    function applyPresetSmart(mode) {
+      const p = presetToCurrentCurrency(mode);
+
+      setInput("ads_budget", p.ads.budget);
+      setInput("ads_days", p.ads.days);
+      setInput("ads_cpm", p.ads.cpm);
+      setInput("ads_ctr", p.ads.ctr);
+      setInput("ads_cpc", p.ads.cpc);
+      setInput("ads_lead_rate", p.ads.lead);
+      setInput("ads_close_rate", p.ads.close);
+      setInput("ads_ticket", p.ads.ticket);
+      setInput("ads_margin", p.ads.margin);
+      setInput("ads_cost_per_sale", p.ads.cps);
+      setInput("ads_other_fixed", p.ads.fixed);
+
+      setInput("fol_cpf", p.followers.cpf);
+      setInput("fol_daily_budget", p.followers.daily);
+
+      document.getElementById("plan_goal_type").value = p.plan.goalType;
+      setInput("plan_goal_value", p.plan.goalValue);
+      setInput("plan_ticket", p.plan.ticket);
+      setInput("plan_margin", p.plan.margin);
+      setInput("plan_cpl", p.plan.cpl);
+      setInput("plan_close", p.plan.close);
+      setInput("plan_ops", p.plan.ops);
+      setInput("plan_days", p.plan.days);
+
+      toast(`✅ Preset aplicado: <strong>${mode === "services" ? "Servicios" : "E-commerce"}</strong>`);
+      recalcAll();
+    }
+
+    bizModeSel.addEventListener("change", () => applyPresetSmart(bizModeSel.value));
+
+    // ---------- Currency switch ----------
+    currencySel.addEventListener("change", () => {
+      const old = currency;
+      const next = currencySel.value;
+      currency = next;
+
+      // Convert existing values in fields so the real amount stays the same
+      moneyFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const v = toNum(el.value);
+        const nv = convertValue(v, old, next);
+        el.value = (Math.round(nv * 100) / 100).toString();
+      });
+
+      toast(`💱 Moneda cambiada a <strong>${currency === "USD" ? "USD ($)" : "GTQ (Q)"}</strong>`);
+      recalcAll();
+    });
+
+    fxInput.addEventListener("input", () => {
+      toast(`⚙️ Tipo de cambio actualizado: <strong>${fxRate().toFixed(2)}</strong>`);
+      // No conversion here; just recalculation (outputs only)
+      recalcAll();
+    });
+
+    // ---------- TAB 1: ADS ROI ----------
+    let adsMode = "cpm";
+    const segBtns = document.querySelectorAll("[data-mode]");
+    const cpmBlock = document.getElementById("cpm_block");
+    const cpcBlock = document.getElementById("cpc_block");
+
+    segBtns.forEach(b => {
+      b.addEventListener("click", () => {
+        segBtns.forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        adsMode = b.dataset.mode;
+        cpmBlock.style.display = (adsMode === "cpm") ? "" : "none";
+        cpcBlock.style.display = (adsMode === "cpc") ? "" : "none";
+        calcAds();
+      });
+    });
+
+    const adsInputs = [
+      "ads_budget","ads_days","ads_cpm","ads_ctr","ads_cpc","ads_clicks_override",
+      "ads_lead_rate","ads_close_rate","ads_ticket","ads_margin","ads_cost_per_sale","ads_other_fixed"
+    ].map(id => document.getElementById(id));
+
+    adsInputs.forEach(el => el.addEventListener("input", calcAds));
+
+    // Store last computed results for export/WhatsApp
+    const state = {
+      ads: {},
+      followers: {},
+      plan: {}
+    };
+
+    function calcAds(){
+      const budget = toNum(document.getElementById("ads_budget").value);
+      const days = Math.max(1, Math.round(toNum(document.getElementById("ads_days").value)));
+      const cpm = toNum(document.getElementById("ads_cpm").value);
+      const ctr = toNum(document.getElementById("ads_ctr").value) / 100;
+      const cpc = toNum(document.getElementById("ads_cpc").value);
+      const clicksOverride = toNum(document.getElementById("ads_clicks_override").value);
+
+      const leadRate = toNum(document.getElementById("ads_lead_rate").value) / 100;
+      const closeRate = toNum(document.getElementById("ads_close_rate").value) / 100;
+      const ticket = toNum(document.getElementById("ads_ticket").value);
+      const margin = toNum(document.getElementById("ads_margin").value) / 100;
+      const costPerSale = toNum(document.getElementById("ads_cost_per_sale").value);
+      const otherFixed = toNum(document.getElementById("ads_other_fixed").value);
+
+      let impressions = 0;
+      let clicks = 0;
+
+      if (adsMode === "cpm") {
+        impressions = (cpm > 0) ? (budget / cpm) * 1000 : 0;
+        clicks = impressions * ctr;
+      } else {
+        clicks = (cpc > 0) ? (budget / cpc) : 0;
+        if (clicksOverride > 0) clicks = clicksOverride;
+        impressions = (ctr > 0) ? (clicks / ctr) : 0;
+      }
+
+      const leads = clicks * leadRate;
+      const sales = leads * closeRate;
+
+      const revenue = sales * ticket;
+      const grossProfit = revenue * margin;
+      const variableCosts = sales * costPerSale;
+      const netProfit = grossProfit - budget - variableCosts - otherFixed;
+
+      const roas = (budget > 0) ? (revenue / budget) : 0;
+      const cpl = (leads > 0) ? (budget / leads) : 0;
+      const cpa = (sales > 0) ? (budget / sales) : 0;
+      const daily = budget / days;
+
+      const breakevenCPA = (ticket * margin) - costPerSale;
+      const breakevenROAS = (ticket > 0 && margin > 0) ? (1 / margin) : 0;
+
+      // UI
+      document.getElementById("kpi_impressions").textContent = intFmt(impressions);
+      document.getElementById("kpi_cpmcpc").textContent = (adsMode === "cpm")
+        ? `CPM: ${money2(cpm)} • Diario: ${money2(daily)}`
+        : `CPC: ${money2(cpc)} • Diario: ${money2(daily)}`;
+
+      document.getElementById("kpi_clicks").textContent = intFmt(clicks);
+      document.getElementById("kpi_ctr_cpc").textContent = (adsMode === "cpm")
+        ? `CTR: ${(ctr*100).toFixed(2)}%`
+        : `Estimado CTR: ${ctr > 0 ? (ctr*100).toFixed(2)+'%' : '—'}`;
+
+      document.getElementById("kpi_leads").textContent = intFmt(leads);
+      document.getElementById("kpi_cpl").textContent = `CPL: ${leads>0 ? money2(cpl) : '—'}`;
+
+      document.getElementById("kpi_sales").textContent = intFmt(sales);
+      document.getElementById("kpi_cpa").textContent = `CPA: ${sales>0 ? money2(cpa) : '—'}`;
+
+      document.getElementById("kpi_revenue").textContent = money0(revenue);
+      document.getElementById("kpi_roas").textContent = `ROAS: ${roas.toFixed(2)}x`;
+
+      document.getElementById("kpi_profit").textContent = (netProfit >= 0) ? money0(netProfit) : ("-" + money0(Math.abs(netProfit)));
+      document.getElementById("kpi_profit_note").textContent = `Margen: ${Math.round(margin*100)}% • Breakeven CPA: ${money2(breakevenCPA)}`;
+
+      const badge = document.getElementById("ads_badge");
+      badge.style.display = "inline-flex";
+
+      let badgeText = "";
+      let badgeClass = "badge warn";
+
+      if (sales <= 0 || leads <= 0 || clicks <= 0) {
+        badgeClass = "badge bad";
+        badgeText = "⚠️ Falta data: con estos ratios no se generan ventas. Sube CTR/conversión o revisa oferta.";
+      } else if (netProfit > 0) {
+        badgeClass = "badge ok";
+        badgeText = "✅ Proyección rentable. Ahora la meta real es medir y optimizar para sostenerlo.";
+      } else if (roas >= breakevenROAS) {
+        badgeClass = "badge warn";
+        badgeText = "🟡 ROAS decente, pero utilidad negativa por costos/margen. Revisa cierre, ticket o costo por venta.";
+      } else {
+        badgeClass = "badge bad";
+        badgeText = "🔴 Proyección no rentable: o baja costos (CPL/CPA) o sube ticket/margen/cierre.";
+      }
+      badge.className = badgeClass;
+      badge.textContent = badgeText;
+
+      document.getElementById("ads_insight").textContent =
+        `Palancas: 1) bajar CPL (mejor creativo/segmentación), 2) subir cierre (seguimiento), 3) subir ticket/margen. ` +
+        `Breakeven ROAS aprox: ${breakevenROAS ? breakevenROAS.toFixed(2)+'x' : '—'}.`;
+
+      // Chart
+      const canvas = document.getElementById("adsChart");
+      drawBars(canvas, ["Ingresos","Margen","Ads","Utilidad"], [revenue, grossProfit, budget, netProfit]);
+
+      // Store for export/WA
+      state.ads = {
+        currency, fx: fxRate(),
+        mode: adsMode,
+        budget, days,
+        cpm, ctr: ctr*100, cpc,
+        leadRate: leadRate*100, closeRate: closeRate*100,
+        ticket, margin: margin*100,
+        costPerSale, otherFixed,
+        impressions, clicks, leads, sales,
+        revenue, grossProfit, netProfit,
+        roas, cpl, cpa, daily,
+        breakevenCPA, breakevenROAS,
+        badgeText
+      };
+    }
+
+    // ---------- TAB 2: FOLLOWERS ----------
+    let folMode = "budget_to_time";
+    const folBtns = document.querySelectorAll("[data-fmode]");
+    const folBudgetBlock = document.getElementById("fol_budget_block");
+    const folTimeBlock = document.getElementById("fol_time_block");
+
+    folBtns.forEach(b => {
+      b.addEventListener("click", () => {
+        folBtns.forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        folMode = b.dataset.fmode;
+        folBudgetBlock.style.display = (folMode === "budget_to_time") ? "" : "none";
+        folTimeBlock.style.display = (folMode === "time_to_budget") ? "" : "none";
+        calcFollowers();
+      });
+    });
+
+    const folInputs = ["fol_current","fol_target","fol_cpf","fol_quality","fol_daily_budget","fol_platform","fol_days","fol_platform2"]
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    folInputs.forEach(el => el.addEventListener("input", calcFollowers));
+    folInputs.forEach(el => el.addEventListener("change", calcFollowers));
+
+    function calcFollowers(){
+      const current = Math.max(0, Math.round(toNum(document.getElementById("fol_current").value)));
+      const target = Math.max(1, Math.round(toNum(document.getElementById("fol_target").value)));
+      const baseCpf = Math.max(0.01, toNum(document.getElementById("fol_cpf").value));
+      const qualityAdj = toNum(document.getElementById("fol_quality").value) || 1;
+      const cpf = baseCpf / qualityAdj;
+      const need = Math.max(0, target - current);
+
+      const platform = (folMode === "budget_to_time")
+        ? document.getElementById("fol_platform").value
+        : document.getElementById("fol_platform2").value;
+
+      let total = need * cpf;
+      let days = 0;
+      let dailyBudget = 0;
+      let perDay = 0;
+
+      if (folMode === "budget_to_time") {
+        dailyBudget = Math.max(1, toNum(document.getElementById("fol_daily_budget").value));
+        days = (dailyBudget > 0) ? (total / dailyBudget) : 0;
+        days = Math.max(1, Math.ceil(days));
+        perDay = (days > 0) ? (need / days) : 0;
+      } else {
+        days = Math.max(1, Math.round(toNum(document.getElementById("fol_days").value)));
+        dailyBudget = (days > 0) ? (total / days) : 0;
+        dailyBudget = Math.max(0, dailyBudget);
+        perDay = (days > 0) ? (need / days) : 0;
+      }
+
+      document.getElementById("kpi_f_need").textContent = intFmt(need);
+      document.getElementById("kpi_f_platform").textContent = `Plataforma: ${platform}`;
+
+      document.getElementById("kpi_f_total").textContent = money0(total);
+      document.getElementById("kpi_f_cpf").textContent = `CPF ajustado: ${money2(cpf)}`;
+
+      document.getElementById("kpi_f_time").textContent = `${intFmt(days)} días`;
+      document.getElementById("kpi_f_speed").textContent = `Ritmo: ${perDay.toFixed(1)} seguidores/día`;
+
+      document.getElementById("kpi_f_daily").textContent = money2(dailyBudget);
+      document.getElementById("kpi_f_daily2").textContent = (folMode === "budget_to_time")
+        ? `Con tu presupuesto actual`
+        : `Para lograrlo en el tiempo`;
+
+      const badge = document.getElementById("fol_badge");
+      badge.style.display = "inline-flex";
+
+      let badgeText = "";
+      if (need === 0) {
+        badge.className = "badge ok";
+        badgeText = "✅ Ya estás en la meta (o la superaste). Ahora optimiza calidad y retención.";
+      } else if (cpf > 4.5) {
+        badge.className = "badge warn";
+        badgeText = "🟡 CPF alto. Revisa creativos, oferta de contenido y segmentación.";
+      } else if (dailyBudget < 20) {
+        badge.className = "badge warn";
+        badgeText = "🟡 Presupuesto diario bajo: puede tardar más o fluctuar. Ideal: testear 7 días y ajustar.";
+      } else {
+        badge.className = "badge ok";
+        badgeText = "✅ Proyección saludable. Mantén consistencia de contenido para convertir seguidores en clientes.";
+      }
+      badge.textContent = badgeText;
+
+      document.getElementById("fol_insight").textContent =
+        `Si buscas seguidores que compren, combina anuncios + contenido: 1) Reels/Shorts, 2) CTA al perfil, 3) Oferta clara.`;
+
+      // Chart
+      const canvas = document.getElementById("folChart");
+      const points = 8;
+      const labels = [];
+      const vals = [];
+      for (let i=1;i<=points;i++){
+        const d = Math.round((days/points)*i);
+        labels.push(`D${d}`);
+        vals.push((need/points)*i);
+      }
+      drawBars(canvas, labels, vals);
+
+      state.followers = {
+        currency, fx: fxRate(),
+        mode: folMode,
+        current, target, need,
+        cpfBase: baseCpf, cpfAdj: cpf, qualityAdj,
+        platform,
+        total, days, dailyBudget, perDay,
+        badgeText
+      };
+    }
+
+    // ---------- TAB 3: PLAN ----------
+    const planInputs = ["plan_goal_type","plan_goal_value","plan_ticket","plan_margin","plan_cpl","plan_close","plan_ops","plan_days"]
+      .map(id => document.getElementById(id));
+
+    planInputs.forEach(el => el.addEventListener("input", calcPlan));
+    planInputs.forEach(el => el.addEventListener("change", calcPlan));
+
+    function calcPlan(){
+      const goalType = document.getElementById("plan_goal_type").value;
+      const goalValue = Math.max(1, toNum(document.getElementById("plan_goal_value").value));
+      const ticket = Math.max(0, toNum(document.getElementById("plan_ticket").value));
+      const margin = clamp(toNum(document.getElementById("plan_margin").value) / 100, 0, 1);
+      const cpl = Math.max(0.01, toNum(document.getElementById("plan_cpl").value));
+      const close = clamp(toNum(document.getElementById("plan_close").value) / 100, 0, 1);
+      const ops = Math.max(0, toNum(document.getElementById("plan_ops").value));
+      const days = Math.max(1, Math.round(toNum(document.getElementById("plan_days").value)));
+
+      let salesNeeded = 0;
+      let revenueTarget = 0;
+
+      if (goalType === "sales") {
+        salesNeeded = Math.round(goalValue);
+        revenueTarget = salesNeeded * ticket;
+      } else if (goalType === "revenue") {
+        revenueTarget = goalValue;
+        salesNeeded = (ticket > 0) ? Math.ceil(revenueTarget / ticket) : 0;
+      } else {
+        const revMin = (margin > 0) ? ((goalValue + ops) / margin) : 0;
+        revenueTarget = revMin;
+        salesNeeded = (ticket > 0) ? Math.ceil(revenueTarget / ticket) : 0;
+      }
+
+      const leadsNeeded = (close > 0) ? Math.ceil(salesNeeded / close) : 0;
+      const adsBudget = leadsNeeded * cpl;
+
+      const revenue = salesNeeded * ticket;
+      const grossProfit = revenue * margin;
+      const profit = grossProfit - adsBudget - ops;
+      const dailyBudget = adsBudget / days;
+
+      document.getElementById("kpi_p_sales").textContent = intFmt(salesNeeded);
+      document.getElementById("kpi_p_type").textContent = (goalType === "profit")
+        ? `Para meta de utilidad: ${money0(goalValue)}`
+        : (goalType === "revenue" ? `Para ingresos: ${money0(goalValue)}` : `Para ventas: ${intFmt(goalValue)}`);
+
+      document.getElementById("kpi_p_leads").textContent = intFmt(leadsNeeded);
+      document.getElementById("kpi_p_cpl").textContent = `CPL: ${money2(cpl)} • Cierre: ${(close*100).toFixed(1)}%`;
+
+      document.getElementById("kpi_p_budget").textContent = money0(adsBudget);
+      document.getElementById("kpi_p_daily").textContent = `Diario: ${money2(dailyBudget)}`;
+
+      document.getElementById("kpi_p_profit").textContent = (profit >= 0) ? money0(profit) : ("-" + money0(Math.abs(profit)));
+      document.getElementById("kpi_p_profit2").textContent = `Ingreso: ${money0(revenue)} • Margen: ${Math.round(margin*100)}%`;
+
+      const badge = document.getElementById("plan_badge");
+      badge.style.display = "inline-flex";
+
+      let badgeText = "";
+      if (ticket <= 0 || close <= 0 || cpl <= 0) {
+        badge.className = "badge bad";
+        badgeText = "⚠️ Completa ticket, cierre y CPL para estimar presupuesto.";
+      } else if (profit >= goalValue && goalType === "profit") {
+        badge.className = "badge ok";
+        badgeText = "✅ Con estos números, la meta de utilidad es alcanzable (en teoría). Mide 7–14 días y optimiza.";
+      } else if (profit > 0) {
+        badge.className = "badge warn";
+        badgeText = "🟡 Rentable, pero ajusta palancas si quieres subir utilidad: bajar CPL o subir cierre/ticket.";
+      } else {
+        badge.className = "badge bad";
+        badgeText = "🔴 Meta agresiva con estos ratios. Sube cierre/ticket/margen o baja CPL.";
+      }
+      badge.textContent = badgeText;
+
+      document.getElementById("plan_insight").textContent =
+        `Palancas: 1) bajar CPL, 2) subir cierre, 3) subir ticket/margen. ` +
+        `Presupuesto diario sugerido: ${money2(dailyBudget)} durante ${days} días.`;
+
+      const canvas = document.getElementById("planChart");
+      drawBars(canvas, ["Ingreso","Margen","Ads","Utilidad"], [revenue, grossProfit, adsBudget, profit]);
+
+      state.plan = {
+        currency, fx: fxRate(),
+        goalType, goalValue,
+        ticket, marginPct: margin*100,
+        cpl, closePct: close*100,
+        ops, days,
+        salesNeeded, leadsNeeded,
+        adsBudget, dailyBudget,
+        revenue, grossProfit, profit,
+        badgeText
+      };
+    }
+
+    // ---------- Global actions: PDF + WhatsApp ----------
+    const btnPdf = document.getElementById("btn_pdf");
+    const btnWa = document.getElementById("btn_wa");
+
+    function getActiveSummaryText() {
+      const mode = bizModeSel.value === "services" ? "Servicios" : "E-commerce";
+      const cur = currency === "USD" ? "USD" : "GTQ";
+      const fx = fxRate().toFixed(2);
+
+      if (activeTab === "ads") {
+        const s = state.ads;
+        return [
+          `RM Digital • Resumen (Ads + Utilidad)`,
+          `Modelo: ${mode} | Moneda: ${cur} | TC: ${fx}`,
+          ``,
+          `Inputs:`,
+          `- Modo: ${s.mode?.toUpperCase() || "—"}`,
+          `- Presupuesto: ${money0(s.budget || 0)} | Días: ${s.days || 0} | Diario: ${money2(s.daily || 0)}`,
+          s.mode === "cpm"
+            ? `- CPM: ${money2(s.cpm || 0)} | CTR: ${(s.ctr || 0).toFixed(2)}%`
+            : `- CPC: ${money2(s.cpc || 0)} | CTR: ${(s.ctr || 0).toFixed(2)}%`,
+          `- Lead rate: ${(s.leadRate || 0).toFixed(2)}% | Cierre: ${(s.closeRate || 0).toFixed(2)}%`,
+          `- Ticket: ${money2(s.ticket || 0)} | Margen: ${(s.margin || 0).toFixed(1)}%`,
+          `- Costo por venta: ${money2(s.costPerSale || 0)} | Otros fijos: ${money2(s.otherFixed || 0)}`,
+          ``,
+          `Resultados estimados:`,
+          `- Impresiones: ${intFmt(s.impressions || 0)} | Clics: ${intFmt(s.clicks || 0)} | Leads: ${intFmt(s.leads || 0)}`,
+          `- Ventas: ${intFmt(s.sales || 0)} | Ingresos: ${money0(s.revenue || 0)} | ROAS: ${(s.roas || 0).toFixed(2)}x`,
+          `- CPL: ${money2(s.cpl || 0)} | CPA: ${money2(s.cpa || 0)}`,
+          `- Utilidad estimada: ${(s.netProfit || 0) >= 0 ? money0(s.netProfit || 0) : "-" + money0(Math.abs(s.netProfit || 0))}`,
+          ``,
+          `Insight: ${s.badgeText || ""}`
+        ].join("\n");
+      }
+
+      if (activeTab === "followers") {
+        const s = state.followers;
+        return [
+          `RM Digital • Resumen (Seguidores)`,
+          `Modelo: ${mode} | Moneda: ${cur} | TC: ${fx}`,
+          ``,
+          `Inputs:`,
+          `- Plataforma: ${s.platform || "—"} | Modo: ${s.mode === "time_to_budget" ? "Tiempo→Presupuesto" : "Presupuesto→Tiempo"}`,
+          `- Seguidores: actuales ${intFmt(s.current || 0)} → meta ${intFmt(s.target || 0)} (faltan ${intFmt(s.need || 0)})`,
+          `- CPF ajustado: ${money2(s.cpfAdj || 0)}`,
+          ``,
+          `Resultados estimados:`,
+          `- Inversión total: ${money0(s.total || 0)}`,
+          `- Tiempo: ${intFmt(s.days || 0)} días`,
+          `- Presupuesto diario: ${money2(s.dailyBudget || 0)}`,
+          `- Ritmo: ${(s.perDay || 0).toFixed(1)} seguidores/día`,
+          ``,
+          `Insight: ${s.badgeText || ""}`
+        ].join("\n");
+      }
+
+      // plan
+      const s = state.plan;
+      const goalLabel = s.goalType === "profit" ? "Utilidad" : (s.goalType === "revenue" ? "Ingresos" : "Ventas");
+      return [
+        `RM Digital • Resumen (Plan Mensual)`,
+        `Modelo: ${mode} | Moneda: ${cur} | TC: ${fx}`,
+        ``,
+        `Meta: ${goalLabel} = ${s.goalType === "sales" ? intFmt(s.goalValue || 0) : money0(s.goalValue || 0)}`,
+        ``,
+        `Inputs:`,
+        `- Ticket: ${money2(s.ticket || 0)} | Margen: ${(s.marginPct || 0).toFixed(1)}%`,
+        `- CPL: ${money2(s.cpl || 0)} | Cierre: ${(s.closePct || 0).toFixed(1)}%`,
+        `- Costos operativos: ${money2(s.ops || 0)} | Días: ${intFmt(s.days || 0)}`,
+        ``,
+        `Resultados estimados:`,
+        `- Ventas necesarias: ${intFmt(s.salesNeeded || 0)} | Leads necesarios: ${intFmt(s.leadsNeeded || 0)}`,
+        `- Presupuesto Ads: ${money0(s.adsBudget || 0)} | Diario: ${money2(s.dailyBudget || 0)}`,
+        `- Ingresos estimados: ${money0(s.revenue || 0)} | Utilidad estimada: ${(s.profit || 0) >= 0 ? money0(s.profit || 0) : "-" + money0(Math.abs(s.profit || 0))}`,
+        ``,
+        `Insight: ${s.badgeText || ""}`
+      ].join("\n");
+    }
+
+    function normalizePhoneForWa(raw) {
+      // Accept +502..., 502..., spaces
+      let p = String(raw || "").trim();
+      if (!p) return "";
+      p = p.replace(/\s+/g, "");
+      p = p.replace(/^\+/, "");
+      // keep only digits
+      p = p.replace(/[^\d]/g, "");
+      return p;
+    }
+
+    function sendWhatsApp() {
+      const phone = normalizePhoneForWa(document.getElementById("wa_number").value);
+      if (!phone) {
+        toast(`⚠️ Escribe un número de WhatsApp válido.`);
+        return;
+      }
+      const msg = getActiveSummaryText();
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+
+    async function exportPDF() {
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        toast(`⚠️ No se cargó jsPDF. Revisa conexión o CDN.`);
+        return;
+      }
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+      const titleMap = {
+        ads: "Ads + Utilidad (ROI)",
+        followers: "Seguidores",
+        plan: "Plan de Ventas Mensual"
+      };
+
+      const text = getActiveSummaryText();
+      const lines = doc.splitTextToSize(text, 520);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text(`RM Digital • Reporte`, 40, 55);
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(12);
+      doc.text(`Sección: ${titleMap[activeTab]}`, 40, 78);
+      doc.text(`Generado: ${new Date().toLocaleString()}`, 40, 96);
+
+      doc.setDrawColor(30, 58, 95);
+      doc.setLineWidth(1);
+      doc.line(40, 110, 555, 110);
+
+      doc.setFontSize(11);
+      doc.setTextColor(30, 30, 30);
+
+      let y = 132;
+      const lineH = 14;
+
+      for (const l of lines) {
+        if (y > 780) {
+          doc.addPage();
+          y = 50;
+        }
+        doc.text(l, 40, y);
+        y += lineH;
+      }
+
+      // small footer
+      doc.setFontSize(10);
+      doc.setTextColor(100, 116, 139);
+      doc.text(`RM Digital • Calculadoras Pro`, 40, 820);
+
+      const fileName = `RM-Digital_${titleMap[activeTab].replace(/\s+/g, "_")}_${currency}.pdf`;
+      doc.save(fileName);
+      toast(`📄 PDF generado: <strong>${fileName}</strong>`);
+    }
+
+    btnWa.addEventListener("click", sendWhatsApp);
+    btnPdf.addEventListener("click", exportPDF);
+
+    // ---------- Utilities ----------
+    function setInput(id, value) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.value = String(value);
+    }
+
+    function recalcAll(){
+      calcAds(); calcFollowers(); calcPlan();
+    }
+
+    // ---------- Init ----------
+    // Keep currency global in sync with selector
+    currency = currencySel.value;
+
+    // Apply default preset (Servicios) respecting current currency
+    applyPresetSmart(bizModeSel.value);
+
+    // Do first calc after preset
+    recalcAll();
+  </script>
+</body>
+</html>
