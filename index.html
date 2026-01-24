@@ -2227,5 +2227,411 @@
             console.log('🚀 RM Digital - Presencia Digital Inteligente');
         });
     </script>
+
+<!-- ✅ POPUP PRO (abajo derecha) — pegar ANTES de </body> -->
+<style>
+  /* RM Digital — Smart Popup */
+  .rm-popup {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    width: min(380px, calc(100vw - 36px));
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(248,250,252,.98));
+    border: 2px solid rgba(226,232,240,.95);
+    box-shadow: 0 25px 55px rgba(0,0,0,.22);
+    overflow: hidden;
+    transform: translateY(24px);
+    opacity: 0;
+    pointer-events: none;
+    transition: .35s ease;
+    font-family: var(--font-body);
+  }
+
+  .rm-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .rm-popup__top {
+    position: relative;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .rm-popup__top:after{
+    content:"";
+    position:absolute;
+    inset:-60px -80px auto auto;
+    width:190px;height:190px;
+    background: radial-gradient(circle at 30% 30%, rgba(245,166,35,.55), transparent 65%);
+    transform: rotate(16deg);
+    opacity:.85;
+  }
+
+  .rm-popup__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rm-popup__logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.18);
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+  }
+
+  .rm-popup__logo svg { width: 20px; height: 20px; }
+
+  .rm-popup__brand strong {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: .2px;
+    font-size: 1.02rem;
+    line-height: 1.15;
+    display: block;
+  }
+
+  .rm-popup__brand small {
+    display: block;
+    color: rgba(255,255,255,.78);
+    font-size: .82rem;
+    margin-top: 2px;
+  }
+
+  .rm-popup__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    border: 2px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.10);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    transition: .2s ease;
+  }
+  .rm-popup__close:hover { transform: translateY(-1px); border-color: rgba(245,166,35,.8); }
+
+  .rm-popup__body {
+    padding: 14px 16px 16px;
+  }
+
+  .rm-popup__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .rm-popup__desc {
+    color: var(--gray-600);
+    font-size: .94rem;
+    margin-bottom: 12px;
+  }
+
+  .rm-popup__chips {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .rm-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 2px solid var(--gray-200);
+    background: #fff;
+    color: var(--gray-700);
+    font-weight: 900;
+    font-size: .84rem;
+    user-select: none;
+  }
+
+  .rm-chip b { color: var(--primary); font-family: var(--font-display); }
+
+  .rm-popup__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .rm-popup__btn {
+    appearance: none;
+    border: 2px solid var(--gray-200);
+    background: linear-gradient(180deg, #fff, var(--gray-50));
+    color: var(--gray-700);
+    padding: 12px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 900;
+    font-family: var(--font-display);
+    transition: .2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .rm-popup__btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--secondary);
+  }
+
+  .rm-popup__btn.primary {
+    border-color: var(--secondary);
+    background: linear-gradient(135deg, rgba(245,166,35,.18), rgba(245,166,35,.08));
+    color: var(--primary);
+  }
+
+  .rm-popup__footer {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .rm-popup__mute {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--gray-500);
+    font-weight: 800;
+    font-size: .85rem;
+  }
+
+  .rm-popup__mute input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--secondary);
+    cursor: pointer;
+  }
+
+  .rm-popup__timer {
+    color: var(--gray-500);
+    font-size: .82rem;
+    font-weight: 800;
+  }
+
+  @media (max-width: 420px) {
+    .rm-popup__actions { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="rm-popup" id="rmPopup" aria-live="polite" aria-label="Recomendación RM Digital">
+  <div class="rm-popup__top">
+    <button class="rm-popup__close" id="rmPopupClose" type="button" aria-label="Cerrar">
+      ✕
+    </button>
+
+    <div class="rm-popup__brand">
+      <div class="rm-popup__logo" aria-hidden="true">
+        <svg viewBox="0 0 45 45">
+          <rect x="3" y="3" width="16" height="16" fill="#FFF"></rect>
+          <rect x="26" y="3" width="16" height="16" fill="#F5A623"></rect>
+          <rect x="3" y="26" width="16" height="16" fill="#F5A623" opacity="0.6"></rect>
+          <rect x="26" y="26" width="16" height="16" fill="#FFF"></rect>
+        </svg>
+      </div>
+      <div>
+        <strong>RM Digital</strong>
+        <small>Presencia inteligente que vende</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-popup__body">
+    <div class="rm-popup__title" id="rmPopupTitle">¿Quieres números reales antes de invertir?</div>
+    <div class="rm-popup__desc" id="rmPopupDesc">
+      Usa la <b>Calculadora Pro</b> para estimar inversión y utilidad, o haz el <b>Quiz</b> y te decimos qué te conviene según tu negocio.
+    </div>
+
+    <div class="rm-popup__chips" id="rmPopupChips">
+      <span class="rm-chip">⚡ <b>ROI</b> rápido</span>
+      <span class="rm-chip">📈 <b>Plan</b> mensual</span>
+      <span class="rm-chip">🎯 <b>Meta</b> clara</span>
+    </div>
+
+    <div class="rm-popup__actions">
+      <!-- Ajusta los href a tus anchors/URLs reales -->
+      <a class="rm-popup__btn primary" id="rmPopupGoCalc" href="#calculadora" aria-label="Ir a la calculadora">
+        🧮 Ir a Calculadora
+      </a>
+      <a class="rm-popup__btn" id="rmPopupGoQuiz" href="#quiz" aria-label="Ir al quiz">
+        🧠 Hacer el Quiz
+      </a>
+    </div>
+
+    <div class="rm-popup__footer">
+      <label class="rm-popup__mute" title="No volver a mostrar por 7 días">
+        <input type="checkbox" id="rmPopupMute" />
+        No mostrar (7 días)
+      </label>
+      <div class="rm-popup__timer" id="rmPopupTimer">Aparece en: —</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    // ✅ CONFIG RÁPIDA
+    const POPUP_DELAY_MS = 5500;         // aparece a los 5.5s
+    const POPUP_IDLE_MS = 9000;          // o tras 9s sin interacción (si ocurre antes/después)
+    const MUTE_DAYS = 7;                 // no mostrar X días si el usuario lo marca
+    const STORAGE_KEY = "rm_popup_muted_until_v1";
+    const STORAGE_CLOSE_KEY = "rm_popup_closed_at_v1"; // para no ser invasivo en sesiones cortas
+    const CLOSE_COOLDOWN_MIN = 30;       // si lo cierra, no lo muestres de nuevo por X min (en esa máquina)
+
+    // IDs
+    const popup = document.getElementById("rmPopup");
+    const btnClose = document.getElementById("rmPopupClose");
+    const chkMute = document.getElementById("rmPopupMute");
+    const timerEl = document.getElementById("rmPopupTimer");
+    const goCalc = document.getElementById("rmPopupGoCalc");
+    const goQuiz = document.getElementById("rmPopupGoQuiz");
+
+    // (Opcional) Si tu calculadora está en otra página, aquí puedes setear URL directas:
+    // goCalc.href = "/calculadora.html";
+    // goQuiz.href = "/quiz.html";
+
+    // Helpers
+    const now = () => Date.now();
+    const minutes = (m) => m * 60 * 1000;
+    const days = (d) => d * 24 * 60 * 60 * 1000;
+
+    function getLS(key){
+      try { return localStorage.getItem(key); } catch(e){ return null; }
+    }
+    function setLS(key, value){
+      try { localStorage.setItem(key, value); } catch(e){}
+    }
+
+    function isMuted() {
+      const until = parseInt(getLS(STORAGE_KEY) || "0", 10);
+      return Number.isFinite(until) && until > now();
+    }
+
+    function closedRecently() {
+      const closedAt = parseInt(getLS(STORAGE_CLOSE_KEY) || "0", 10);
+      return Number.isFinite(closedAt) && (now() - closedAt) < minutes(CLOSE_COOLDOWN_MIN);
+    }
+
+    function showPopup(){
+      if (!popup) return;
+      if (isMuted() || closedRecently()) return;
+      popup.classList.add("show");
+    }
+
+    function hidePopup(markClosed = true){
+      popup.classList.remove("show");
+      if (markClosed) setLS(STORAGE_CLOSE_KEY, String(now()));
+    }
+
+    // Countdown UI
+    let startAt = now() + POPUP_DELAY_MS;
+    let shown = false;
+
+    function updateTimer(){
+      if (!timerEl || shown) return;
+      const diff = startAt - now();
+      if (diff <= 0) {
+        timerEl.textContent = "Listo ✅";
+        return;
+      }
+      const s = Math.ceil(diff / 1000);
+      timerEl.textContent = `Aparece en: ${s}s`;
+    }
+
+    // Idle detection
+    let idleT = null;
+    function resetIdle(){
+      if (idleT) clearTimeout(idleT);
+      idleT = setTimeout(() => {
+        if (!shown) {
+          showPopup();
+          shown = true;
+        }
+      }, POPUP_IDLE_MS);
+    }
+
+    // Events
+    btnClose?.addEventListener("click", () => hidePopup(true));
+
+    chkMute?.addEventListener("change", () => {
+      if (chkMute.checked) {
+        setLS(STORAGE_KEY, String(now() + days(MUTE_DAYS)));
+        hidePopup(false);
+      } else {
+        setLS(STORAGE_KEY, "0");
+      }
+    });
+
+    // UX: cerrar con ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && popup.classList.contains("show")) hidePopup(true);
+    });
+
+    // Reset idle on user interaction
+    ["mousemove","keydown","scroll","touchstart","click"].forEach(evt => {
+      window.addEventListener(evt, resetIdle, { passive: true });
+    });
+
+    // Optional: hide on click on action
+    [goCalc, goQuiz].forEach(el => {
+      el?.addEventListener("click", () => {
+        // Marca como "cerrado recientemente" para que no vuelva a aparecer de inmediato
+        setLS(STORAGE_CLOSE_KEY, String(now()));
+        popup.classList.remove("show");
+      });
+    });
+
+    // Start
+    if (isMuted() || closedRecently()) return;
+
+    // timer
+    updateTimer();
+    const timerInt = setInterval(() => {
+      updateTimer();
+      if (shown) clearInterval(timerInt);
+    }, 500);
+
+    // show by delay
+    setTimeout(() => {
+      if (!shown) {
+        showPopup();
+        shown = true;
+      }
+    }, POPUP_DELAY_MS);
+
+    // idle
+    resetIdle();
+  })();
+</script>
+
+
 </body>
 </html>
