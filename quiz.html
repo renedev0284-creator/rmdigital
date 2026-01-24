@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre qué solución digital necesita tu negocio - Quiz gratuito de RM Digital">
+    <title>¿Qué necesita tu negocio? | Quiz Gratis - RM Digital</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='12' height='12' fill='%231E3A5F'/><rect x='18' y='2' width='12' height='12' fill='%23F5A623'/><rect x='2' y='18' width='12' height='12' fill='%23F5A623' opacity='0.6'/><rect x='18' y='18' width='12' height='12' fill='%231E3A5F'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1E3A5F;
+            --primary-dark: #0f2439;
+            --secondary: #F5A623;
+            --secondary-dark: #d4890a;
+            --white: #FFFFFF;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --dark: #0D1117;
+            --success: #10b981;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #071320 100%);
+            min-height: 100vh;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        /* Background Pattern */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+        }
+
+        .logo-text .brand {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .logo-text .tagline {
+            font-size: 0.65rem;
+            color: var(--secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .quiz-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .quiz-header h1 span {
+            background: linear-gradient(135deg, var(--secondary), #ffc966);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .quiz-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), #ffc966);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        /* Quiz Card */
+        .quiz-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        /* Steps */
+        .quiz-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-question {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .step-subtitle {
+            color: var(--gray-500);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        /* Options */
+        .options-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            border: 2px solid var(--gray-100);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .option:hover {
+            border-color: var(--secondary);
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--secondary);
+            background: rgba(245, 166, 35, 0.1);
+        }
+
+        .option-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), #2d5a8a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .option.selected .option-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+        }
+
+        .option-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--white);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .option-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .option-content p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .option-check {
+            margin-left: auto;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-check {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .option-check svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--white);
+            stroke-width: 3;
+            fill: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option.selected .option-check svg {
+            opacity: 1;
+        }
+
+        /* Form Step */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--gray-100);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--gray-400);
+        }
+
+        /* Navigation */
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+
+        .btn-back:hover {
+            background: var(--gray-200);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: var(--white);
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.5);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: var(--white);
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Results */
+        .result-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .result-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--white);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .result-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .result-subtitle {
+            text-align: center;
+            color: var(--gray-500);
+            margin-bottom: 30px;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .result-box h4 {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .result-box p {
+            color: var(--white);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .result-details {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .result-details h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .result-details ul {
+            list-style: none;
+        }
+
+        .result-details li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .result-details li svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--secondary);
+            stroke-width: 2;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 32px;
+            background: #25D366;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        .quiz-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        .quiz-footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .quiz-card {
+                padding: 24px 20px;
+            }
+
+            .step-question {
+                font-size: 1.25rem;
+            }
+
+            .option {
+                padding: 14px 16px;
+            }
+
+            .option-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .option-content p {
+                display: none;
+            }
+
+            .quiz-nav {
+                flex-direction: column;
+            }
+
+            .btn-back {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <div class="container">
+        <header class="quiz-header">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 45 45">
+                    <rect x="2" y="2" width="18" height="18" fill="#FFF"/>
+                    <rect x="25" y="2" width="18" height="18" fill="#F5A623"/>
+                    <rect x="2" y="25" width="18" height="18" fill="#F5A623" opacity="0.6"/>
+                    <rect x="25" y="25" width="18" height="18" fill="#FFF"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="brand">RM Digital</span>
+                    <span class="tagline">Presencia Inteligente</span>
+                </div>
+            </a>
+            <h1>Descubre qué <span>necesita tu negocio</span></h1>
+            <p>Responde 5 preguntas y te daremos una recomendación personalizada</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>Pregunta <span id="currentStep">1</span> de 5</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <!-- Step 1: Situación actual -->
+            <div class="quiz-step active" data-step="1">
+                <h2 class="step-question">¿Tu negocio tiene presencia digital actualmente?</h2>
+                <p class="step-subtitle">Selecciona la opción que mejor describa tu situación</p>
+                
+                <div class="options-grid">
+                    <div class="option" data-value="sin_presencia" data-points="web:3,branding:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>No tengo nada aún</h4>
+                            <p>Empiezo desde cero, sin web ni redes</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="solo_redes" data-points="web:3,marketing:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Solo redes sociales</h4>
+                            <p>Tengo Facebook/Instagram pero no web</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="web_basica" data-points="marketing:3,ecommerce:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Tengo web pero no vende</h4>
+                            <p>Mi sitio existe pero no genera resultados</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="completo" data-points="embudos:3,marketing:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Tengo todo pero quiero escalar</h4>
+                            <p>Web y redes activas, busco más ventas</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                </div>
+
+                <div class="quiz-nav">
+                    <button class="btn btn-next" disabled>
+                        Continuar
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Objetivo principal -->
+            <div class="quiz-step" data-step="2">
+                <h2 class="step-question">¿Cuál es tu objetivo principal?</h2>
+                <p class="step-subtitle">¿Qué resultado te gustaría lograr?</p>
+                
+                <div class="options-grid">
+                    <div class="option" data-value="conseguir_clientes" data-points="marketing:3,embudos:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Conseguir más clientes</h4>
+                            <p>Generar leads y prospectos calificados</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="vender_online" data-points="ecommerce:3,web:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Vender productos online</h4>
+                            <p>Tener una tienda en línea funcionando</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="posicionar_marca" data-points="branding:3,redes:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Posicionar mi marca</h4>
+                            <p>Ser reconocido en mi industria</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="automatizar" data-points="embudos:3,marketing:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Automatizar mis ventas</h4>
+                            <p>Que el negocio venda solo</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                </div>
+
+                <div class="quiz-nav">
+                    <button class="btn btn-back">← Atrás</button>
+                    <button class="btn btn-next" disabled>
+                        Continuar
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Tipo de negocio -->
+            <div class="quiz-step" data-step="3">
+                <h2 class="step-question">¿Qué tipo de negocio tienes?</h2>
+                <p class="step-subtitle">Esto nos ayuda a personalizar nuestra recomendación</p>
+                
+                <div class="options-grid">
+                    <div class="option" data-value="servicios" data-points="web:2,embudos:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Servicios profesionales</h4>
+                            <p>Consultoría, agencia, freelance</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="productos_fisicos" data-points="ecommerce:3,redes:1">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Productos físicos</h4>
+                            <p>Tienda, ropa, accesorios, comida</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="productos_digitales" data-points="embudos:3,marketing:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Productos digitales</h4>
+                            <p>Cursos, ebooks, membresías</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="restaurante" data-points="redes:3,web:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Restaurante / Café</h4>
+                            <p>Negocio de comida y bebidas</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                </div>
+
+                <div class="quiz-nav">
+                    <button class="btn btn-back">← Atrás</button>
+                    <button class="btn btn-next" disabled>
+                        Continuar
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Presupuesto -->
+            <div class="quiz-step" data-step="4">
+                <h2 class="step-question">¿Cuál es tu presupuesto aproximado?</h2>
+                <p class="step-subtitle">No te preocupes, tenemos opciones para todos</p>
+                
+                <div class="options-grid">
+                    <div class="option" data-value="bajo" data-points="budget:1">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Q1,000 - Q3,000</h4>
+                            <p>Inversión inicial básica</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="medio" data-points="budget:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Q3,000 - Q8,000</h4>
+                            <p>Inversión moderada</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="alto" data-points="budget:3">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Q8,000 - Q15,000</h4>
+                            <p>Inversión profesional</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="premium" data-points="budget:4">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Q15,000+</h4>
+                            <p>Inversión premium sin límite</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                </div>
+
+                <div class="quiz-nav">
+                    <button class="btn btn-back">← Atrás</button>
+                    <button class="btn btn-next" disabled>
+                        Continuar
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Urgencia -->
+            <div class="quiz-step" data-step="5">
+                <h2 class="step-question">¿Para cuándo necesitas esto?</h2>
+                <p class="step-subtitle">Nos ayuda a priorizar tu proyecto</p>
+                
+                <div class="options-grid">
+                    <div class="option" data-value="urgente" data-points="urgency:3">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>¡Lo antes posible!</h4>
+                            <p>Es urgente, máximo 2 semanas</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="pronto" data-points="urgency:2">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Este mes</h4>
+                            <p>Tengo 2-4 semanas de tiempo</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="normal" data-points="urgency:1">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>En 1-2 meses</h4>
+                            <p>Sin prisa, quiero hacerlo bien</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                    
+                    <div class="option" data-value="explorando" data-points="urgency:0">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <div class="option-content">
+                            <h4>Solo estoy cotizando</h4>
+                            <p>Investigando opciones</p>
+                        </div>
+                        <div class="option-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    </div>
+                </div>
+
+                <div class="quiz-nav">
+                    <button class="btn btn-back">← Atrás</button>
+                    <button class="btn btn-next" disabled>
+                        Ver mi resultado
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 6: Datos de contacto -->
+            <div class="quiz-step" data-step="6">
+                <h2 class="step-question">¡Ya casi! ¿A dónde enviamos tu resultado?</h2>
+                <p class="step-subtitle">Ingresa tus datos para ver tu recomendación personalizada</p>
+                
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="nombre">Tu nombre *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="negocio">Nombre de tu negocio *</label>
+                        <input type="text" id="negocio" name="negocio" placeholder="Ej: Mi Tienda GT" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp">Tu WhatsApp *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 5561 0507" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Tu correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="Ej: juan@ejemplo.com">
+                    </div>
+                </form>
+
+                <div class="quiz-nav">
+                    <button class="btn btn-back">← Atrás</button>
+                    <button class="btn btn-submit" id="submitBtn">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Ver mi resultado
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 7: Resultado -->
+            <div class="quiz-step" data-step="7">
+                <div class="result-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                
+                <h2 class="result-title">¡Gracias, <span id="resultName">amigo</span>!</h2>
+                <p class="result-subtitle">Basado en tus respuestas, esto es lo que recomendamos para <strong id="resultBusiness">tu negocio</strong>:</p>
+                
+                <div class="result-box">
+                    <h4>Tu solución ideal</h4>
+                    <p id="resultRecommendation">Cargando...</p>
+                </div>
+                
+                <div class="result-details">
+                    <h4>Lo que incluiría:</h4>
+                    <ul id="resultFeatures">
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cargando características...</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="whatsapp-btn" id="whatsappLink" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Hablar con un asesor ahora
+                </a>
+            </div>
+        </div>
+
+        <footer class="quiz-footer">
+            <p>¿Prefieres hablar directo? <a href="https://wa.me/50245610507">WhatsApp: +502 4561 0507</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Quiz Logic
+        const quiz = {
+            currentStep: 1,
+            totalSteps: 6,
+            answers: {},
+            scores: {
+                web: 0,
+                marketing: 0,
+                ecommerce: 0,
+                embudos: 0,
+                branding: 0,
+                redes: 0
+            },
+            userData: {}
+        };
+
+        // Recommendations based on scores
+        const recommendations = {
+            web: {
+                name: "Diseño Web Profesional",
+                description: "Un sitio web moderno y optimizado para convertir visitantes en clientes",
+                features: [
+                    "Diseño personalizado y responsive",
+                    "Optimización SEO básica",
+                    "Formulario de contacto + WhatsApp",
+                    "Hosting y SSL incluidos",
+                    "Panel administrable"
+                ]
+            },
+            marketing: {
+                name: "Marketing Digital Integral",
+                description: "Estrategia completa de SEO, publicidad y redes para atraer clientes",
+                features: [
+                    "Auditoría digital completa",
+                    "Estrategia de SEO",
+                    "Campañas de Google/Facebook Ads",
+                    "Gestión de redes sociales",
+                    "Reportes mensuales de resultados"
+                ]
+            },
+            ecommerce: {
+                name: "Tienda Online (E-Commerce)",
+                description: "Tu propia tienda en línea con pasarelas de pago y gestión de inventario",
+                features: [
+                    "Catálogo de productos ilimitado",
+                    "Pasarelas de pago integradas",
+                    "Gestión de inventario",
+                    "Cálculo de envíos automático",
+                    "Panel de administración fácil"
+                ]
+            },
+            embudos: {
+                name: "Embudo de Ventas Automatizado",
+                description: "Sistema que captura leads y los convierte en clientes automáticamente",
+                features: [
+                    "Landing page de captura",
+                    "Lead magnet profesional",
+                    "Secuencia de emails automatizada",
+                    "Página de ventas persuasiva",
+                    "Integración con CRM/WhatsApp"
+                ]
+            },
+            branding: {
+                name: "Branding + Diseño Web",
+                description: "Identidad visual completa más sitio web que refleje tu marca",
+                features: [
+                    "Diseño de logotipo",
+                    "Paleta de colores y tipografías",
+                    "Manual de marca básico",
+                    "Sitio web con tu nueva identidad",
+                    "Templates para redes sociales"
+                ]
+            },
+            redes: {
+                name: "Gestión de Redes Sociales",
+                description: "Manejo profesional de tus redes para crear comunidad y generar ventas",
+                features: [
+                    "Estrategia de contenido",
+                    "Diseño de posts y stories",
+                    "Publicación y programación",
+                    "Respuesta a comentarios/mensajes",
+                    "Campañas de publicidad"
+                ]
+            }
+        };
+
+        // DOM Elements
+        const steps = document.querySelectorAll('.quiz-step');
+        const progressFill = document.getElementById('progressFill');
+        const currentStepEl = document.getElementById('currentStep');
+        const progressPercent = document.getElementById('progressPercent');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Option selection
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const parent = this.closest('.quiz-step');
+                    parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Store answer
+                    const step = parent.dataset.step;
+                    quiz.answers[step] = {
+                        value: this.dataset.value,
+                        points: this.dataset.points
+                    };
+                    
+                    // Enable next button
+                    parent.querySelector('.btn-next').disabled = false;
+                });
+            });
+
+            // Next button
+            document.querySelectorAll('.btn-next').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (quiz.currentStep < quiz.totalSteps) {
+                        // Process points
+                        const currentAnswer = quiz.answers[quiz.currentStep];
+                        if (currentAnswer && currentAnswer.points) {
+                            const points = currentAnswer.points.split(',');
+                            points.forEach(p => {
+                                const [key, value] = p.split(':');
+                                if (quiz.scores[key] !== undefined) {
+                                    quiz.scores[key] += parseInt(value);
+                                }
+                            });
+                        }
+                        
+                        goToStep(quiz.currentStep + 1);
+                    }
+                });
+            });
+
+            // Back button
+            document.querySelectorAll('.btn-back').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (quiz.currentStep > 1) {
+                        goToStep(quiz.currentStep - 1);
+                    }
+                });
+            });
+
+            // Submit button
+            document.getElementById('submitBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const nombre = document.getElementById('nombre').value.trim();
+                const negocio = document.getElementById('negocio').value.trim();
+                const whatsapp = document.getElementById('whatsapp').value.trim();
+                const email = document.getElementById('email').value.trim();
+                
+                if (!nombre || !negocio || !whatsapp) {
+                    alert('Por favor completa los campos obligatorios');
+                    return;
+                }
+                
+                quiz.userData = { nombre, negocio, whatsapp, email };
+                
+                // Calculate result and show
+                showResult();
+            });
+        });
+
+        function goToStep(step) {
+            steps.forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            quiz.currentStep = step;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((quiz.currentStep - 1) / quiz.totalSteps) * 100;
+            progressFill.style.width = progress + '%';
+            currentStepEl.textContent = Math.min(quiz.currentStep, 5);
+            progressPercent.textContent = Math.round(progress) + '%';
+        }
+
+        function showResult() {
+            // Find highest score
+            let maxScore = 0;
+            let recommendation = 'web';
+            
+            for (const [key, value] of Object.entries(quiz.scores)) {
+                if (value > maxScore) {
+                    maxScore = value;
+                    recommendation = key;
+                }
+            }
+            
+            const rec = recommendations[recommendation];
+            
+            // Update result page
+            document.getElementById('resultName').textContent = quiz.userData.nombre.split(' ')[0];
+            document.getElementById('resultBusiness').textContent = quiz.userData.negocio;
+            document.getElementById('resultRecommendation').textContent = rec.name + ' - ' + rec.description;
+            
+            // Features list
+            const featuresList = document.getElementById('resultFeatures');
+            featuresList.innerHTML = rec.features.map(f => 
+                `<li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>${f}</li>`
+            ).join('');
+            
+            // Build WhatsApp message
+            const budgetLabels = {
+                'bajo': 'Q1,000-Q3,000',
+                'medio': 'Q3,000-Q8,000',
+                'alto': 'Q8,000-Q15,000',
+                'premium': 'Q15,000+'
+            };
+            
+            const urgencyLabels = {
+                'urgente': 'Urgente (2 semanas)',
+                'pronto': 'Este mes',
+                'normal': '1-2 meses',
+                'explorando': 'Solo cotizando'
+            };
+            
+            const message = `🎯 *NUEVO LEAD DEL QUIZ*
+
+👤 *Nombre:* ${quiz.userData.nombre}
+🏢 *Negocio:* ${quiz.userData.negocio}
+📱 *WhatsApp:* ${quiz.userData.whatsapp}
+📧 *Email:* ${quiz.userData.email || 'No proporcionado'}
+
+📊 *RESPUESTAS:*
+• Situación actual: ${quiz.answers[1]?.value || '-'}
+• Objetivo: ${quiz.answers[2]?.value || '-'}
+• Tipo de negocio: ${quiz.answers[3]?.value || '-'}
+• Presupuesto: ${budgetLabels[quiz.answers[4]?.value] || '-'}
+• Urgencia: ${urgencyLabels[quiz.answers[5]?.value] || '-'}
+
+✅ *RECOMENDACIÓN:* ${rec.name}
+
+---
+Enviado desde el Quiz de RM Digital`;
+            
+            const whatsappURL = `https://wa.me/50245610507?text=${encodeURIComponent(message)}`;
+            document.getElementById('whatsappLink').href = whatsappURL;
+            
+            // Show result step
+            goToStep(7);
+            
+            // Update progress to 100%
+            progressFill.style.width = '100%';
+            progressPercent.textContent = '100%';
+        }
+    </script>
+</body>
+</html>
