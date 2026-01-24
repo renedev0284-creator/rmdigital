@@ -1022,24 +1022,29 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Inicializar EmailJS - NECESITAS CONFIGURAR TU CUENTA
-        // 1. Ve a https://www.emailjs.com/ y crea cuenta gratis
-        // 2. Crea un "Email Service" conectando tu Gmail
-        // 3. Crea un "Email Template" con estas variables: {{from_name}}, {{negocio}}, {{whatsapp}}, {{email}}, {{situacion}}, {{objetivo}}, {{tipo_negocio}}, {{presupuesto}}, {{urgencia}}, {{recomendacion}}, {{fecha}}
-        // 4. Reemplaza los IDs abajo con los tuyos
-        
-        const EMAILJS_PUBLIC_KEY = "oNIHIQ8g8ctyoHGEA"; // Reemplaza con tu Public Key de EmailJS
-        const EMAILJS_SERVICE_ID = "service_bg13rhq"; // Reemplaza con tu Service ID
-        const EMAILJS_TEMPLATE_ID = "template_l5dw63t"; // Reemplaza con tu Template ID
+        // ─────────────────────────────────────────────
+        // EmailJS CONFIG (REEMPLAZA CON LOS TUYOS)
+        // ─────────────────────────────────────────────
+        const EMAILJS_PUBLIC_KEY = "user_oNIHIQ8g8ctyoHGEA";   // <- pon tu Public Key real (puede NO tener prefijo user_)
+        const EMAILJS_SERVICE_ID = "service_bg13rhq";
+        const EMAILJS_TEMPLATE_ID = "template_l5dw63t";
         const DESTINATARIO_EMAIL = "rmoya0284@gmail.com";
 
-        // ✅ MEJORA: inicializar EmailJS siempre (con API recomendada)
-        try {
-            emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-        } catch (e) {
-            console.error("EmailJS init error:", e);
+        // Inicializar EmailJS SIEMPRE (si la librería cargó)
+        if (window.emailjs && EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY.trim() !== "") {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        } else {
+            console.warn("EmailJS no cargó o falta PUBLIC KEY.");
         }
-        
+
+        function emailjsIsConfigured() {
+            return !!(window.emailjs &&
+                EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY.trim() !== "" &&
+                EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID.trim() !== "" &&
+                EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID.trim() !== ""
+            );
+        }
+
         // Quiz Logic
         const quiz = {
             currentStep: 1,
@@ -1325,35 +1330,47 @@ Me interesa saber más sobre: ${rec.name}
                 recomendacion: rec.name,
                 fecha: fecha
             };
+            
+            // Mostrar estado inicial
+            emailStatus.style.display = 'block';
+            emailStatus.className = 'email-status sending';
+            emailStatus.innerHTML = '📧 Enviando tus datos...';
 
-            // ✅ MEJORA: validar configuración antes de enviar
-            const EMAILJS_OK = EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID;
-
-            if (EMAILJS_OK) {
-                emailStatus.style.display = 'block';
-                emailStatus.className = 'email-status sending';
-                emailStatus.innerHTML = '📧 Enviando tus datos...';
-                
-                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                    .then(function(response) {
-                        console.log('Email enviado!', response.status, response.text);
-                        emailStatus.className = 'email-status success';
-                        emailStatus.innerHTML = '✅ ¡Tus datos fueron enviados! Te contactaremos pronto.';
-                    }, function(error) {
-                        console.error('Error al enviar email:', error);
-                        emailStatus.className = 'email-status error';
-                        emailStatus.innerHTML = '⚠️ No pudimos enviar el email, pero puedes contactarnos por WhatsApp.';
-                    });
-            } else {
-                // Si no está configurado EmailJS, mostrar los datos en consola para debug
-                console.log('📧 NUEVO LEAD DEL QUIZ (EmailJS no configurado):');
-                console.log('Datos del lead:', templateParams);
-                
-                // Mostrar mensaje alternativo
-                emailStatus.style.display = 'block';
-                emailStatus.className = 'email-status success';
-                emailStatus.innerHTML = '✅ ¡Gracias! Haz clic en WhatsApp para contactarnos.';
+            // Validar configuración EmailJS
+            if (!emailjsIsConfigured()) {
+                console.warn("EmailJS no está configurado. Revisa PUBLIC KEY / SERVICE ID / TEMPLATE ID.");
+                console.log("templateParams:", templateParams);
+                emailStatus.className = 'email-status error';
+                emailStatus.innerHTML = '⚠️ EmailJS no está configurado correctamente. Puedes contactarnos por WhatsApp.';
+                return;
             }
+
+            // Enviar
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('Email enviado!', response.status, response.text);
+                    emailStatus.className = 'email-status success';
+                    emailStatus.innerHTML = '✅ ¡Tus datos fueron enviados! Te contactaremos pronto.';
+                })
+                .catch(function(error) {
+                    // EmailJS suele traer error.text + status (400, etc.)
+                    const status = error && (error.status || error.code) ? (error.status || error.code) : '—';
+                    const detail = error && (error.text || error.message) ? (error.text || error.message) : JSON.stringify(error);
+
+                    console.error('Error al enviar email (EmailJS):', { status, detail, raw: error });
+                    console.log('templateParams enviados:', templateParams);
+
+                    let extraHint = '';
+                    const detailLower = String(detail).toLowerCase();
+                    if (detailLower.includes('origin') || detailLower.includes('not allowed')) {
+                        extraHint = '<br><small>Tip: Revisa "Allowed origins/domains" en EmailJS.</small>';
+                    } else if (String(status) === '400') {
+                        extraHint = '<br><small>Tip: Verifica PUBLIC KEY / SERVICE ID / TEMPLATE ID (copiados exactos).</small>';
+                    }
+
+                    emailStatus.className = 'email-status error';
+                    emailStatus.innerHTML = `⚠️ No pudimos enviar el email (Error ${status}). Puedes contactarnos por WhatsApp.${extraHint}`;
+                });
         }
     </script>
 </body>
