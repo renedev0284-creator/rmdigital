@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Informe Ejecutivo - Me Too Nails Studio</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #132033;
+      --muted: #5d6b82;
+      --line: #dfe6f0;
+      --primary: #365cff;
+      --primary-2: #5f7cff;
+      --green: #18a957;
+      --green-soft: #e8f8ef;
+      --red: #cf3153;
+      --red-soft: #fdecef;
+      --amber: #d69b00;
+      --amber-soft: #fff6db;
+      --ink: #0d1726;
+      --shadow: 0 14px 40px rgba(18, 38, 63, .08);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #eef3fb 0%, #f9fbfe 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    .toolbar {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: white;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(95,124,255,.18), transparent 28%),
+        linear-gradient(135deg, #101a2b 0%, #1d2944 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      line-height: 1.1;
+    }
+    .lead {
+      max-width: 800px;
+      color: rgba(255,255,255,.88);
+      font-size: 16px;
+      margin: 0;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .meta-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+    .meta-card .label {
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 6px;
+    }
+    .meta-card .value {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+    .grid.kpis {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(19,32,51,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .kpi-label {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .kpi-value {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .chip.green { background: var(--green-soft); color: var(--green); }
+    .chip.red { background: var(--red-soft); color: var(--red); }
+    .chip.amber { background: var(--amber-soft); color: var(--amber); }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+    h2 {
+      font-size: 24px;
+      line-height: 1.15;
+      margin: 0 0 14px;
+      color: var(--ink);
+    }
+    h3 {
+      font-size: 17px;
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .summary-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .summary-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+    .summary-item:first-child { border-top: 0; padding-top: 0; }
+    .icon {
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+      background: rgba(54, 92, 255, .10);
+    }
+    .scorecard {
+      display: grid;
+      gap: 12px;
+    }
+    .score {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: #fbfcff;
+    }
+    .score .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .score .metric {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .score .num {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    .bar {
+      width: 100%;
+      height: 10px;
+      background: #e9eef7;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    }
+    .section {
+      margin-top: 22px;
+    }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+    }
+    .pillar {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+    }
+    .pillar .number {
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border-radius: 10px;
+      background: rgba(54, 92, 255, .1);
+      color: var(--primary);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    ul.clean {
+      margin: 10px 0 0 0;
+      padding-left: 18px;
+    }
+    ul.clean li { margin-bottom: 8px; }
+    .projection-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .projection-table th, .projection-table td {
+      text-align: left;
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .projection-table th {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      background: #f9fbff;
+    }
+    .projection-table tr:last-child td { border-bottom: 0; }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+    .phase {
+      border-left: 4px solid var(--primary);
+      padding: 18px 18px 18px 16px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .phase small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .footnote {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .grid.kpis, .two-col, .pillars, .timeline, .meta { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: white; }
+      .toolbar { display: none !important; }
+      .container { max-width: 100%; padding: 0; }
+      .hero, .card, .phase { box-shadow: none; }
+      .card, .phase, .hero {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .section { margin-top: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toolbar">
+      <button class="btn secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">Ir al inicio</button>
+      <button class="btn" onclick="window.print()">Descargar / Guardar en PDF</button>
+    </div>
+
+    <section class="hero">
+      <div class="eyebrow">Informe ejecutivo semanal</div>
+      <h1>Me Too Nails Studio</h1>
+      <p class="lead">
+        Integración de resultados de Google Ads y Square para mostrar el desempeño comercial de la semana,
+        detectar lo más importante y definir una estrategia concreta para crecer con mejor control del retorno.
+      </p>
+
+      <div class="meta">
+        <div class="meta-card">
+          <div class="label">Periodo Google Ads</div>
+          <div class="value">21 - 27 feb 2026</div>
+        </div>
+        <div class="meta-card">
+          <div class="label">Periodo Square</div>
+          <div class="value">23 - 28 feb 2026</div>
+        </div>
+        <div class="meta-card">
+          <div class="label">Enfoque</div>
+          <div class="value">Resumen + estrategia + proyección</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid kpis">
+      <div class="card">
+        <div class="kpi-label">Ventas netas</div>
+        <div class="kpi-value">US$ 3,560.00</div>
+        <div class="chip green">+69.12% vs semana previa</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Transacciones</div>
+        <div class="kpi-value">33</div>
+        <div class="chip green">+83.33%</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Promedio por venta</div>
+        <div class="kpi-value">US$ 107.88</div>
+        <div class="chip red">-7.75%</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Inversión en ads</div>
+        <div class="kpi-value">US$ 75.97</div>
+        <div class="chip amber">Semana 1 de pauta</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">CTR estimado</div>
+        <div class="kpi-value">6.23%</div>
+        <div class="chip green">Tracción favorable</div>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <div class="card">
+        <h2>Lo más importante</h2>
+        <p class="muted">
+          La semana fue positiva. Hubo crecimiento comercial claro y la pauta ya está generando atención.
+          La principal oportunidad ahora no es detener la campaña, sino ordenar la medición para convertir
+          mejor el tráfico en citas y ventas.
+        </p>
+
+        <div class="summary-list">
+          <div class="summary-item">
+            <div class="icon">1</div>
+            <div>
+              <h3>Square confirma crecimiento real</h3>
+              <div class="muted">
+                Ventas netas de <strong>US$ 3,560.00</strong> y <strong>33 transacciones</strong>.
+                El negocio creció <strong>69.12%</strong> en ventas y <strong>83.33%</strong> en transacciones.
+              </div>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="icon">2</div>
+            <div>
+              <h3>Google Ads ya está generando movimiento</h3>
+              <div class="muted">
+                La campaña obtuvo <strong>60 clics</strong>, <strong>963 impresiones</strong> y un
+                <strong>CTR estimado de 6.23%</strong>, señal de que los anuncios sí están captando interés.
+              </div>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="icon">3</div>
+            <div>
+              <h3>El ticket promedio bajó, pero el flujo subió</h3>
+              <div class="muted">
+                El promedio por venta quedó en <strong>US$ 107.88</strong> con una variación de
+                <strong>-7.75%</strong>. Esto sugiere más volumen de clientas, aunque con compras
+                promedio ligeramente menores.
+              </div>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="icon">4</div>
+            <div>
+              <h3>La medición sigue incompleta</h3>
+              <div class="muted">
+                La inversión publicitaria fue de <strong>US$ 75.97</strong>, equivalente al
+                <strong>2.13%</strong> de las ventas de la semana. Aun así, sin conversiones configuradas
+                no se puede atribuir con precisión cuántas citas o ventas vinieron directamente de la pauta.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Lectura ejecutiva</h2>
+        <div class="scorecard">
+          <div class="score">
+            <div class="top"><div class="metric">Crecimiento de ventas</div><div class="num">69.12%</div></div>
+            <div class="muted">Semana muy superior a la anterior.</div>
+            <div class="bar"><span style="width: 88%"></span></div>
+          </div>
+          <div class="score">
+            <div class="top"><div class="metric">Crecimiento en transacciones</div><div class="num">83.33%</div></div>
+            <div class="muted">Más movimiento y más clientas atendidas.</div>
+            <div class="bar"><span style="width: 92%"></span></div>
+          </div>
+          <div class="score">
+            <div class="top"><div class="metric">CTR de campaña</div><div class="num">6.23%</div></div>
+            <div class="muted">Buen nivel de atracción para una primera semana.</div>
+            <div class="bar"><span style="width: 70%"></span></div>
+          </div>
+          <div class="score">
+            <div class="top"><div class="metric">Riesgo actual</div><div class="num">Medio</div></div>
+            <div class="muted">La pauta ya funciona, pero falta tracking para optimizar con certeza.</div>
+            <div class="bar"><span style="width: 56%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Estrategia recomendada para aumentar estos números</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="number">01</div>
+          <h3>Medición y control</h3>
+          <ul class="clean">
+            <li>Configurar conversiones: WhatsApp, llamadas, formulario y reservas.</li>
+            <li>Etiquetar campañas con UTMs para identificar mejor el origen de las citas.</li>
+            <li>Registrar en recepción o agenda cómo encontró el estudio cada clienta.</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="number">02</div>
+          <h3>Capturar mejor la demanda</h3>
+          <ul class="clean">
+            <li>Separar anuncios por servicio estrella y por intención de búsqueda.</li>
+            <li>Añadir recursos de precio, ubicación, llamada y enlaces de sitio.</li>
+            <li>Limpiar términos de búsqueda con palabras negativas para evitar clics de baja calidad.</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="number">03</div>
+          <h3>Convertir más citas</h3>
+          <ul class="clean">
+            <li>Responder mensajes en menos de 5 minutos cuando sea posible.</li>
+            <li>Usar creatividades con prueba social, antes/después y disponibilidad clara.</li>
+            <li>Mostrar precios base, beneficios y CTA directos para reservar rápido.</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="number">04</div>
+          <h3>Subir ticket y frecuencia</h3>
+          <ul class="clean">
+            <li>Impulsar combos, add-ons y servicios premium para elevar el ticket.</li>
+            <li>Ofrecer rebooking al salir: próxima cita antes de que la clienta se retire.</li>
+            <li>Activar campañas o mensajes de recordatorio a clientas recientes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Proyección estimada a 30 días</h2>
+      <p class="muted">
+        Proyección orientativa, no garantía. Se basa en la semana observada y asume que se implementan las
+        optimizaciones propuestas, se mantiene la capacidad operativa del estudio y se responde con agilidad a los leads.
+      </p>
+      <table class="projection-table">
+        <thead>
+          <tr>
+            <th>Escenario</th>
+            <th>Inversión Ads</th>
+            <th>Clics estimados</th>
+            <th>Ventas estimadas</th>
+            <th>Transacciones</th>
+            <th>Supuesto principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Conservadora</strong></td>
+            <td>$340 - $380</td>
+            <td>270 - 300</td>
+            <td>$15,300 - $16,400</td>
+            <td>138 - 145</td>
+            <td>Se corrige medición y se fortalecen anuncios sin escalar fuerte presupuesto.</td>
+          </tr>
+          <tr>
+            <td><strong>Base recomendada</strong></td>
+            <td>$390 - $460</td>
+            <td>320 - 360</td>
+            <td>$17,000 - $18,800</td>
+            <td>150 - 162</td>
+            <td>Se optimizan anuncios, activos, horarios, oferta y seguimiento comercial.</td>
+          </tr>
+          <tr>
+            <td><strong>Acelerada</strong></td>
+            <td>$480 - $560</td>
+            <td>380 - 440</td>
+            <td>$19,500 - $22,000</td>
+            <td>168 - 182</td>
+            <td>Se suma remarketing, creatividades nuevas y estrategia de rebooking/upsell.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section timeline">
+      <div class="phase">
+        <small>Fase 1 - 7 días</small>
+        <h3>Ordenar la base</h3>
+        <p class="muted">Tracking de conversiones, activos de precio, revisión de términos de búsqueda y ajuste del mensaje principal.</p>
+      </div>
+      <div class="phase">
+        <small>Fase 2 - 14 días</small>
+        <h3>Subir la calidad del lead</h3>
+        <p class="muted">Separar servicios, reforzar geolocalización, mejorar creatividades y optimizar horarios según respuesta.</p>
+      </div>
+      <div class="phase">
+        <small>Fase 3 - 30 días</small>
+        <h3>Escalar con control</h3>
+        <p class="muted">Aumentar inversión solo sobre lo que convierta, reforzar rebooking y activar remarketing o seguimiento comercial.</p>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Conclusión ejecutiva</h2>
+      <p>
+        Me Too Nails Studio cerró una semana con señales claras de crecimiento. La pauta ya está generando atención
+        y el negocio reflejó una mejora fuerte en ventas y transacciones. El punto crítico ahora es pasar de una campaña
+        que atrae clics a una campaña que demuestre con claridad cuántas citas y ventas genera. Con mejor medición,
+        mejor captura de demanda y una estrategia para subir ticket y frecuencia de visita, el estudio tiene espacio real
+        para escalar resultados durante el próximo mes.
+      </p>
+      <div class="footnote">
+        Nota metodológica: Google Ads y Square no cubren exactamente las mismas fechas. Este informe integra ambos datos
+        como una lectura estratégica de tendencia, no como una atribución exacta 1 a 1.
+      </div>
+    </section>
+
+    <div class="footer">
+      Reporte preparado en formato ejecutivo para presentación a cliente.
+    </div>
+  </div>
+</body>
+</html>
