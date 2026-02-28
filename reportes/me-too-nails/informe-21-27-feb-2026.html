@@ -6,28 +6,39 @@
   <title>Informe Ejecutivo - Me Too Nails Studio</title>
   <style>
     :root {
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --text: #132033;
-      --muted: #5d6b82;
-      --line: #dfe6f0;
-      --primary: #365cff;
-      --primary-2: #5f7cff;
-      --green: #18a957;
+      /* Paleta Me Too Nails */
+      --dusty-cocoa:   #8A6C5F;
+      --warm-sand:     #BFA38A;
+      --soft-oatmeal:  #E0D9CF;
+      --deep-espresso: #544339;
+      --golden-glow:   #F5E9D3;
+
+      /* Roles semánticos */
+      --bg:       #F5E9D3;
+      --card:     #FDFAF6;
+      --text:     #544339;
+      --muted:    #8A6C5F;
+      --line:     #E0D9CF;
+      --primary:  #8A6C5F;
+      --primary-2:#BFA38A;
+      --ink:      #3a2620;
+
+      /* Chips funcionales (datos financieros) */
+      --green:      #18a957;
       --green-soft: #e8f8ef;
-      --red: #cf3153;
-      --red-soft: #fdecef;
-      --amber: #d69b00;
-      --amber-soft: #fff6db;
-      --ink: #0d1726;
-      --shadow: 0 14px 40px rgba(18, 38, 63, .08);
+      --red:        #cf3153;
+      --red-soft:   #fdecef;
+      --amber:      #8A6C5F;
+      --amber-soft: #F5E9D3;
+
+      --shadow: 0 14px 40px rgba(84, 67, 57, .10);
       --radius: 20px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #eef3fb 0%, #f9fbfe 100%);
+      background: linear-gradient(180deg, #F5E9D3 0%, #EDE5D8 100%);
       color: var(--text);
       line-height: 1.55;
     }
@@ -47,8 +58,8 @@
     }
     .btn {
       border: 0;
-      background: var(--primary);
-      color: white;
+      background: var(--deep-espresso);
+      color: #F5E9D3;
       border-radius: 14px;
       padding: 12px 18px;
       font-weight: 700;
@@ -58,15 +69,15 @@
     }
     .btn:hover { transform: translateY(-1px); }
     .btn.secondary {
-      background: white;
+      background: var(--card);
       color: var(--text);
       border: 1px solid var(--line);
     }
     .hero {
       background:
-        radial-gradient(circle at top right, rgba(95,124,255,.18), transparent 28%),
-        linear-gradient(135deg, #101a2b 0%, #1d2944 100%);
-      color: white;
+        radial-gradient(circle at top right, rgba(191,163,138,.25), transparent 30%),
+        linear-gradient(135deg, #3a2620 0%, #544339 100%);
+      color: #F5E9D3;
       border-radius: 28px;
       padding: 34px;
       box-shadow: var(--shadow);
@@ -77,7 +88,7 @@
       display: inline-block;
       padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.12);
+      background: rgba(245,233,211,.15);
       font-size: 12px;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -91,7 +102,7 @@
     }
     .lead {
       max-width: 800px;
-      color: rgba(255,255,255,.88);
+      color: rgba(245,233,211,.88);
       font-size: 16px;
       margin: 0;
     }
@@ -102,13 +113,13 @@
       margin-top: 24px;
     }
     .meta-card {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(245,233,211,.10);
+      border: 1px solid rgba(245,233,211,.12);
       border-radius: 18px;
       padding: 16px 18px;
     }
     .meta-card .label {
-      color: rgba(255,255,255,.72);
+      color: rgba(245,233,211,.70);
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: .08em;
@@ -117,6 +128,7 @@
     .meta-card .value {
       font-size: 18px;
       font-weight: 800;
+      color: #F5E9D3;
     }
     .grid {
       display: grid;
@@ -128,7 +140,7 @@
     }
     .card {
       background: var(--card);
-      border: 1px solid rgba(19,32,51,.06);
+      border: 1px solid rgba(84,67,57,.08);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 22px;
@@ -158,8 +170,8 @@
       font-size: 13px;
     }
     .chip.green { background: var(--green-soft); color: var(--green); }
-    .chip.red { background: var(--red-soft); color: var(--red); }
-    .chip.amber { background: var(--amber-soft); color: var(--amber); }
+    .chip.red   { background: var(--red-soft);   color: var(--red); }
+    .chip.amber { background: var(--amber-soft);  color: var(--amber); }
     .two-col {
       display: grid;
       grid-template-columns: 1.2fr .8fr;
@@ -177,9 +189,7 @@
       margin: 0 0 8px;
       color: var(--ink);
     }
-    .muted {
-      color: var(--muted);
-    }
+    .muted { color: var(--muted); }
     .summary-list {
       display: grid;
       gap: 12px;
@@ -201,18 +211,15 @@
       place-items: center;
       font-size: 18px;
       font-weight: 900;
-      color: var(--primary);
-      background: rgba(54, 92, 255, .10);
+      color: var(--deep-espresso);
+      background: rgba(138,108,95,.12);
     }
-    .scorecard {
-      display: grid;
-      gap: 12px;
-    }
+    .scorecard { display: grid; gap: 12px; }
     .score {
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
-      background: #fbfcff;
+      background: #FEFCF9;
     }
     .score .top {
       display: flex;
@@ -234,7 +241,7 @@
     .bar {
       width: 100%;
       height: 10px;
-      background: #e9eef7;
+      background: var(--soft-oatmeal);
       border-radius: 999px;
       overflow: hidden;
       margin-top: 10px;
@@ -243,11 +250,9 @@
       display: block;
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      background: linear-gradient(90deg, var(--dusty-cocoa), var(--warm-sand));
     }
-    .section {
-      margin-top: 22px;
-    }
+    .section { margin-top: 22px; }
     .pillars {
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -257,14 +262,14 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 18px;
-      background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+      background: linear-gradient(180deg, #FDFAF6 0%, #F9F4EE 100%);
     }
     .pillar .number {
       width: 34px; height: 34px;
       display: grid; place-items: center;
       border-radius: 10px;
-      background: rgba(54, 92, 255, .1);
-      color: var(--primary);
+      background: rgba(138,108,95,.12);
+      color: var(--deep-espresso);
       font-weight: 900;
       margin-bottom: 12px;
     }
@@ -273,6 +278,51 @@
       padding-left: 18px;
     }
     ul.clean li { margin-bottom: 8px; }
+
+    /* Callout de inversión */
+    .invest-callout {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin: 18px 0 20px;
+    }
+    .invest-item {
+      background: linear-gradient(135deg, #544339 0%, #7a5548 100%);
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: #F5E9D3;
+    }
+    .invest-item .i-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: .75;
+      margin-bottom: 6px;
+    }
+    .invest-item .i-value {
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .invest-item .i-note {
+      font-size: 12px;
+      opacity: .72;
+      margin-top: 4px;
+    }
+
+    /* Commitment badge */
+    .commitment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #544339, #8A6C5F);
+      color: #F5E9D3;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
     .projection-table {
       width: 100%;
       border-collapse: collapse;
@@ -282,29 +332,39 @@
     }
     .projection-table th, .projection-table td {
       text-align: left;
-      padding: 14px 14px;
+      padding: 14px;
       border-bottom: 1px solid var(--line);
       vertical-align: top;
     }
     .projection-table th {
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: .07em;
       color: var(--muted);
-      background: #f9fbff;
+      background: #F9F4EE;
     }
     .projection-table tr:last-child td { border-bottom: 0; }
+    .projection-table td.highlight {
+      color: var(--deep-espresso);
+      font-weight: 700;
+    }
+    .star { color: var(--dusty-cocoa); }
+
     .timeline {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 16px;
     }
     .phase {
-      border-left: 4px solid var(--primary);
+      border-left: 4px solid var(--dusty-cocoa);
       padding: 18px 18px 18px 16px;
-      background: white;
+      background: var(--card);
       border-radius: 16px;
       box-shadow: var(--shadow);
+    }
+    .phase.phase-commit {
+      border-left-color: var(--deep-espresso);
+      background: linear-gradient(135deg, #FDFAF6 0%, #F5EDE2 100%);
     }
     .phase small {
       display: block;
@@ -312,6 +372,18 @@
       text-transform: uppercase;
       letter-spacing: .08em;
       font-weight: 800;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .phase.phase-commit small { color: var(--deep-espresso); }
+    .phase .commit-tag {
+      display: inline-block;
+      background: var(--deep-espresso);
+      color: #F5E9D3;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 3px 10px;
       margin-bottom: 8px;
     }
     .footnote {
@@ -326,17 +398,15 @@
       font-size: 13px;
     }
     @media (max-width: 980px) {
-      .grid.kpis, .two-col, .pillars, .timeline, .meta { grid-template-columns: 1fr; }
+      .grid.kpis, .two-col, .pillars, .timeline, .meta,
+      .invest-callout { grid-template-columns: 1fr; }
     }
     @media print {
       body { background: white; }
       .toolbar { display: none !important; }
       .container { max-width: 100%; padding: 0; }
       .hero, .card, .phase { box-shadow: none; }
-      .card, .phase, .hero {
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
+      .card, .phase, .hero { break-inside: avoid; page-break-inside: avoid; }
       .section { margin-top: 16px; }
     }
   </style>
@@ -355,15 +425,14 @@
         Integración de resultados de Google Ads y Square para mostrar el desempeño comercial de la semana,
         detectar lo más importante y definir una estrategia concreta para crecer con mejor control del retorno.
       </p>
-
       <div class="meta">
         <div class="meta-card">
           <div class="label">Periodo Google Ads</div>
-          <div class="value">21 - 27 feb 2026</div>
+          <div class="value">22 - 28 feb 2026</div>
         </div>
         <div class="meta-card">
           <div class="label">Periodo Square</div>
-          <div class="value">23 - 28 feb 2026</div>
+          <div class="value">22 - 28 feb 2026</div>
         </div>
         <div class="meta-card">
           <div class="label">Enfoque</div>
@@ -390,8 +459,8 @@
       </div>
       <div class="card">
         <div class="kpi-label">Inversión en ads</div>
-        <div class="kpi-value">US$ 75.97</div>
-        <div class="chip amber">Semana 1 de pauta</div>
+        <div class="kpi-value">US$ 313.12</div>
+        <div class="chip amber">Inversión ejecutada</div>
       </div>
       <div class="card">
         <div class="kpi-label">CTR estimado</div>
@@ -408,7 +477,6 @@
           La principal oportunidad ahora no es detener la campaña, sino ordenar la medición para convertir
           mejor el tráfico en citas y ventas.
         </p>
-
         <div class="summary-list">
           <div class="summary-item">
             <div class="icon">1</div>
@@ -444,11 +512,12 @@
           <div class="summary-item">
             <div class="icon">4</div>
             <div>
-              <h3>La medición sigue incompleta</h3>
+              <h3>Inversión publicitaria ejecutada: US$ 313.12</h3>
               <div class="muted">
-                La inversión publicitaria fue de <strong>US$ 75.97</strong>, equivalente al
-                <strong>2.13%</strong> de las ventas de la semana. Aun así, sin conversiones configuradas
-                no se puede atribuir con precisión cuántas citas o ventas vinieron directamente de la pauta.
+                La inversión acumulada hasta hoy es de <strong>US$ 313.12</strong>, equivalente al
+                <strong>8.79%</strong> de las ventas de la semana. Sin conversiones configuradas aún,
+                no se puede atribuir con precisión cuántas citas vinieron directamente de la pauta,
+                pero el crecimiento en ventas habla por sí solo.
               </div>
             </div>
           </div>
@@ -525,18 +594,39 @@
     </section>
 
     <section class="card section">
-      <h2>Proyección estimada a 30 días</h2>
+      <div class="commitment-badge">★ Resultados comprometidos al 15 de marzo</div>
+      <h2>Proyección 1 – 28 de marzo · Con corte de resultados el 15 mar</h2>
       <p class="muted">
-        Proyección orientativa, no garantía. Se basa en la semana observada y asume que se implementan las
-        optimizaciones propuestas, se mantiene la capacidad operativa del estudio y se responde con agilidad a los leads.
+        Proyección orientativa basada en los datos reales de la semana 22–28 feb. Se asume que se implementan
+        las optimizaciones propuestas, se mantiene la capacidad operativa del estudio y se responde con
+        agilidad a los leads.
       </p>
+
+      <div class="invest-callout">
+        <div class="invest-item">
+          <div class="i-label">Invertido hasta hoy</div>
+          <div class="i-value">US$ 313.12</div>
+          <div class="i-note">Inversión real ejecutada en Google Ads</div>
+        </div>
+        <div class="invest-item">
+          <div class="i-label">Ventas reales (Square)</div>
+          <div class="i-value">US$ 3,560.00</div>
+          <div class="i-note">33 transacciones · sem. 22–28 feb</div>
+        </div>
+        <div class="invest-item">
+          <div class="i-label">Retorno sobre inversión</div>
+          <div class="i-value">11.4x</div>
+          <div class="i-note">$3,560 generados por cada $313 invertidos</div>
+        </div>
+      </div>
+
       <table class="projection-table">
         <thead>
           <tr>
             <th>Escenario</th>
-            <th>Inversión Ads</th>
-            <th>Clics estimados</th>
-            <th>Ventas estimadas</th>
+            <th>Inversión Ads / mar</th>
+            <th>Ventas al 15 mar ★</th>
+            <th>Ventas al 28 mar</th>
             <th>Transacciones</th>
             <th>Supuesto principal</th>
           </tr>
@@ -544,45 +634,47 @@
         <tbody>
           <tr>
             <td><strong>Conservadora</strong></td>
-            <td>$340 - $380</td>
-            <td>270 - 300</td>
-            <td>$15,300 - $16,400</td>
-            <td>138 - 145</td>
-            <td>Se corrige medición y se fortalecen anuncios sin escalar fuerte presupuesto.</td>
+            <td>$1,100 - $1,260</td>
+            <td class="highlight">$7,000 - $7,500</td>
+            <td>$13,500 - $14,500</td>
+            <td>118 - 128</td>
+            <td>Se mantiene el ritmo actual y se optimizan campañas sin escalar presupuesto.</td>
           </tr>
           <tr>
             <td><strong>Base recomendada</strong></td>
-            <td>$390 - $460</td>
-            <td>320 - 360</td>
-            <td>$17,000 - $18,800</td>
-            <td>150 - 162</td>
-            <td>Se optimizan anuncios, activos, horarios, oferta y seguimiento comercial.</td>
+            <td>$1,400 - $1,680</td>
+            <td class="highlight">$8,500 - $9,200</td>
+            <td>$17,000 - $18,500</td>
+            <td>145 - 162</td>
+            <td>Se optimizan anuncios, segmentación, horarios, oferta y seguimiento comercial.</td>
           </tr>
           <tr>
             <td><strong>Acelerada</strong></td>
-            <td>$480 - $560</td>
-            <td>380 - 440</td>
-            <td>$19,500 - $22,000</td>
-            <td>168 - 182</td>
-            <td>Se suma remarketing, creatividades nuevas y estrategia de rebooking/upsell.</td>
+            <td>$1,960 - $2,400</td>
+            <td class="highlight">$11,000 - $12,500</td>
+            <td>$21,000 - $24,000</td>
+            <td>178 - 205</td>
+            <td>Remarketing activo, creatividades renovadas y estrategia de rebooking/upsell.</td>
           </tr>
         </tbody>
       </table>
+      <div class="footnote">★ La columna "Ventas al 15 mar" representa el corte de resultados comprometido.</div>
     </section>
 
     <section class="section timeline">
       <div class="phase">
-        <small>Fase 1 - 7 días</small>
+        <small>Fase 1 · 1 – 7 mar</small>
         <h3>Ordenar la base</h3>
         <p class="muted">Tracking de conversiones, activos de precio, revisión de términos de búsqueda y ajuste del mensaje principal.</p>
       </div>
-      <div class="phase">
-        <small>Fase 2 - 14 días</small>
+      <div class="phase phase-commit">
+        <small>Fase 2 · 8 – 15 mar</small>
+        <div class="commit-tag">Resultados comprometidos</div>
         <h3>Subir la calidad del lead</h3>
-        <p class="muted">Separar servicios, reforzar geolocalización, mejorar creatividades y optimizar horarios según respuesta.</p>
+        <p class="muted">Separar servicios, reforzar geolocalización, mejorar creatividades y optimizar horarios según respuesta. Presentación de resultados al 15 mar.</p>
       </div>
       <div class="phase">
-        <small>Fase 3 - 30 días</small>
+        <small>Fase 3 · 16 – 28 mar</small>
         <h3>Escalar con control</h3>
         <p class="muted">Aumentar inversión solo sobre lo que convierta, reforzar rebooking y activar remarketing o seguimiento comercial.</p>
       </div>
@@ -591,15 +683,18 @@
     <section class="card section">
       <h2>Conclusión ejecutiva</h2>
       <p>
-        Me Too Nails Studio cerró una semana con señales claras de crecimiento. La pauta ya está generando atención
-        y el negocio reflejó una mejora fuerte en ventas y transacciones. El punto crítico ahora es pasar de una campaña
-        que atrae clics a una campaña que demuestre con claridad cuántas citas y ventas genera. Con mejor medición,
-        mejor captura de demanda y una estrategia para subir ticket y frecuencia de visita, el estudio tiene espacio real
-        para escalar resultados durante el próximo mes.
+        Me Too Nails Studio cerró una semana con señales claras de crecimiento y una inversión publicitaria
+        real de <strong>US$ 313.12</strong> que ya está generando tracción. El negocio reflejó una mejora
+        fuerte en ventas y transacciones, con un retorno de <strong>11.4x</strong> sobre la inversión.
+        El compromiso para el <strong>15 de marzo</strong> es demostrar resultados concretos y medibles:
+        más citas, mejor atribución y una campaña que justifique su presupuesto con datos.
+        Con mejor medición, captura de demanda más precisa y una estrategia activa para subir ticket
+        y frecuencia de visita, el estudio tiene espacio real para escalar durante el próximo mes.
       </p>
       <div class="footnote">
-        Nota metodológica: Google Ads y Square no cubren exactamente las mismas fechas. Este informe integra ambos datos
-        como una lectura estratégica de tendencia, no como una atribución exacta 1 a 1.
+        Nota metodológica: Google Ads y Square cubren el mismo periodo (22–28 feb). Este informe integra ambos datos
+        como una lectura estratégica de tendencia. La atribución exacta de ventas a pauta se activará con el
+        tracking de conversiones propuesto en la Fase 1.
       </div>
     </section>
 
