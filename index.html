@@ -594,77 +594,279 @@
             animation: fadeInUp 1s ease-out 0.2s backwards;
         }
 
-        .hero-image-wrapper {
+        .hero-command {
             position: relative;
-            border-radius: 24px;
             overflow: hidden;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+                radial-gradient(circle at top right, rgba(245, 166, 35, 0.28), transparent 36%),
+                rgba(10, 23, 36, 0.68);
+            backdrop-filter: blur(24px);
             box-shadow: var(--shadow-2xl);
         }
 
-        .hero-image-wrapper::before {
+        .hero-command::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(245, 166, 35, 0.2) 0%, transparent 50%);
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 34px 34px;
+            opacity: 0.28;
+            pointer-events: none;
+        }
+
+        .hero-command__bar {
+            position: relative;
             z-index: 1;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 480px;
-            object-fit: cover;
-        }
-
-        /* Floating Cards */
-        .floating-card {
-            position: absolute;
-            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
             padding: 18px 22px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-xl);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            animation: floatCard 5s ease-in-out infinite;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .floating-card.card-1 { top: 30px; left: -30px; }
-        .floating-card.card-2 { bottom: 50px; right: -20px; animation-delay: -2.5s; }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+        .hero-command__brandline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .floating-card .icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 12px;
-            display: flex;
+        .hero-command__brandline::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+            box-shadow: 0 0 0 8px rgba(245, 166, 35, 0.16);
+        }
+
+        .hero-command__pill {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .hero-command__body {
+            position: relative;
+            z-index: 1;
+            padding: 28px;
+        }
+
+        .hero-command__header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 22px;
+        }
+
+        .hero-command__header h3 {
+            color: var(--white);
+            font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+            margin-bottom: 10px;
+        }
+
+        .hero-command__header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            max-width: 420px;
+        }
+
+        .hero-command__mini {
+            display: grid;
+            gap: 12px;
+            min-width: 180px;
+        }
+
+        .hero-command__mini-card {
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-command__mini-card span {
+            display: block;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .hero-command__mini-card strong {
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+        }
+
+        .hero-command__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .hero-signal {
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-signal__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .hero-signal__label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+
+        .hero-signal strong {
+            display: block;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-signal p {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .hero-scenario-switcher {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .hero-scenario-btn {
+            appearance: none;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.82);
+            padding: 12px 14px;
+            border-radius: 14px;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .hero-scenario-btn:hover,
+        .hero-scenario-btn.is-active {
+            background: rgba(245, 166, 35, 0.16);
+            border-color: rgba(245, 166, 35, 0.4);
+            color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .hero-scenario-panel {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .hero-scenario-copy,
+        .hero-scenario-map {
+            padding: 22px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-scenario-copy h4,
+        .hero-scenario-map h4 {
+            color: var(--white);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-scenario-copy p,
+        .hero-scenario-map p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .hero-scenario-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .hero-scenario-list li,
+        .hero-route-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: 0.92rem;
+        }
+
+        .hero-scenario-list li::before,
+        .hero-route-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            margin-top: 8px;
             flex-shrink: 0;
         }
 
-        .floating-card .icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--white);
+        .hero-route-list {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .hero-scenario-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary-light);
+            font-weight: 700;
+        }
+
+        .hero-scenario-action svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
             stroke-width: 2;
             fill: none;
-        }
-
-        .floating-card .info h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 2px;
-        }
-
-        .floating-card .info p {
-            font-size: 0.8rem;
-            color: var(--gray-500);
         }
 
         /* ============================================
@@ -1261,14 +1463,16 @@
 
             .hero-visual {
                 order: 2;
-                max-width: 550px;
+                max-width: 680px;
                 margin: 0 auto;
             }
 
             .hero-text { margin: 0 auto 36px; }
             .hero-buttons { justify-content: center; }
             .hero-stats { justify-content: center; }
-            .floating-card { display: none; }
+            .hero-command__header,
+            .hero-scenario-panel { grid-template-columns: 1fr; }
+            .hero-command__mini { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
             .services-grid,
             .flow-grid,
@@ -1322,6 +1526,18 @@
                 align-items: center;
             }
 
+            .hero-command__body {
+                padding: 22px;
+            }
+
+            .hero-command__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-command__mini {
+                grid-template-columns: 1fr;
+            }
+
             .stat-item { text-align: center; }
 
             .cta-box { padding: 50px 24px; }
@@ -1346,6 +1562,8 @@
             }
 
             .hero-buttons .btn { width: 100%; }
+            .hero-scenario-switcher { flex-direction: column; }
+            .hero-scenario-btn { width: 100%; }
 
             .cta-buttons { flex-direction: column; }
             .cta-buttons .btn { width: 100%; }
@@ -1708,34 +1926,82 @@
             </div>
             
             <div class="hero-visual">
-                <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" alt="Equipo RM Digital" class="hero-image">
-                </div>
-                
-                <div class="floating-card card-1">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                            <polyline points="17 6 23 6 23 12"/>
-                        </svg>
+                <div class="hero-command">
+                    <div class="hero-command__bar">
+                        <div class="hero-command__brandline">Sistema de crecimiento RM Digital</div>
+                        <div class="hero-command__pill">Listo para web, ads y automatizaciÃ³n</div>
                     </div>
-                    <div class="info">
-                        <h4>+340%</h4>
-                        <p>Crecimiento promedio</p>
-                    </div>
-                </div>
-                
-                <div class="floating-card card-2">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <div class="info">
-                        <h4>Full Stack</h4>
-                        <p>Soluciones completas</p>
+
+                    <div class="hero-command__body">
+                        <div class="hero-command__header">
+                            <div>
+                                <h3>Tu presencia digital no deberÃ­a sentirse improvisada</h3>
+                                <p>DiseÃ±amos una experiencia completa: atrae trÃ¡fico, convierte visitas y deja claro quÃ© debe hacer el cliente en cada etapa.</p>
+                            </div>
+
+                            <div class="hero-command__mini">
+                                <div class="hero-command__mini-card">
+                                    <span>Tiempo de activaciÃ³n</span>
+                                    <strong>14-21 dÃ­as</strong>
+                                </div>
+                                <div class="hero-command__mini-card">
+                                    <span>Punto de control</span>
+                                    <strong>ROI + narrativa</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-command__grid">
+                            <article class="hero-signal">
+                                <span class="hero-signal__label">AtracciÃ³n</span>
+                                <strong>SEO + Ads</strong>
+                                <p>TrÃ¡fico calificado con mensajes alineados a la etapa de compra.</p>
+                            </article>
+
+                            <article class="hero-signal">
+                                <span class="hero-signal__label">ConversiÃ³n</span>
+                                <strong>Landing + WhatsApp</strong>
+                                <p>Un recorrido claro para que la visita no se enfrÃ­e ni se pierda.</p>
+                            </article>
+
+                            <article class="hero-signal">
+                                <span class="hero-signal__label">RetenciÃ³n</span>
+                                <strong>AutomatizaciÃ³n</strong>
+                                <p>Seguimiento, contenidos y activaciones para sostener ventas.</p>
+                            </article>
+                        </div>
+
+                        <div class="hero-scenario-switcher" id="heroScenarioSwitcher">
+                            <button class="hero-scenario-btn is-active" type="button" data-title="Quiero mÃ¡s prospectos sin improvisar" data-copy="Si hoy dependes del referido o de publicaciones aisladas, estructuramos una ruta de captaciÃ³n que conecte mensaje, oferta y acciÃ³n." data-points="DiagnÃ³stico de presencia actual|Landing o sitio con objetivo claro|Canales de trÃ¡fico con mediciÃ³n real" data-map-title="Ruta sugerida" data-map-copy="Ideal para negocios que necesitan orden y tracciÃ³n rÃ¡pida sin construir un ecosistema gigantesco desde el dÃ­a uno." data-map-points="Quiz para definir la prioridad|Calculadora para aterrizar inversiÃ³n|Servicios para ejecutar">CaptaciÃ³n</button>
+                            <button class="hero-scenario-btn" type="button" data-title="Necesito una experiencia que convierta mejor" data-copy="Cuando el negocio ya recibe visitas pero no logra cierres consistentes, el problema suele estar en la claridad del recorrido y la oferta." data-points="JerarquÃ­a visual y narrativa comercial|CTAs mejor distribuidos y mÃ¡s visibles|IntegraciÃ³n directa con WhatsApp y herramientas" data-map-title="Enfoque recomendado" data-map-copy="Pensado para marcas que ya tienen movimiento, pero quieren convertir con mÃ¡s confianza en desktop y mÃ³vil." data-map-points="Revisar quÃ© servicio encaja|Detectar fugas del embudo|Optimizar experiencia y seguimiento">ConversiÃ³n</button>
+                            <button class="hero-scenario-btn" type="button" data-title="Quiero un sistema digital que se sienta premium" data-copy="No basta con verse bien. Una presencia premium transmite criterio, velocidad, confianza y una sensaciÃ³n de marca mejor armada." data-points="DiseÃ±o con identidad propia|Microinteracciones con intenciÃ³n|Herramientas Ãºtiles que elevan valor percibido" data-map-title="Resultado esperado" data-map-copy="Para negocios que quieren diferenciarse del promedio y convertir esa diferencia en oportunidad comercial." data-map-points="Branding y UX mÃ¡s fuertes|Herramientas que aporten valor real|Experiencia consistente en todo el sitio">Experiencia premium</button>
+                        </div>
+
+                        <div class="hero-scenario-panel">
+                            <div class="hero-scenario-copy">
+                                <h4 id="heroScenarioTitle">Quiero mÃ¡s prospectos sin improvisar</h4>
+                                <p id="heroScenarioCopy">Si hoy dependes del referido o de publicaciones aisladas, estructuramos una ruta de captaciÃ³n que conecte mensaje, oferta y acciÃ³n.</p>
+                                <ul class="hero-scenario-list" id="heroScenarioList">
+                                    <li>DiagnÃ³stico de presencia actual</li>
+                                    <li>Landing o sitio con objetivo claro</li>
+                                    <li>Canales de trÃ¡fico con mediciÃ³n real</li>
+                                </ul>
+                            </div>
+
+                            <div class="hero-scenario-map">
+                                <h4 id="heroMapTitle">Ruta sugerida</h4>
+                                <p id="heroMapCopy">Ideal para negocios que necesitan orden y tracciÃ³n rÃ¡pida sin construir un ecosistema gigantesco desde el dÃ­a uno.</p>
+                                <ul class="hero-route-list" id="heroMapList">
+                                    <li>Quiz para definir la prioridad</li>
+                                    <li>Calculadora para aterrizar inversiÃ³n</li>
+                                    <li>Servicios para ejecutar</li>
+                                </ul>
+                                <a href="#ruta" class="hero-scenario-action">
+                                    Ver la ruta recomendada
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2822,7 +3088,289 @@
     resetIdle();
   })();
 </script>
+<style>
+  #rmPopup { display: none !important; }
 
+  .rm-dock {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 2100;
+    width: min(380px, calc(100vw - 28px));
+    display: grid;
+    justify-items: end;
+    gap: 12px;
+  }
+
+  .rm-dock__toggle {
+    border: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 14px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+    color: var(--primary-dark);
+    box-shadow: 0 18px 40px rgba(245, 166, 35, 0.35);
+    font: inherit;
+    font-weight: 800;
+  }
+
+  .rm-dock__toggle::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-dark);
+    box-shadow: 0 0 0 8px rgba(13, 17, 23, 0.12);
+  }
+
+  .rm-dock__panel {
+    width: 100%;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+    transform: translateY(10px) scale(0.98);
+    transform-origin: bottom right;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.28s ease;
+  }
+
+  .rm-dock.is-open .rm-dock__panel,
+  .rm-dock.is-peeking .rm-dock__panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .rm-dock__head {
+    position: relative;
+    padding: 18px 20px 16px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+  }
+
+  .rm-dock__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .rm-dock__eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--secondary);
+  }
+
+  .rm-dock__head h4 {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .rm-dock__head p {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.95rem;
+  }
+
+  .rm-dock__body {
+    padding: 18px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .rm-dock__route {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fff, var(--gray-50));
+    border: 1px solid var(--gray-200);
+    transition: 0.2s ease;
+  }
+
+  .rm-dock__route:hover {
+    transform: translateY(-2px);
+    border-color: rgba(245, 166, 35, 0.45);
+    box-shadow: 0 14px 24px rgba(30, 58, 95, 0.08);
+  }
+
+  .rm-dock__route strong {
+    color: var(--primary);
+    font-size: 1rem;
+  }
+
+  .rm-dock__route span {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+  }
+
+  .rm-dock__footer {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 6px;
+  }
+
+  .rm-dock__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .rm-dock__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .rm-dock {
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      width: auto;
+    }
+
+    .rm-dock__toggle {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<div class="rm-dock" id="rmDock" aria-live="polite">
+  <div class="rm-dock__panel" id="rmDockPanel">
+    <div class="rm-dock__head">
+      <button class="rm-dock__close" id="rmDockClose" type="button" aria-label="Cerrar panel">×</button>
+      <div class="rm-dock__eyebrow">Ruta rápida</div>
+      <h4>¿Quieres avanzar sin perder tiempo?</h4>
+      <p>Elige la acción que más se parezca a tu momento y entra directo al siguiente paso.</p>
+    </div>
+    <div class="rm-dock__body">
+      <a class="rm-dock__route" href="quiz.html">
+        <strong>No sé por dónde empezar</strong>
+        <span>Haz el quiz y descubre qué servicio conviene más a tu negocio.</span>
+      </a>
+      <a class="rm-dock__route" href="calc.html">
+        <strong>Quiero validar números</strong>
+        <span>Usa la calculadora para aterrizar inversión, proyección y retorno.</span>
+      </a>
+      <a class="rm-dock__route" href="https://wa.me/50245610507?text=Hola,%20quiero%20hablar%20con%20RM%20Digital%20sobre%20mi%20negocio." target="_blank" rel="noopener">
+        <strong>Ya quiero hablar con alguien</strong>
+        <span>Ve directo a WhatsApp y cuéntanos qué quieres lograr.</span>
+      </a>
+      <div class="rm-dock__footer">
+        <a class="rm-dock__link" href="#ruta">Ver rutas</a>
+        <a class="rm-dock__link" href="servicios.html">Ver servicios</a>
+      </div>
+    </div>
+  </div>
+  <button class="rm-dock__toggle" id="rmDockToggle" type="button" aria-expanded="false" aria-controls="rmDockPanel">
+    Abrir asistente RM
+  </button>
+</div>
+
+<script>
+  (function(){
+    try {
+      localStorage.setItem('rm_popup_muted_until_v1', String(Date.now() + 365 * 24 * 60 * 60 * 1000));
+      localStorage.setItem('rm_popup_closed_at_v1', String(Date.now()));
+    } catch (error) {}
+
+    const buttons = document.querySelectorAll('.hero-scenario-btn');
+    const title = document.getElementById('heroScenarioTitle');
+    const copy = document.getElementById('heroScenarioCopy');
+    const list = document.getElementById('heroScenarioList');
+    const mapTitle = document.getElementById('heroMapTitle');
+    const mapCopy = document.getElementById('heroMapCopy');
+    const mapList = document.getElementById('heroMapList');
+
+    function renderList(target, values) {
+      if (!target) return;
+      target.innerHTML = values.map((item) => `<li>${item}</li>`).join('');
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        buttons.forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        title.textContent = button.dataset.title || '';
+        copy.textContent = button.dataset.copy || '';
+        mapTitle.textContent = button.dataset.mapTitle || '';
+        mapCopy.textContent = button.dataset.mapCopy || '';
+        renderList(list, (button.dataset.points || '').split('|').filter(Boolean));
+        renderList(mapList, (button.dataset.mapPoints || '').split('|').filter(Boolean));
+      });
+    });
+
+    const dock = document.getElementById('rmDock');
+    const toggle = document.getElementById('rmDockToggle');
+    const close = document.getElementById('rmDockClose');
+    const STORAGE_KEY = 'rm_dock_closed_v1';
+
+    if (!dock || !toggle) return;
+
+    const wasClosed = localStorage.getItem(STORAGE_KEY) === '1';
+
+    function setOpen(nextOpen) {
+      dock.classList.toggle('is-open', nextOpen);
+      dock.classList.remove('is-peeking');
+      toggle.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
+    }
+
+    toggle.addEventListener('click', () => {
+      setOpen(!dock.classList.contains('is-open'));
+    });
+
+    close?.addEventListener('click', () => {
+      setOpen(false);
+      localStorage.setItem(STORAGE_KEY, '1');
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!dock.contains(event.target) && dock.classList.contains('is-open')) {
+        setOpen(false);
+      }
+    });
+
+    if (!wasClosed) {
+      window.setTimeout(() => {
+        if (!dock.classList.contains('is-open')) {
+          dock.classList.add('is-peeking');
+        }
+      }, 4200);
+
+      window.setTimeout(() => {
+        dock.classList.remove('is-peeking');
+      }, 8200);
+    }
+  })();
+</script>
 
 </body>
 </html>
