@@ -718,6 +718,97 @@
             line-height: 1.7;
         }
 
+        /* ============================================
+           FLOW SECTION
+           ============================================ */
+        .flow-section {
+            background:
+                radial-gradient(circle at top left, rgba(245, 166, 35, 0.08), transparent 32%),
+                linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+            position: relative;
+        }
+
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .flow-card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(203, 213, 225, 0.8);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .flow-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-2xl);
+            border-color: rgba(245, 166, 35, 0.45);
+        }
+
+        .flow-step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 800;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 24px rgba(30, 58, 95, 0.18);
+        }
+
+        .flow-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .flow-card p {
+            color: var(--gray-500);
+            margin-bottom: 22px;
+        }
+
+        .flow-points {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .flow-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .flow-points li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .flow-footer {
+            margin-top: 28px;
+            padding: 18px 22px;
+            border-radius: 18px;
+            background: rgba(30, 58, 95, 0.04);
+            border: 1px solid rgba(30, 58, 95, 0.08);
+            color: var(--gray-600);
+            text-align: center;
+        }
+
         .service-link {
             display: inline-flex;
             align-items: center;
@@ -1137,6 +1228,7 @@
             .floating-card { display: none; }
 
             .services-grid,
+            .flow-grid,
             .portfolio-grid,
             .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -1177,6 +1269,7 @@
             .section { padding: 70px 0; }
 
             .services-grid,
+            .flow-grid,
             .portfolio-grid,
             .testimonials-grid { grid-template-columns: 1fr; }
 
@@ -1546,8 +1639,8 @@
                 </p>
                 
                 <div class="hero-buttons">
-                    <a href="#contacto" class="btn btn-primary">
-                        Solicitar Cotización
+                    <a href="#ruta" class="btn btn-primary">
+                        Ver mi ruta ideal
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -1721,6 +1814,61 @@
     </section>
 
     <!-- ============================================
+         FLOW SECTION
+         ============================================ -->
+    <section class="flow-section section" id="ruta">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">Tu Siguiente Paso</span>
+                <h2 class="section-title">Un flujo más claro para que cada visita avance</h2>
+                <p class="section-subtitle">No todos llegan listos para cotizar. Por eso la home ahora separa mejor la ruta según la intención real del visitante.</p>
+            </div>
+
+            <div class="flow-grid">
+                <article class="flow-card fade-up stagger-1">
+                    <div class="flow-step">01</div>
+                    <h3>No sé qué servicio necesito</h3>
+                    <p>Empieza por una recomendación guiada. El quiz filtra tu situación y te orienta hacia la solución correcta.</p>
+                    <ul class="flow-points">
+                        <li>Ideal si apenas estás explorando opciones</li>
+                        <li>Te da una recomendación personalizada</li>
+                        <li>Reduce fricción antes de pedir una cotización</li>
+                    </ul>
+                    <a href="quiz.html" class="btn btn-outline">Hacer el Quiz</a>
+                </article>
+
+                <article class="flow-card fade-up stagger-2">
+                    <div class="flow-step">02</div>
+                    <h3>Quiero validar números antes de invertir</h3>
+                    <p>La calculadora te ayuda a aterrizar presupuesto, metas y retorno esperado para tomar decisiones con más claridad.</p>
+                    <ul class="flow-points">
+                        <li>Perfecta para conversaciones con socios o clientes</li>
+                        <li>Convierte dudas en escenarios concretos</li>
+                        <li>Acerca al usuario al siguiente sí comercial</li>
+                    </ul>
+                    <a href="calc.html" class="btn btn-outline">Abrir Calculadora</a>
+                </article>
+
+                <article class="flow-card fade-up stagger-3">
+                    <div class="flow-step">03</div>
+                    <h3>Ya sé lo que busco y quiero avanzar</h3>
+                    <p>Si ya vienes con claridad, entra directo a la vista comercial completa con servicios, planes, entregables y CTA de contacto.</p>
+                    <ul class="flow-points">
+                        <li>Ruta directa para leads más calientes</li>
+                        <li>Menos rebote por falta de contexto</li>
+                        <li>Conecta mejor con el cierre por WhatsApp</li>
+                    </ul>
+                    <a href="servicios.html" class="btn btn-primary">Ver Servicios</a>
+                </article>
+            </div>
+
+            <div class="flow-footer fade-up">
+                Si un visitante llega frío, lo guiamos. Si llega listo, no lo frenamos. Ese cambio hace que la home acompañe mucho mejor la intención de compra.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
          PORTFOLIO SECTION
          ============================================ -->
     <section class="portfolio section" id="portafolio">
@@ -1853,7 +2001,7 @@
                             </svg>
                             WhatsApp Directo
                         </a>
-                        <a href="mailto:hola@rmdigital.com" class="btn btn-secondary">
+                        <a href="mailto:renedev0284@gmail.com" class="btn btn-secondary">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <polyline points="22,6 12,13 2,6"/>
@@ -1936,7 +2084,7 @@
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>rmoya0284@gmail.com</span>
+                            <span>renedev0284@gmail.com</span>
                         </li>
                     </ul>
                 </div>
