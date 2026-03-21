@@ -719,7 +719,7 @@
 
         .hero-command__grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 16px;
             margin-bottom: 20px;
         }
@@ -755,14 +755,18 @@
             display: block;
             color: var(--white);
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: 1.45rem;
             margin-bottom: 8px;
         }
 
         .hero-signal p {
             color: rgba(255, 255, 255, 0.68);
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             line-height: 1.55;
+        }
+
+        .hero-signal--wide {
+            grid-column: 1 / -1;
         }
 
         .hero-scenario-switcher {
@@ -3298,6 +3302,38 @@
       localStorage.setItem('rm_popup_closed_at_v1', String(Date.now()));
     } catch (error) {}
 
+    const commandPill = document.querySelector('.hero-command__pill');
+    const commandTitle = document.querySelector('.hero-command__header h3');
+    const commandIntro = document.querySelector('.hero-command__header p');
+    const miniLabels = document.querySelectorAll('.hero-command__mini-card span');
+    const miniValues = document.querySelectorAll('.hero-command__mini-card strong');
+    const signalLabels = document.querySelectorAll('.hero-signal__label');
+    const signalValues = document.querySelectorAll('.hero-signal strong');
+    const signalDescriptions = document.querySelectorAll('.hero-signal p');
+    const signalCards = document.querySelectorAll('.hero-signal');
+
+    if (commandPill) commandPill.textContent = 'Listo para web, ads y automatizacion';
+    if (commandTitle) commandTitle.textContent = 'Tu presencia digital no deberia sentirse improvisada';
+    if (commandIntro) commandIntro.textContent = 'Disenamos una experiencia completa: atrae trafico, convierte visitas y deja claro que debe hacer el cliente en cada etapa.';
+
+    if (miniLabels[0]) miniLabels[0].textContent = 'Tiempo de activacion';
+    if (miniValues[0]) miniValues[0].textContent = '14-21 dias';
+    if (miniLabels[1]) miniLabels[1].textContent = 'Punto de control';
+    if (miniValues[1]) miniValues[1].textContent = 'ROI + narrativa';
+
+    if (signalLabels[0]) signalLabels[0].textContent = 'Atraccion';
+    if (signalValues[0]) signalValues[0].textContent = 'SEO + Ads';
+    if (signalDescriptions[0]) signalDescriptions[0].textContent = 'Trafico calificado con mensajes alineados a la etapa de compra.';
+
+    if (signalLabels[1]) signalLabels[1].textContent = 'Conversion';
+    if (signalValues[1]) signalValues[1].textContent = 'Landing + WhatsApp';
+    if (signalDescriptions[1]) signalDescriptions[1].textContent = 'Un recorrido claro para que la visita no se enfrie ni se pierda.';
+
+    if (signalLabels[2]) signalLabels[2].textContent = 'Retencion';
+    if (signalValues[2]) signalValues[2].textContent = 'Automatizacion y seguimiento';
+    if (signalDescriptions[2]) signalDescriptions[2].textContent = 'Seguimiento, contenidos y activaciones para sostener ventas sin depender de la improvisacion.';
+    if (signalCards[2]) signalCards[2].classList.add('hero-signal--wide');
+
     const buttons = document.querySelectorAll('.hero-scenario-btn');
     const title = document.getElementById('heroScenarioTitle');
     const copy = document.getElementById('heroScenarioCopy');
@@ -3310,6 +3346,55 @@
       if (!target) return;
       target.innerHTML = values.map((item) => `<li>${item}</li>`).join('');
     }
+
+    const scenarioData = [
+      {
+        label: 'Captacion',
+        title: 'Quiero mas prospectos sin improvisar',
+        copy: 'Si hoy dependes del referido o de publicaciones aisladas, estructuramos una ruta de captacion que conecte mensaje, oferta y accion.',
+        points: ['Diagnostico de presencia actual', 'Landing o sitio con objetivo claro', 'Canales de trafico con medicion real'],
+        mapTitle: 'Ruta sugerida',
+        mapCopy: 'Ideal para negocios que necesitan orden y traccion rapida sin construir un ecosistema enorme desde el dia uno.',
+        mapPoints: ['Quiz para definir la prioridad', 'Calculadora para aterrizar inversion', 'Servicios para ejecutar']
+      },
+      {
+        label: 'Conversion',
+        title: 'Necesito una experiencia que convierta mejor',
+        copy: 'Cuando el negocio ya recibe visitas pero no logra cierres consistentes, el problema suele estar en la claridad del recorrido y la oferta.',
+        points: ['Jerarquia visual y narrativa comercial', 'CTAs mejor distribuidos y mas visibles', 'Integracion directa con WhatsApp y herramientas'],
+        mapTitle: 'Enfoque recomendado',
+        mapCopy: 'Pensado para marcas que ya tienen movimiento, pero quieren convertir con mas confianza en desktop y movil.',
+        mapPoints: ['Revisar que servicio encaja', 'Detectar fugas del embudo', 'Optimizar experiencia y seguimiento']
+      },
+      {
+        label: 'Experiencia premium',
+        title: 'Quiero un sistema digital que se sienta premium',
+        copy: 'No basta con verse bien. Una presencia premium transmite criterio, velocidad, confianza y una sensacion de marca mejor armada.',
+        points: ['Diseno con identidad propia', 'Microinteracciones con intencion', 'Herramientas utiles que elevan valor percibido'],
+        mapTitle: 'Resultado esperado',
+        mapCopy: 'Para negocios que quieren diferenciarse del promedio y convertir esa diferencia en oportunidad comercial.',
+        mapPoints: ['Branding y UX mas fuertes', 'Herramientas que aporten valor real', 'Experiencia consistente en todo el sitio']
+      }
+    ];
+
+    buttons.forEach((button, index) => {
+      const config = scenarioData[index];
+      if (!config) return;
+      button.textContent = config.label;
+      button.dataset.title = config.title;
+      button.dataset.copy = config.copy;
+      button.dataset.points = config.points.join('|');
+      button.dataset.mapTitle = config.mapTitle;
+      button.dataset.mapCopy = config.mapCopy;
+      button.dataset.mapPoints = config.mapPoints.join('|');
+    });
+
+    if (title) title.textContent = scenarioData[0].title;
+    if (copy) copy.textContent = scenarioData[0].copy;
+    if (mapTitle) mapTitle.textContent = scenarioData[0].mapTitle;
+    if (mapCopy) mapCopy.textContent = scenarioData[0].mapCopy;
+    renderList(list, scenarioData[0].points);
+    renderList(mapList, scenarioData[0].mapPoints);
 
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
