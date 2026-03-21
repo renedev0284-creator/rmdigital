@@ -3905,6 +3905,17 @@
       </div>
     `;
 
+    const heroBadgeTitles = heroVisual.querySelectorAll('.hero-scene__badge strong');
+    const heroBadgeTexts = heroVisual.querySelectorAll('.hero-scene__badge span');
+    const heroPills = heroVisual.querySelectorAll('.hero-scene__pill');
+    if (heroBadgeTitles[0]) heroBadgeTitles[0].textContent = 'Diseno web y landing pages';
+    if (heroBadgeTexts[0]) heroBadgeTexts[0].textContent = 'Paginas claras para vender, captar leads y sostener una marca seria.';
+    if (heroBadgeTitles[1]) heroBadgeTitles[1].textContent = 'Ads, contenido y automatizacion';
+    if (heroBadgeTexts[1]) heroBadgeTexts[1].textContent = 'Embudos conectados a WhatsApp para convertir interes en conversaciones reales.';
+    if (heroPills[0]) heroPills[0].textContent = 'Web estrategica';
+    if (heroPills[1]) heroPills[1].textContent = 'Anuncios con objetivo';
+    if (heroPills[2]) heroPills[2].textContent = 'Conversion por WhatsApp';
+
     const heroFuture = document.getElementById('heroFuture');
     const glow = document.getElementById('heroCursorGlow');
     if (!heroFuture || !glow || window.innerWidth < 768) return;

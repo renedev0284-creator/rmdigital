@@ -340,6 +340,98 @@
       background: linear-gradient(135deg, rgba(245,166,35,.18), rgba(245,166,35,.08));
     }
 
+    .quick-guide {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .guide-card {
+      border: 2px solid rgba(245,166,35,.12);
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, #fff, #f8fafc);
+    }
+    .guide-card strong {
+      display: block;
+      font-family: var(--font-display);
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .guide-card span {
+      display: block;
+      color: var(--gray-500);
+      font-size: 0.92rem;
+    }
+    .assist-note {
+      margin-bottom: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(245,166,35,.14), rgba(30,58,95,.06));
+      border: 1px solid rgba(245,166,35,.18);
+      color: var(--gray-600);
+    }
+    .assist-note strong {
+      color: var(--primary);
+      font-family: var(--font-display);
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 16px;
+    }
+    .preset-btn {
+      appearance: none;
+      border: 2px solid rgba(30,58,95,.1);
+      background: linear-gradient(180deg, #fff, var(--gray-50));
+      color: var(--primary);
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 800;
+      font-family: var(--font-display);
+      transition: all .2s ease;
+    }
+    .preset-btn:hover {
+      border-color: var(--secondary);
+      transform: translateY(-1px);
+    }
+    .summary-card {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(30,58,95,.06), rgba(245,166,35,.08));
+      border: 2px solid rgba(30,58,95,.08);
+    }
+    .summary-card h4 {
+      font-family: var(--font-display);
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .summary-card p {
+      color: var(--gray-600);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    .summary-list {
+      display: grid;
+      gap: 8px;
+    }
+    .summary-list div {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.72);
+      color: var(--gray-600);
+      font-size: 0.92rem;
+    }
+    .secondary-tools {
+      margin-top: 10px;
+      color: var(--gray-500);
+      font-size: 0.88rem;
+    }
+
     /* Results */
     .kpis {
       display: grid;
@@ -466,6 +558,7 @@
       .grid { grid-template-columns: 1fr; }
       .row { grid-template-columns: 1fr; }
       .kpis { grid-template-columns: 1fr; }
+      .quick-guide { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -530,6 +623,21 @@
         </div>
       </div>
 
+      <div class="quick-guide">
+        <div class="guide-card">
+          <strong>1. Ingresa tu escenario</strong>
+          <span>Define presupuesto, ticket y porcentajes de conversion segun tu negocio.</span>
+        </div>
+        <div class="guide-card">
+          <strong>2. Mira el embudo</strong>
+          <span>La calculadora traduce trafico en leads, ventas, ingresos y utilidad.</span>
+        </div>
+        <div class="guide-card">
+          <strong>3. Toma una decision</strong>
+          <span>Sabras si el problema esta en el presupuesto, el cierre, el ticket o el margen.</span>
+        </div>
+      </div>
+
       <div class="tabs" role="tablist">
         <button class="tab-btn active" data-tab="ads" type="button">
           <span class="tab-dot"></span> Ads + Utilidad (ROI)
@@ -542,6 +650,8 @@
         </button>
       </div>
 
+      <div class="secondary-tools">Empieza por la calculadora principal. Las otras herramientas sirven como apoyo para seguidores y metas mensuales.</div>
+
       <!-- TAB 1: ADS ROI -->
       <section class="tab-panel active" id="tab-ads">
         <div class="grid">
@@ -552,6 +662,12 @@
             <div class="segmented" aria-label="Modo">
               <button class="seg-btn active" data-mode="cpm" type="button">Modo CPM</button>
               <button class="seg-btn" data-mode="cpc" type="button">Modo CPC</button>
+            </div>
+
+            <div class="preset-row">
+              <button class="preset-btn" data-ads-preset="local" type="button">Servicios locales</button>
+              <button class="preset-btn" data-ads-preset="whatsapp" type="button">WhatsApp directo</button>
+              <button class="preset-btn" data-ads-preset="premium" type="button">Ticket alto</button>
             </div>
 
             <div class="row">
@@ -675,6 +791,16 @@
             </div>
 
             <div id="ads_badge" class="badge warn" style="display:none;">—</div>
+
+            <div class="summary-card">
+              <h4 id="ads_exec_title">Resumen ejecutivo</h4>
+              <p id="ads_exec_body">Completa tus datos para ver si el escenario luce sano o si hace falta ajustar conversion, ticket o costos.</p>
+              <div class="summary-list">
+                <div id="ads_exec_item1">La calculadora mostrara tu piso minimo de ventas para que la inversion tenga sentido.</div>
+                <div id="ads_exec_item2">Tambien veras cuantos leads y cuanto ingreso podria producir el escenario.</div>
+                <div id="ads_exec_item3">Si el resultado no cierra, te dira que palanca conviene tocar primero.</div>
+              </div>
+            </div>
 
             <div class="chart">
               <h4>Resumen visual (ingresos vs costos)</h4>
@@ -1224,12 +1350,76 @@
 
     adsInputs.forEach(el => el.addEventListener("input", calcAds));
 
+    const adsPresetButtons = document.querySelectorAll("[data-ads-preset]");
+    adsPresetButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const preset = btn.dataset.adsPreset;
+        if (preset === "local") {
+          setAdsMode("cpm");
+          setField("ads_budget", 3000);
+          setField("ads_days", 30);
+          setField("ads_cpm", 35);
+          setField("ads_ctr", 1.4);
+          setField("ads_lead_rate", 14);
+          setField("ads_close_rate", 18);
+          setField("ads_ticket", 450);
+          setField("ads_margin", 55);
+          setField("ads_cost_per_sale", 0);
+          setField("ads_other_fixed", 0);
+          setField("ads_cpc", 2.5);
+          setField("ads_clicks_override", "");
+        }
+        if (preset === "whatsapp") {
+          setAdsMode("cpc");
+          setField("ads_budget", 2500);
+          setField("ads_days", 30);
+          setField("ads_cpc", 2.3);
+          setField("ads_ctr", 1.5);
+          setField("ads_lead_rate", 18);
+          setField("ads_close_rate", 14);
+          setField("ads_ticket", 300);
+          setField("ads_margin", 50);
+          setField("ads_cost_per_sale", 0);
+          setField("ads_other_fixed", 0);
+          setField("ads_clicks_override", "");
+        }
+        if (preset === "premium") {
+          setAdsMode("cpm");
+          setField("ads_budget", 6000);
+          setField("ads_days", 30);
+          setField("ads_cpm", 42);
+          setField("ads_ctr", 1.1);
+          setField("ads_lead_rate", 10);
+          setField("ads_close_rate", 20);
+          setField("ads_ticket", 1500);
+          setField("ads_margin", 60);
+          setField("ads_cost_per_sale", 80);
+          setField("ads_other_fixed", 500);
+          setField("ads_cpc", 3.2);
+          setField("ads_clicks_override", "");
+        }
+        calcAds();
+      });
+    });
+
     // Store last computed results for export/WhatsApp
     const state = {
       ads: {},
       followers: {},
       plan: {}
     };
+
+    function setField(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.value = value;
+    }
+
+    function setAdsMode(mode) {
+      adsMode = mode;
+      cpmBlock.style.display = (adsMode === "cpm") ? "" : "none";
+      cpcBlock.style.display = (adsMode === "cpc") ? "" : "none";
+      segBtns.forEach(x => x.classList.toggle("active", x.dataset.mode === mode));
+    }
 
     function calcAds(){
       const budget = toNum(document.getElementById("ads_budget").value);
@@ -1273,6 +1463,10 @@
 
       const breakevenCPA = (ticket * margin) - costPerSale;
       const breakevenROAS = (ticket > 0 && margin > 0) ? (1 / margin) : 0;
+      const contributionPerSale = Math.max(0, (ticket * margin) - costPerSale);
+      const fixedSpend = budget + otherFixed;
+      const breakevenSales = contributionPerSale > 0 ? Math.ceil(fixedSpend / contributionPerSale) : 0;
+      const breakevenLeads = closeRate > 0 ? Math.ceil(breakevenSales / closeRate) : 0;
 
       // UI
       document.getElementById("kpi_impressions").textContent = intFmt(impressions);
@@ -1319,6 +1513,44 @@
       badge.className = badgeClass;
       badge.textContent = badgeText;
 
+      let execTitleText = "Resumen ejecutivo";
+      let execBodyText = "";
+      let execLine1 = "";
+      let execLine2 = "";
+      let execLine3 = "";
+
+      if (sales <= 0 || leads <= 0 || clicks <= 0) {
+        execTitleText = "Escenario incompleto";
+        execBodyText = "Con los datos actuales el embudo no alcanza a producir ventas suficientes para evaluar rentabilidad.";
+        execLine1 = `Con ${money0(budget)} el escenario apenas proyecta ${intFmt(leads)} leads y ${intFmt(sales)} ventas.`;
+        execLine2 = "La primera correccion suele estar en la oferta, el anuncio o la pagina de aterrizaje.";
+        execLine3 = "Empieza mejorando conversion a lead o cierre antes de subir presupuesto.";
+      } else if (netProfit > 0) {
+        execTitleText = "Escenario con potencial";
+        execBodyText = "La proyeccion indica que la campana podria dejar utilidad si el seguimiento comercial y la oferta se sostienen.";
+        execLine1 = `Podrias proyectar ${intFmt(leads)} leads y ${intFmt(sales)} ventas con una utilidad cercana a ${money0(netProfit)}.`;
+        execLine2 = `Tu punto de equilibrio ronda ${intFmt(breakevenSales)} ventas o ${intFmt(breakevenLeads)} leads calificados.`;
+        execLine3 = "La siguiente meta es medir CPL real, calidad de lead y tasa de cierre en la primera semana.";
+      } else if (roas >= breakevenROAS) {
+        execTitleText = "Vende, pero aun no deja suficiente";
+        execBodyText = "El trafico podria responder, pero el margen actual no alcanza para absorber ads y costos complementarios.";
+        execLine1 = `El negocio necesita acercarse a ${intFmt(breakevenSales)} ventas para cubrir una inversion total de ${money0(fixedSpend)}.`;
+        execLine2 = "Hoy el ROAS luce aceptable, pero la utilidad se erosiona por margen, costos por venta o cierre comercial.";
+        execLine3 = "Antes de subir presupuesto, revisa ticket, margen bruto o seguimiento comercial.";
+      } else {
+        execTitleText = "Hay que ajustar el modelo";
+        execBodyText = "Con esta mezcla de presupuesto, conversion y ticket, la campana no se sostiene financieramente.";
+        execLine1 = `Para acercarte al equilibrio necesitas al menos ${intFmt(breakevenSales)} ventas o un costo por venta bastante mas bajo.`;
+        execLine2 = `El escenario actual deja ${netProfit < 0 ? "-" + money0(Math.abs(netProfit)) : money0(netProfit)} de utilidad estimada.`;
+        execLine3 = "Ajusta primero conversion a lead, cierre o ticket antes de insistir con mas trafico.";
+      }
+
+      document.getElementById("ads_exec_title").textContent = execTitleText;
+      document.getElementById("ads_exec_body").textContent = execBodyText;
+      document.getElementById("ads_exec_item1").textContent = execLine1;
+      document.getElementById("ads_exec_item2").textContent = execLine2;
+      document.getElementById("ads_exec_item3").textContent = execLine3;
+
       document.getElementById("ads_insight").textContent =
         `Palancas: 1) bajar CPL (mejor creativo/segmentación), 2) subir cierre (seguimiento), 3) subir ticket/margen. ` +
         `Breakeven ROAS aprox: ${breakevenROAS ? breakevenROAS.toFixed(2)+'x' : '—'}.`;
@@ -1339,7 +1571,7 @@
         impressions, clicks, leads, sales,
         revenue, grossProfit, netProfit,
         roas, cpl, cpa, daily,
-        breakevenCPA, breakevenROAS,
+        breakevenCPA, breakevenROAS, breakevenSales, breakevenLeads,
         badgeText
       };
     }
@@ -1719,9 +1951,62 @@
       calcAds(); calcFollowers(); calcPlan();
     }
 
+    function applyInterfaceCopy() {
+      const headerTitle = document.querySelector(".header h1");
+      const headerText = document.querySelector(".header p");
+      if (headerTitle) headerTitle.innerHTML = 'Calculadora <span>Pro</span> de Inversion y Ventas';
+      if (headerText) headerText.textContent = "Calcula cuanto invertir, cuantos leads podrias generar y cuantas ventas necesitas para que una campana digital tenga sentido para tu negocio.";
+      if (btnPdf) btnPdf.textContent = "Exportar PDF";
+      if (btnWa) btnWa.textContent = "Enviar a WhatsApp";
+
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      if (tabButtons[0]) tabButtons[0].innerHTML = '<span class="tab-dot"></span> Calculadora principal';
+      if (tabButtons[1]) tabButtons[1].innerHTML = '<span class="tab-dot"></span> Seguidores';
+      if (tabButtons[2]) tabButtons[2].innerHTML = '<span class="tab-dot"></span> Meta mensual';
+
+      const labels = {
+        btn_pdf: "Exportar PDF",
+        btn_wa: "Enviar a WhatsApp",
+        ads_budget: "Presupuesto total",
+        ads_days: "Duracion (dias)",
+        ads_lead_rate: "Conversion a lead (%)",
+        ads_close_rate: "Cierre a venta (%)",
+        ads_clicks_override: "Clics estimados (opcional)",
+        ads_cost_per_sale: "Costo por venta (opcional)",
+        ads_other_fixed: "Otros costos fijos (opcional)"
+      };
+      Object.entries(labels).forEach(([id, text]) => {
+        const label = document.querySelector(`label[for="${id}"]`);
+        if (label) label.textContent = text;
+      });
+
+      const panelTitles = document.querySelectorAll("#tab-ads .panel h3");
+      if (panelTitles[0]) panelTitles[0].textContent = "1) Datos de tu campana";
+      if (panelTitles[1]) panelTitles[1].textContent = "2) Lectura del escenario";
+
+      const panelHints = document.querySelectorAll("#tab-ads .panel .hint");
+      if (panelHints[0]) panelHints[0].textContent = "Esta es la calculadora principal para servicios, ventas por WhatsApp y negocios que necesitan medir si una campana puede dejar utilidad.";
+      if (panelHints[1]) panelHints[1].textContent = "Aqui ves si la campana podria sostenerse, cuantas ventas necesitas y que palancas mover para mejorar el resultado.";
+
+      const kpiTitles = document.querySelectorAll("#tab-ads .kpi h4");
+      const kpiNames = ["Alcance estimado", "Visitas", "Leads", "Ventas", "Ingresos", "Utilidad esperada"];
+      kpiTitles.forEach((el, idx) => {
+        if (kpiNames[idx]) el.textContent = kpiNames[idx];
+      });
+
+      const note = document.querySelector("#tab-ads .panel .note");
+      if (note) note.textContent = "Consejo RM: no busques adivinar. Busca un escenario base que te diga si el presupuesto, el cierre y el ticket estan alineados.";
+
+      const insight = document.getElementById("ads_insight");
+      if (insight && !insight.textContent.trim()) {
+        insight.textContent = "Ajusta conversion, cierre y ticket. La rentabilidad rara vez depende de una sola metrica.";
+      }
+    }
+
     // ---------- Init ----------
     // Keep currency global in sync with selector
     currency = currencySel.value;
+    applyInterfaceCopy();
 
     // Apply default preset (Servicios) respecting current currency
     applyPresetSmart(bizModeSel.value);
