@@ -1877,7 +1877,7 @@
             
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="calc.html" class="nav-link">Calculadora</a></li>
+                <li><a href="quiz.html" class="nav-link">Diagnóstico</a></li>
                 <li><a href="#servicios" class="nav-link">Servicios</a></li>
                 <li><a href="servicios.html" class="nav-link">Qué hacemos?</a></li>
                 <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
@@ -1923,8 +1923,8 @@
                 </p>
                 
                 <div class="hero-buttons">
-                    <a href="#ruta" class="btn btn-primary">
-                        Ver mi ruta ideal
+                    <a href="quiz.html" class="btn btn-primary">
+                        Empezar diagnostico
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -3533,13 +3533,13 @@
     width: min(560px, 100%);
     display: grid;
     justify-items: center;
-    gap: 18px;
+    gap: 12px;
   }
 
   .hero-scene__frame {
     position: relative;
     width: min(560px, 100%);
-    aspect-ratio: 0.86;
+    aspect-ratio: 1;
     overflow: hidden;
     border-radius: 36px;
     border: 1px solid rgba(255,255,255,0.12);
@@ -3577,92 +3577,50 @@
     object-position: center;
   }
 
-  .hero-scene__badge {
+  .hero-scene__caption {
     position: absolute;
-    z-index: 2;
-    max-width: 220px;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.1);
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+    z-index: 3;
+    padding: 18px 20px;
+    border-radius: 24px;
+    background: rgba(10,22,36,0.58);
     border: 1px solid rgba(255,255,255,0.14);
-    color: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 18px 44px rgba(0,0,0,0.2);
-    animation: heroFloat 7s ease-in-out infinite;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
   }
 
-  .hero-scene__badge strong {
-    display: block;
-    color: var(--white);
-    font-size: 0.98rem;
-    line-height: 1.2;
-  }
-
-  .hero-scene__badge span {
-    display: block;
-    color: rgba(255,255,255,0.68);
-    font-size: 0.84rem;
-    line-height: 1.35;
-  }
-
-  .hero-scene__badge--top {
-    top: 34px;
-    right: -26px;
-  }
-
-  .hero-scene__badge--bottom {
-    left: -34px;
-    bottom: 72px;
-    animation-delay: -2.8s;
-  }
-
-  .hero-scene__icon {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(245,166,35,0.34), rgba(245,166,35,0.12));
-    flex: 0 0 auto;
-  }
-
-  .hero-scene__icon svg {
-    width: 18px;
-    height: 18px;
-    fill: var(--white);
-  }
-
-  .hero-scene__meta {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .hero-scene__pill {
+  .hero-scene__eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 11px 16px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.88);
-    font-size: 0.88rem;
-    backdrop-filter: blur(14px);
+    gap: 8px;
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.86);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .hero-scene__pill::before {
+  .hero-scene__eyebrow::before {
     content: '';
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--secondary);
+  }
+
+  .hero-scene__caption h3 {
+    color: var(--white);
+    font-size: 1.55rem;
+    line-height: 1.08;
+    margin-bottom: 10px;
+  }
+
+  .hero-scene__caption p {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.94rem;
+    line-height: 1.55;
   }
 
   .hero-float {
@@ -3773,13 +3731,8 @@
       left: auto;
     }
 
-    .hero-scene__badge--top {
-      right: 10px;
-    }
-
-    .hero-scene__badge--bottom {
-      left: 10px;
-      bottom: 40px;
+    .hero-scene__frame {
+      max-width: 520px;
     }
   }
 
@@ -3793,31 +3746,25 @@
       padding: 18px;
     }
 
-    .hero-scene {
-      gap: 14px;
-    }
-
     .hero-scene__frame {
       max-width: 420px;
+      aspect-ratio: 0.92;
     }
 
-    .hero-scene__badge {
-      position: relative;
-      top: auto;
-      right: auto;
-      left: auto;
-      bottom: auto;
-      width: 100%;
-      max-width: none;
+    .hero-scene__caption {
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 15px 16px;
+      border-radius: 20px;
     }
 
-    .hero-scene__meta {
-      gap: 10px;
+    .hero-scene__caption h3 {
+      font-size: 1.25rem;
     }
 
-    .hero-scene__pill {
-      width: 100%;
-      justify-content: center;
+    .hero-scene__caption p {
+      font-size: 0.88rem;
     }
 
     .hero-social-chip {
@@ -3915,6 +3862,76 @@
     if (heroPills[0]) heroPills[0].textContent = 'Web estrategica';
     if (heroPills[1]) heroPills[1].textContent = 'Anuncios con objetivo';
     if (heroPills[2]) heroPills[2].textContent = 'Conversion por WhatsApp';
+
+    const heroFrame = heroVisual.querySelector('.hero-scene__frame');
+    const heroScene = heroVisual.querySelector('.hero-scene');
+    const heroMeta = heroVisual.querySelector('.hero-scene__meta');
+    heroVisual.querySelectorAll('.hero-social-chip--fb, .hero-social-chip--tk, .hero-social-chip--ln, .hero-social-chip--yt').forEach((chip) => chip.remove());
+    heroVisual.querySelectorAll('.hero-scene__badge').forEach((badge) => badge.remove());
+    if (heroMeta) heroMeta.remove();
+    if (heroFrame && !heroFrame.querySelector('.hero-scene__caption')) {
+      const caption = document.createElement('div');
+      caption.className = 'hero-scene__caption';
+      caption.innerHTML = '<span class="hero-scene__eyebrow">Ruta digital clara</span><h3>Web, anuncios y conversion trabajando en la misma direccion</h3><p>Primero define que necesita tu negocio, luego aterriza la solucion correcta y usa la calculadora solo para validar numeros.</p>';
+      heroFrame.appendChild(caption);
+    }
+    if (heroScene) heroScene.style.gap = '0';
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    if (navLinks[1]) {
+      navLinks[1].textContent = 'Diagnostico';
+      navLinks[1].setAttribute('href', 'quiz.html');
+    }
+
+    const heroButtons = document.querySelectorAll('.hero-buttons a');
+    if (heroButtons[0]) {
+      heroButtons[0].setAttribute('href', 'quiz.html');
+      heroButtons[0].innerHTML = 'Empezar diagnostico <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }
+    if (heroButtons[1]) {
+      heroButtons[1].setAttribute('href', 'servicios.html');
+      heroButtons[1].textContent = 'Ver servicios';
+    }
+
+    const flowTag = document.querySelector('#ruta .section-tag');
+    const flowTitle = document.querySelector('#ruta .section-title');
+    const flowSubtitle = document.querySelector('#ruta .section-subtitle');
+    const flowCards = document.querySelectorAll('#ruta .flow-card');
+    const flowFooter = document.querySelector('#ruta .flow-footer');
+    if (flowTag) flowTag.textContent = 'Empieza Por Aqui';
+    if (flowTitle) flowTitle.textContent = 'Primero aclara, luego decide y despues proyecta';
+    if (flowSubtitle) flowSubtitle.textContent = 'El camino recomendado es simple: primero descubre que necesita tu negocio, luego revisa servicios y usa la calculadora solo si quieres aterrizar numeros.';
+    if (flowCards[0]) {
+      flowCards[0].querySelector('h3').textContent = 'Empieza con el diagnostico';
+      flowCards[0].querySelector('p').textContent = 'El quiz es la puerta principal. En pocos pasos te orienta hacia la solucion mas logica segun tu momento, objetivo y nivel digital.';
+      flowCards[0].querySelector('.btn').textContent = 'Hacer diagnostico';
+      flowCards[0].querySelector('.btn').setAttribute('href', 'quiz.html');
+      const items = flowCards[0].querySelectorAll('li');
+      if (items[0]) items[0].textContent = 'Ideal si todavia no sabes que servicio priorizar';
+      if (items[1]) items[1].textContent = 'Reduce la friccion antes de cotizar o invertir';
+      if (items[2]) items[2].textContent = 'Te deja una recomendacion mas clara para avanzar';
+    }
+    if (flowCards[1]) {
+      flowCards[1].querySelector('h3').textContent = 'Despues revisa servicios';
+      flowCards[1].querySelector('p').textContent = 'Cuando ya tengas claridad, entra a la vista comercial para entender alcance, entregables y cual solucion conviene ejecutar primero.';
+      flowCards[1].querySelector('.btn').textContent = 'Ver servicios';
+      flowCards[1].querySelector('.btn').setAttribute('href', 'servicios.html');
+      const items = flowCards[1].querySelectorAll('li');
+      if (items[0]) items[0].textContent = 'Util para pasar de exploracion a decision';
+      if (items[1]) items[1].textContent = 'Ordena mejor la conversacion comercial';
+      if (items[2]) items[2].textContent = 'Te acerca mas rapido al contacto por WhatsApp';
+    }
+    if (flowCards[2]) {
+      flowCards[2].querySelector('h3').textContent = 'Usa la calculadora solo si necesitas numeros';
+      flowCards[2].querySelector('p').textContent = 'La calculadora no es otra lista de precios. Es un estimador opcional para aterrizar inversion, leads, ventas y punto de equilibrio.';
+      flowCards[2].querySelector('.btn').textContent = 'Abrir calculadora';
+      flowCards[2].querySelector('.btn').setAttribute('href', 'calc.html');
+      const items = flowCards[2].querySelectorAll('li');
+      if (items[0]) items[0].textContent = 'Te sirve para validar escenarios antes de invertir';
+      if (items[1]) items[1].textContent = 'Es mas util despues del diagnostico';
+      if (items[2]) items[2].textContent = 'No sustituye la propuesta, la aclara';
+    }
+    if (flowFooter) flowFooter.textContent = 'Recomendacion RM: empieza por el diagnostico, revisa servicios y deja la calculadora como herramienta de apoyo para validar numeros.';
 
     const heroFuture = document.getElementById('heroFuture');
     const glow = document.getElementById('heroCursorGlow');
