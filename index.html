@@ -3539,6 +3539,11 @@
   .hero-scene__frame {
     position: relative;
     width: min(560px, 100%);
+    aspect-ratio: 0.86;
+    overflow: hidden;
+    border-radius: 36px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 30px 70px rgba(3,7,12,0.34);
   }
 
   .hero-scene__frame::before {
@@ -3551,15 +3556,25 @@
     z-index: 0;
   }
 
+  .hero-scene__frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(180deg, rgba(9,20,33,0.12) 0%, rgba(9,20,33,0.08) 28%, rgba(9,20,33,0.4) 100%),
+      radial-gradient(circle at top right, rgba(245,166,35,0.16), transparent 32%);
+    pointer-events: none;
+  }
+
   .hero-scene__image {
     position: relative;
     z-index: 1;
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 36px;
-    border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 30px 70px rgba(3,7,12,0.34);
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero-scene__badge {
@@ -3857,7 +3872,7 @@
         <div class="hero-future__content">
           <div class="hero-scene">
             <div class="hero-scene__frame">
-              <img class="hero-scene__image" src="hero-showcase.svg" alt="Vista visual de presencia digital moderna para web, redes y WhatsApp">
+              <img class="hero-scene__image" src="https://images.pexels.com/photos/3931504/pexels-photo-3931504.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1400&w=1200" alt="Equipo profesional revisando estrategia digital frente a una laptop en una oficina moderna">
 
               <div class="hero-scene__badge hero-scene__badge--top">
                 <div class="hero-scene__icon">
