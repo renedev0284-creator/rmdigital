@@ -3523,225 +3523,131 @@
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 22px;
-    padding: 30px;
+    place-items: center;
+    padding: 30px 26px 24px;
     height: 100%;
   }
 
-  .hero-browser {
+  .hero-scene {
     position: relative;
-    border-radius: 28px;
-    padding: 22px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(16px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-  }
-
-  .hero-browser__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .hero-browser__dots {
-    display: flex;
-    gap: 8px;
-  }
-
-  .hero-browser__dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.55);
-  }
-
-  .hero-browser__url {
-    flex: 1;
-    padding: 11px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.74);
-    font-size: 0.84rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .hero-browser__title {
-    color: var(--white);
-    font-size: 1.9rem;
-    margin-bottom: 12px;
-  }
-
-  .hero-browser__text {
-    color: rgba(255,255,255,0.72);
-    margin-bottom: 20px;
-    max-width: 420px;
-  }
-
-  .hero-browser__stats {
+    width: min(560px, 100%);
     display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-
-  .hero-browser__stat {
-    padding: 16px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .hero-browser__stat span {
-    display: block;
-    color: rgba(255,255,255,0.54);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .hero-browser__stat strong {
-    color: var(--white);
-    font-size: 1.45rem;
-    font-family: var(--font-display);
-  }
-
-  .hero-browser__bars {
-    display: grid;
-    gap: 12px;
-  }
-
-  .hero-browser__bar {
-    padding: 14px 16px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .hero-browser__bar-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    color: rgba(255,255,255,0.8);
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-  }
-
-  .hero-browser__bar-track {
-    height: 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    overflow: hidden;
-  }
-
-  .hero-browser__bar-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--secondary), #ffd37c);
-  }
-
-  .hero-side {
-    position: relative;
-    display: grid;
-    align-content: center;
     justify-items: center;
+    gap: 18px;
   }
 
-  .hero-phone {
+  .hero-scene__frame {
     position: relative;
-    width: min(320px, 100%);
-    min-height: 510px;
-    padding: 18px;
-    border-radius: 32px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
-    border: 1px solid rgba(255,255,255,0.18);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+    width: min(560px, 100%);
   }
 
-  .hero-phone::before {
+  .hero-scene__frame::before {
     content: '';
     position: absolute;
-    top: 14px;
-    left: 50%;
-    width: 34%;
-    height: 8px;
-    transform: translateX(-50%);
-    border-radius: 999px;
-    background: rgba(255,255,255,0.22);
+    inset: 6% 9% -4%;
+    border-radius: 40px;
+    background: radial-gradient(circle, rgba(245,166,35,0.22), transparent 66%);
+    filter: blur(18px);
+    z-index: 0;
   }
 
-  .hero-phone__screen {
-    margin-top: 18px;
-    border-radius: 24px;
-    padding: 18px;
-    min-height: 455px;
-    background:
-      radial-gradient(circle at top right, rgba(245,166,35,0.28), transparent 32%),
-      linear-gradient(180deg, rgba(14,34,53,0.98), rgba(8,18,30,0.98));
-    color: var(--white);
+  .hero-scene__image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 36px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 30px 70px rgba(3,7,12,0.34);
   }
 
-  .hero-phone__label {
+  .hero-scene__badge {
+    position: absolute;
+    z-index: 2;
+    max-width: 220px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    font-size: 0.78rem;
-    margin-bottom: 16px;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.2);
+    animation: heroFloat 7s ease-in-out infinite;
   }
 
-  .hero-phone__label::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--secondary);
-  }
-
-  .hero-phone__screen h4 {
+  .hero-scene__badge strong {
+    display: block;
     color: var(--white);
-    font-size: 1.45rem;
-    margin-bottom: 12px;
+    font-size: 0.98rem;
+    line-height: 1.2;
   }
 
-  .hero-phone__screen p {
-    color: rgba(255,255,255,0.72);
-    font-size: 0.95rem;
-    margin-bottom: 18px;
+  .hero-scene__badge span {
+    display: block;
+    color: rgba(255,255,255,0.68);
+    font-size: 0.84rem;
+    line-height: 1.35;
   }
 
-  .hero-phone__cards {
+  .hero-scene__badge--top {
+    top: 34px;
+    right: -26px;
+  }
+
+  .hero-scene__badge--bottom {
+    left: -34px;
+    bottom: 72px;
+    animation-delay: -2.8s;
+  }
+
+  .hero-scene__icon {
+    width: 42px;
+    height: 42px;
     display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(245,166,35,0.34), rgba(245,166,35,0.12));
+    flex: 0 0 auto;
+  }
+
+  .hero-scene__icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--white);
+  }
+
+  .hero-scene__meta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
   }
 
-  .hero-phone__card {
-    padding: 16px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.07);
+  .hero-scene__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .hero-phone__card strong {
-    display: block;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-
-  .hero-phone__card span {
-    color: rgba(255,255,255,0.66);
+    color: rgba(255,255,255,0.88);
     font-size: 0.88rem;
+    backdrop-filter: blur(14px);
+  }
+
+  .hero-scene__pill::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--secondary);
   }
 
   .hero-float {
@@ -3845,19 +3751,20 @@
   }
 
   @media (max-width: 1024px) {
-    .hero-future__content {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-side {
-      margin-top: 8px;
-    }
-
     .hero-social-chip--ig,
     .hero-social-chip--wa,
     .hero-social-chip--ln,
     .hero-social-chip--tk {
       left: auto;
+    }
+
+    .hero-scene__badge--top {
+      right: 10px;
+    }
+
+    .hero-scene__badge--bottom {
+      left: 10px;
+      bottom: 40px;
     }
   }
 
@@ -3871,8 +3778,31 @@
       padding: 18px;
     }
 
-    .hero-browser__stats {
-      grid-template-columns: 1fr;
+    .hero-scene {
+      gap: 14px;
+    }
+
+    .hero-scene__frame {
+      max-width: 420px;
+    }
+
+    .hero-scene__badge {
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: none;
+    }
+
+    .hero-scene__meta {
+      gap: 10px;
+    }
+
+    .hero-scene__pill {
+      width: 100%;
+      justify-content: center;
     }
 
     .hero-social-chip {
@@ -3888,14 +3818,7 @@
 
     .hero-float--one,
     .hero-float--two {
-      position: relative;
-      top: auto;
-      right: auto;
-      left: auto;
-      bottom: auto;
-      width: 100%;
-      margin-top: 12px;
-      justify-content: center;
+      display: none;
     }
   }
 </style>
@@ -3932,69 +3855,35 @@
         </div>
 
         <div class="hero-future__content">
-          <div class="hero-browser">
-            <div class="hero-browser__top">
-              <div class="hero-browser__dots"><span></span><span></span><span></span></div>
-              <div class="hero-browser__url">rmdigital.net/experiencia-digital</div>
-            </div>
-            <h3 class="hero-browser__title">Una experiencia digital que se siente viva, clara y lista para vender</h3>
-            <p class="hero-browser__text">Combinamos marca, tecnologia y conversion en una sola interfaz para que tu negocio no se vea como uno mas.</p>
-            <div class="hero-browser__stats">
-              <div class="hero-browser__stat"><span>Claridad</span><strong>UX Pro</strong></div>
-              <div class="hero-browser__stat"><span>Canales</span><strong>Social + Web</strong></div>
-              <div class="hero-browser__stat"><span>Objetivo</span><strong>Mas Leads</strong></div>
-            </div>
-            <div class="hero-browser__bars">
-              <div class="hero-browser__bar">
-                <div class="hero-browser__bar-head"><span>Atencion visual</span><span>92%</span></div>
-                <div class="hero-browser__bar-track"><div class="hero-browser__bar-fill" style="width:92%"></div></div>
-              </div>
-              <div class="hero-browser__bar">
-                <div class="hero-browser__bar-head"><span>Ruta de conversion</span><span>84%</span></div>
-                <div class="hero-browser__bar-track"><div class="hero-browser__bar-fill" style="width:84%"></div></div>
-              </div>
-              <div class="hero-browser__bar">
-                <div class="hero-browser__bar-head"><span>Percepcion premium</span><span>88%</span></div>
-                <div class="hero-browser__bar-track"><div class="hero-browser__bar-fill" style="width:88%"></div></div>
-              </div>
-            </div>
-          </div>
+          <div class="hero-scene">
+            <div class="hero-scene__frame">
+              <img class="hero-scene__image" src="hero-showcase.svg" alt="Vista visual de presencia digital moderna para web, redes y WhatsApp">
 
-          <div class="hero-side">
-            <div class="hero-phone">
-              <div class="hero-phone__screen">
-                <div class="hero-phone__label">Vista movil inteligente</div>
-                <h4>Tu marca debe sentirse moderna en cada scroll</h4>
-                <p>Desde anuncios hasta WhatsApp y landing pages, todo tiene que hablar el mismo idioma visual.</p>
-                <div class="hero-phone__cards">
-                  <div class="hero-phone__card">
-                    <strong>Contenido que engancha</strong>
-                    <span>Piezas visuales, mensajes claros y llamadas a la accion visibles.</span>
-                  </div>
-                  <div class="hero-phone__card">
-                    <strong>Embudo mas natural</strong>
-                    <span>El usuario entiende rapido que hacer y por que confiar.</span>
-                  </div>
-                  <div class="hero-phone__card">
-                    <strong>Mobile first</strong>
-                    <span>Velocidad visual, jerarquia fuerte y experiencia comoda en touch.</span>
-                  </div>
+              <div class="hero-scene__badge hero-scene__badge--top">
+                <div class="hero-scene__icon">
+                  <svg viewBox="0 0 24 24"><path d="M4 18c4-8 8-12 16-14-2 8-6 12-14 16l-2 1zM10 10l4 4"/></svg>
+                </div>
+                <div>
+                  <strong>Imagen más premium</strong>
+                  <span>Menos bloque pesado, más presencia visual.</span>
+                </div>
+              </div>
+
+              <div class="hero-scene__badge hero-scene__badge--bottom">
+                <div class="hero-scene__icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg>
+                </div>
+                <div>
+                  <strong>Social + web + contacto</strong>
+                  <span>Todo conectado en una sola experiencia.</span>
                 </div>
               </div>
             </div>
 
-            <div class="hero-float hero-float--one">
-              <div class="hero-float__icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg>
-              </div>
-              <span>Presencia tecnologica, no plantilla comun</span>
-            </div>
-
-            <div class="hero-float hero-float--two">
-              <div class="hero-float__icon">
-                <svg viewBox="0 0 24 24"><path d="M4 18c4-8 8-12 16-14-2 8-6 12-14 16l-2 1zM10 10l4 4"/></svg>
-              </div>
-              <span>Interacciones mas vivas y memorables</span>
+            <div class="hero-scene__meta">
+              <div class="hero-scene__pill">Presencia tecnológica</div>
+              <div class="hero-scene__pill">Mobile first</div>
+              <div class="hero-scene__pill">Ruta clara a WhatsApp</div>
             </div>
           </div>
         </div>
